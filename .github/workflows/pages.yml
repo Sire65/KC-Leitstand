@@ -1,18 +1,70 @@
+# Veroeffentlichung des Leitstands auf GitHub Pages.
+#
+# Veroeffentlicht wird ausschliesslich public/ - der Auslieferungsstand. Und
+# nur, wenn er die Pflichtpruefungen besteht: ein Stand, der den Release-Check
+# oder den Framework-TUEV nicht besteht, geht nicht online. Deshalb laufen die
+# Pruefungen hier noch einmal und nicht nur in "Validate Candidate": eine
+# gruene Pruefung auf einem anderen Lauf ist keine Zusage fuer diesen.
 name: GitHub Pages
 
 on:
+  push:
+    branches: [ main ]
   workflow_dispatch:
 
+# Zwei Veroeffentlichungen gleichzeitig wuerden sich gegenseitig ueberholen.
+# Der spaetere Stand gewinnt, der laufende wird nicht abgebrochen.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
+  pruefen:
+    name: Pflichtpruefungen
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: JavaScript-Syntax
+        run: |
+          node --check app/app.js
+          node --check app/update.js
+          node --check public/app.js
+          node --check public/update.js
+      - name: Aktualisierungshinweis
+        run: node tests/update-selbsttest.mjs
+      - name: Release readiness
+        run: python tools/release-check.py
+      - name: Framework TÜV Pflichtprüfung
+        run: python tools/framework-tuev.py release --level CANDIDATE
+      - name: TÜV-Zertifikat verifizieren
+        run: python tools/framework-tuev.py verify
+
   deploy:
+    name: Veröffentlichen
+    needs: pruefen
     runs-on: ubuntu-latest
     permissions:
       pages: write
       id-token: write
       contents: read
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # enablement schaltet Pages beim ersten Lauf selbst frei, damit die
+      # Veroeffentlichung nicht an einer vergessenen Einstellung haengt.
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public
-      - uses: actions/deploy-pages@v4
+      - id: deployment
+        uses: actions/deploy-pages@v4

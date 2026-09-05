@@ -4,7 +4,7 @@
   "version": "5.4.2",
   "level": "CANDIDATE",
   "status": "PASS",
-  "timestamp": "2026-09-05T16:53:03+00:00",
+  "timestamp": "2026-09-05T17:12:45+00:00",
   "blockers": 0,
   "warnings": 0,
   "checks": [
@@ -217,5 +217,5 @@
       "evidence": ""
     }
   ],
-  "treeDigest": "b3617fb8c5fd48f620858de5ef5ae915356490caaf9370ec07fdd0a01b613f9b"
+  "treeDigest": "3eeec6931d3d2038b8954a6a74bdb365b6e73f3cf1136347936c8313c9f7ad34"
 }
