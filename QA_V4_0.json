@@ -1,0 +1,117 @@
+{
+  "gate": "GREEN",
+  "pass": 22,
+  "total": 22,
+  "tests": [
+    {
+      "id": "PKG-01",
+      "result": "PASS",
+      "detail": "App index vorhanden"
+    },
+    {
+      "id": "PKG-02",
+      "result": "PASS",
+      "detail": "Prüfdienst vorhanden"
+    },
+    {
+      "id": "FW-01",
+      "result": "PASS",
+      "detail": "10 Framework-Cores aus V1.38.22 übernommen"
+    },
+    {
+      "id": "NAV-01",
+      "result": "PASS",
+      "detail": "270px Sidebar + Collapse"
+    },
+    {
+      "id": "WIN-01",
+      "result": "PASS",
+      "detail": "Fenstersteuerung Min/Max/Close"
+    },
+    {
+      "id": "TAB-01",
+      "result": "PASS",
+      "detail": "Messwerttabelle + Filter"
+    },
+    {
+      "id": "DES-01",
+      "result": "PASS",
+      "detail": "Ampel-/Schaltwartendesign"
+    },
+    {
+      "id": "MOB-01",
+      "result": "PASS",
+      "detail": "Eigenständige mobile Reduktion"
+    },
+    {
+      "id": "LOAD-01",
+      "result": "PASS",
+      "detail": "Gestaffelte Messlast"
+    },
+    {
+      "id": "NET-01",
+      "result": "PASS",
+      "detail": "Multi-Target"
+    },
+    {
+      "id": "IP-01",
+      "result": "PASS",
+      "detail": "IPv4/IPv6 getrennt"
+    },
+    {
+      "id": "DNS-01",
+      "result": "PASS",
+      "detail": "DNS-Test"
+    },
+    {
+      "id": "TCP-01",
+      "result": "PASS",
+      "detail": "TCP/HTTPS-Test"
+    },
+    {
+      "id": "QUAL-01",
+      "result": "PASS",
+      "detail": "P95/P99/Loss-Burst"
+    },
+    {
+      "id": "ROUTE-01",
+      "result": "PASS",
+      "detail": "Routing/Hop-Watch in Deep"
+    },
+    {
+      "id": "SYS-01",
+      "result": "PASS",
+      "detail": "CPU/RAM/Disk"
+    },
+    {
+      "id": "FRITZ-01",
+      "result": "PASS",
+      "detail": "TR-064 WAN Status"
+    },
+    {
+      "id": "DOCSIS-01",
+      "result": "PASS",
+      "detail": "DOCSIS Delta-Vergleich"
+    },
+    {
+      "id": "DEVICE-01",
+      "result": "PASS",
+      "detail": "Gerätematrix"
+    },
+    {
+      "id": "CORR-01",
+      "result": "PASS",
+      "detail": "Ursachenkorrelation"
+    },
+    {
+      "id": "REPORT-01",
+      "result": "PASS",
+      "detail": "Diagnoseexport"
+    },
+    {
+      "id": "JS-01",
+      "result": "PASS",
+      "detail": "JavaScript Syntax OK"
+    }
+  ]
+}

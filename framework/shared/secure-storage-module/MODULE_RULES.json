@@ -1,0 +1,1 @@
+{"schemaVersion":"1.0.0","id":"shared.secure-storage.rules","database":"leitstand-secure-v1","encryption":"AES-GCM-256","ivBytes":12,"deviceKeyExtractable":false,"migration":"verify-before-delete","cloudPayload":"ciphertext-only"}

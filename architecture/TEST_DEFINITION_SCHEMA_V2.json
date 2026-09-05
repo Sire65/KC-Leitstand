@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "2.0.0",
+  "id": "nl.test-definition",
+  "required": ["id", "title", "area", "category", "state", "executionClass", "cardControls", "audio"],
+  "cardControls": {"power": "boolean", "collapse": "boolean", "minimize": "boolean", "lock": "boolean"},
+  "audio": {
+    "optIn": true,
+    "requiredWhenEnabled": ["speakerVisible", "toneId", "playMode", "defaultVolumeStep"],
+    "volume": {"min": 1, "max": 10, "step": 1},
+    "playModes": ["disabled", "manual-only", "alarm-only", "manual-and-alarm", "state-change"]
+  },
+  "forbidden": ["implicit-audio", "unknown-tone-fallback", "measurement-start", "sensor-mutation"]
+}

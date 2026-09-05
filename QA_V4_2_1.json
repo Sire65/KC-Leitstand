@@ -1,0 +1,20 @@
+{
+  "project": "Netzwerk-Leitstand",
+  "version": "4.2.1",
+  "status": "YELLOW_CANDIDATE",
+  "gate": "FRAMEWORK_SHELL_STABILIZATION_STATIC_PASS",
+  "checks": [
+    {"id":"SHELL-01","name":"JavaScript-Syntax","status":"PASS"},
+    {"id":"SHELL-02","name":"Navigation aus Konfiguration","status":"PASS"},
+    {"id":"SHELL-03","name":"Ein-Gruppen-Menülogik","status":"PASS"},
+    {"id":"SHELL-04","name":"Benutzerfeld und Büromodus-Beschriftung","status":"PASS"},
+    {"id":"SHELL-05","name":"SmartPanel und Statusleiste","status":"PASS"},
+    {"id":"SHELL-06","name":"Desktop/Tablet/Smartphone-Erkennung","status":"PASS"},
+    {"id":"SHELL-07","name":"12 bestehende Navigationsziele","status":"PASS"},
+    {"id":"SHELL-08","name":"Migration-Preflight","status":"PASS"},
+    {"id":"REG-01","name":"Prüfdienst bytegenau unverändert","status":"PASS"},
+    {"id":"LIVE-01","name":"Browser-Ziel-PC-Test","status":"OPEN"},
+    {"id":"LIVE-02","name":"FRITZ!Box 6690 Livetest","status":"OPEN"},
+    {"id":"LIVE-03","name":"Tablet-/Smartphone-Test","status":"OPEN"}
+  ]
+}

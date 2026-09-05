@@ -1,0 +1,20 @@
+{
+  "id": "6591-cable",
+  "name": "FRITZ!Box 6591 Cable",
+  "access": "cable",
+  "docsis": "3.1",
+  "wifi": "Wi-Fi 5",
+  "tr064": true,
+  "defaultHost": "fritz.box",
+  "features": [
+    "DOCSIS",
+    "WAN",
+    "Mesh",
+    "DVB-C",
+    "DECT"
+  ],
+  "recommended": {
+    "interval": 15,
+    "deep": 60
+  }
+}

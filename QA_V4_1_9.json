@@ -1,0 +1,21 @@
+{
+  "version": "4.1.9",
+  "gate": "YELLOW_MIGRATION_FOUNDATION_STATIC_PASS",
+  "checks": {
+    "component_contract": "PASS",
+    "navigation_manifest": "PASS",
+    "framework_shell_manifest": "PASS",
+    "external_navigation_config": "PASS",
+    "external_shell_config": "PASS",
+    "baseline_protection": "PASS",
+    "migration_preflight": "PASS",
+    "probe_service_unchanged": "PASS",
+    "runtime_domain_logic_unchanged": "PASS"
+  },
+  "open_evidence": [
+    "target-project migration test",
+    "real device regression",
+    "rollback execution",
+    "user approval before release"
+  ]
+}

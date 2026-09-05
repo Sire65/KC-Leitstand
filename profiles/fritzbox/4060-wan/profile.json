@@ -1,0 +1,18 @@
+{
+  "id": "4060-wan",
+  "name": "FRITZ!Box 4060",
+  "access": "wan",
+  "docsis": null,
+  "wifi": "Wi-Fi 6",
+  "tr064": true,
+  "defaultHost": "fritz.box",
+  "features": [
+    "WAN",
+    "Mesh",
+    "DECT"
+  ],
+  "recommended": {
+    "interval": 15,
+    "deep": 60
+  }
+}

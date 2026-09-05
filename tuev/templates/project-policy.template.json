@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectId": "PROJECT",
+  "requiredFiles": [
+    "README.md"
+  ],
+  "protectedTokens": [],
+  "protectedFiles": [],
+  "forbiddenDuplicateComponents": [
+    "NavigationCore",
+    "WindowCore",
+    "TableCore",
+    "DesignCore"
+  ],
+  "requiredDeviceProfiles": [
+    "desktop",
+    "tablet",
+    "mobile"
+  ]
+}

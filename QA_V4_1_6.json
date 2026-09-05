@@ -1,0 +1,25 @@
+{
+  "version": "4.1.6",
+  "status": "STAMMDATEN_BUERO_ROUTERPROFILE_SWITCH_AUDIT_CANDIDATE",
+  "checks": {
+    "stammdaten_parent_menu_present": true,
+    "stammdaten_subitems_indented": true,
+    "navigation_icons_restored": true,
+    "command_gauges_visible_lower_area": true,
+    "pulse_range_60_to_200": true,
+    "router_buttons_aligned_right_of_tabs": true,
+    "router_profiles_settings_tab_present": true,
+    "switch_audit_settings_tab_present": true,
+    "office_image_asset_folder_present": true,
+    "office_mode_button_wired": true,
+    "back_to_office_button_present": true,
+    "old_probe_unchanged": true,
+    "new_framework_core_created": false
+  },
+  "open_runtime_checks": [
+    "Visual check for NavigationCore icons and Stammdaten submenu.",
+    "Office mode image and Back-to-office flow.",
+    "Switch audit against real browser-rendered controls.",
+    "Pulse behavior with live red/yellow fault data."
+  ]
+}

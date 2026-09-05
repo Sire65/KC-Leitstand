@@ -1,0 +1,1 @@
+{"moduleId":"shared.sensor-catalog","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","cores":["TableCore","DesignCore","CapabilityCore"],"definitionCount":1200,"enabledCount":0,"stableRelease":false}

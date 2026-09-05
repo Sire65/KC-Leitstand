@@ -1,0 +1,84 @@
+.test-live{
+  background:
+    radial-gradient(circle at 12% 20%, rgba(64,173,255,.18), transparent 34%),
+    radial-gradient(circle at 80% 12%, rgba(44,219,116,.12), transparent 28%),
+    linear-gradient(135deg,#0b2230,#07131d 62%,#091b26);
+  border:1px solid rgba(119,171,199,.45);
+  box-shadow:0 18px 46px rgba(0,0,0,.28), inset 0 0 28px rgba(64,173,255,.08);
+}
+.head-pulse{
+  border:1px solid rgba(44,219,116,.35);
+  border-radius:10px;
+  padding:6px 8px;
+  background:rgba(3,15,23,.48);
+}
+.head-ekg{
+  filter:drop-shadow(0 0 8px rgba(44,219,116,.45));
+}
+.master-stopped .head-ekg{
+  filter:none;
+}
+.command-gauges{
+  grid-template-columns:repeat(5,minmax(150px,1fr));
+}
+.gauge{
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;
+  background:
+    radial-gradient(circle at 50% 8%,rgba(64,173,255,.18),transparent 40%),
+    linear-gradient(180deg,#102b3a,#091923);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 14px 34px rgba(0,0,0,.24);
+}
+.gauge:before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.06);
+  pointer-events:none;
+}
+.gauge canvas{
+  width:100%;
+  height:145px;
+}
+.gauge b{
+  letter-spacing:.04em;
+}
+.ai-assistant{
+  display:grid;
+  grid-template-columns:minmax(220px,.9fr) minmax(260px,1.4fr);
+  gap:12px;
+  align-items:start;
+  border-color:rgba(64,173,255,.5);
+  background:
+    linear-gradient(135deg,rgba(64,173,255,.12),rgba(44,219,116,.07)),
+    #0a1b27;
+}
+.ai-assistant ol{
+  margin:0;
+  padding-left:22px;
+}
+.ai-assistant li{
+  margin:0 0 8px;
+  line-height:1.35;
+}
+.ai-assistant li b{
+  color:#dff4ff;
+}
+.profile-chip small{
+  color:var(--muted);
+}
+.router-profile-note{
+  margin-top:8px;
+  padding:8px;
+  border:1px solid #31576d;
+  border-radius:7px;
+  background:#071823;
+  color:#cfe0ea;
+  font-size:12px;
+}
+@media(max-width:1100px){
+  .command-gauges{grid-template-columns:repeat(2,minmax(150px,1fr))}
+  .ai-assistant{grid-template-columns:1fr}
+}

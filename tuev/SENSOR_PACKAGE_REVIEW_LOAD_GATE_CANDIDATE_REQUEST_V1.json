@@ -1,0 +1,1 @@
+{"requestId":"NL-SENSOR-PACKAGE-REVIEW-V1","status":"REQUESTED_INTERNAL_CANDIDATE_REVIEW","scope":["individual sensor selection","deterministic load score","budget gate","encrypted activation intent"],"loadBudget":30,"sensorActivation":false,"externalApprovalClaimed":false}

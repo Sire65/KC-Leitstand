@@ -1,0 +1,33 @@
+{
+  "id": "shared.transition-service",
+  "name": "Shared Transition Service",
+  "version": "0.1.0",
+  "class": "SHARED_MODULE",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "category": "Darstellung & Interaktion",
+  "runtime": "browser",
+  "externalLibraries": [],
+  "dependencies": {
+    "required": [
+      "InteractionCore",
+      "EventBus"
+    ],
+    "optional": [
+      "DesignCore"
+    ],
+    "forbidden": [
+      "SensorRegistry",
+      "AlertCore business logic",
+      "DataCore write access",
+      "network services"
+    ]
+  },
+  "consumers": [
+    "statuscore.3d-indicator"
+  ],
+  "limits": {
+    "registered": 250,
+    "activePerFrame": 100
+  }
+}

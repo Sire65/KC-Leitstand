@@ -1,0 +1,19 @@
+{
+  "id": "shared.test-workspace-shell",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "mode": "PREVIEW_ONLY",
+  "source": "framework/shared/test-workspace-shell-module/test-workspace-shell-module.js",
+  "manifest": "framework/shared/test-workspace-shell-module/MODULE_MANIFEST.json",
+  "consumer": "Netzwerk-Leitstand",
+  "purpose": "Additive Vorschau der neuen Fachseiten und definitionsgesteuerten Testkarten.",
+  "runtimeMutationAllowed": false,
+  "requiredGates": [
+    "ARCHITECTURE_TUEV",
+    "DASHBOARD_TUEV",
+    "BEDIENUNGS_TUEV",
+    "FRAMEWORK_TUEV",
+    "APP_PUBLIC_SYNC"
+  ]
+}

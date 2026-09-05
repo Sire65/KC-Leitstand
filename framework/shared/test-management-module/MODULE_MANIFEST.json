@@ -1,0 +1,1 @@
+{"id":"shared.test-management","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","release":"BLOCKED","mode":"CONFIGURATION_ONLY","requires":["TableCore","shared.test-definition-store"],"forbidden":["measurement start","probe execution","sensor mutation","scheduler execution","configuration mutation"],"standardized":true}

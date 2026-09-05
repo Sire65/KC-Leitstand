@@ -1,0 +1,1 @@
+{"id":"shared.brain-knowledge-management","version":"0.2.0","status":"ARCHITECTURE_CANDIDATE","release":"BLOCKED","mode":"DRAFT_ONLY","requires":["TableCore","shared.brain-control-center","shared.secure-storage"],"forbidden":["runtime knowledge mutation","actuator approval","measurement execution"]}

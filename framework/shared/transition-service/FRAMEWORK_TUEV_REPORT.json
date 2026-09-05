@@ -1,0 +1,7 @@
+{
+  "status": "YELLOW_CANDIDATE",
+  "architecture": "PASS_WITH_CONDITIONS",
+  "runtimeTargetTest": "PENDING",
+  "secondApplication": "PENDING",
+  "release": "BLOCKED"
+}

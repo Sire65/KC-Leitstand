@@ -1,0 +1,12 @@
+{
+  "id": "shared.core-live-overview",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "mode": "CORE_FIRST_MIGRATION_CANDIDATE",
+  "purpose": "Moves existing live components into the new overview without duplicating measurement or animation runtimes.",
+  "requiredCores": ["WindowCore","DesignCore","InteractionCore"],
+  "components": ["SystemBrain","LiveStatus","EKG","ScanRing","LagPanel","OperationMonitor","LatencyBall","HealthRing"],
+  "legacyRemoval": false,
+  "duplicateRuntime": false
+}

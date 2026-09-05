@@ -1,0 +1,23 @@
+﻿{
+    "id":  "shared.viewport-pan-frame",
+    "version":  "0.1.7",
+    "status":  "ARCHITECTURE_CANDIDATE",
+    "release":  "CANDIDATE",
+    "description":  "Mouse-over Pan-Rahmen mit Griffen, Pfeilen und Pixelanzeige fuer das echte Hauptfenster.",
+    "requires":  [
+                     "InteractionCore"
+                 ],
+    "optional":  [
+                     "WindowCore",
+                     "DesignCore",
+                     "SettingsCore"
+                 ],
+    "forbidden":  [
+                      "measurement start",
+                      "probe execution",
+                      "sensor mutation",
+                      "app.js dependency"
+                  ],
+    "rules":  "MODULE_RULES.json",
+    "standardized":  true
+}

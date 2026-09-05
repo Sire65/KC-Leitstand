@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "Netzwerk-Leitstand",
+  "version": "5.4.2",
+  "level": "CANDIDATE",
+  "status": "PASS",
+  "timestamp": "2026-07-17T12:10:57+00:00",
+  "blockers": 0,
+  "warnings": 1,
+  "checks": [
+    {
+      "suite": "structure",
+      "id": "REQUIRED_FILES",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Pflichtdateien vollständig",
+      "evidence": ""
+    },
+    {
+      "suite": "structure",
+      "id": "VERSION_PRESENT",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Version 5.4.2",
+      "evidence": ""
+    },
+    {
+      "suite": "structure",
+      "id": "VERSION_CONSISTENCY",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Versionskonsistenz 5.4.2",
+      "evidence": ""
+    },
+    {
+      "suite": "regression",
+      "id": "PROTECTED_TOKENS",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Geschützte Leitstandfunktionen vorhanden",
+      "evidence": ""
+    },
+    {
+      "suite": "regression",
+      "id": "PROTECTED_FILE_leitstand-buero-v1.png",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Geschützte Datei app/assets/images/office/leitstand-buero-v1.png",
+      "evidence": ""
+    },
+    {
+      "suite": "regression",
+      "id": "PROTECTED_FILE_Netzwerk_Pruefdienst_V4.ps1",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Geschützte Datei probe/Netzwerk_Pruefdienst_V4.ps1",
+      "evidence": ""
+    },
+    {
+      "suite": "public",
+      "id": "APP_PUBLIC_JS",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "App/Public app.js identisch",
+      "evidence": ""
+    },
+    {
+      "suite": "public",
+      "id": "APP_PUBLIC_PCAP",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "App/Public PCAP-Analyzer identisch",
+      "evidence": ""
+    },
+    {
+      "suite": "structure",
+      "id": "HTML_REFS_app",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Lokale Referenzen in app\\index.html vollständig",
+      "evidence": ""
+    },
+    {
+      "suite": "structure",
+      "id": "HTML_REFS_public",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Lokale Referenzen in public\\index.html vollständig",
+      "evidence": ""
+    },
+    {
+      "suite": "registry",
+      "id": "SENSOR_IDS_UNIQUE",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Sensor-IDs eindeutig",
+      "evidence": ""
+    },
+    {
+      "suite": "registry",
+      "id": "SENSOR_REGISTER_ONE",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Alle Sensoren besitzen ein Register",
+      "evidence": ""
+    },
+    {
+      "suite": "registry",
+      "id": "NO_DUPLICATE_MEASUREMENT",
+      "result": "PASS",
+      "severity": "WARNING",
+      "text": "Keine nachweisbar doppelten Messdefinitionen",
+      "evidence": "{}"
+    },
+    {
+      "suite": "syntax",
+      "id": "NODE_AVAILABLE",
+      "result": "FAIL",
+      "severity": "WARNING",
+      "text": "Node.js nicht gefunden; Syntaxprüfung nicht ausgeführt",
+      "evidence": ""
+    },
+    {
+      "suite": "release",
+      "id": "EXISTING_RELEASE_CHECK",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Bestehender Release-Check",
+      "evidence": "RELEASE CHECK V5.4.2 PASS"
+    },
+    {
+      "suite": "release",
+      "id": "MIGRATION_PREFLIGHT",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Migrations-Preflight",
+      "evidence": "FRAMEWORK MIGRATION PREFLIGHT V1.0\nProject: Netzwerk-Leitstand\nResult: PASS\nContracts: PASS\nEntrypoints: PASS\nProject configuration preservation: PASS\nNavigation target compatibility: PASS\nRollback requirement: PASS"
+    },
+    {
+      "suite": "framework-runtime",
+      "id": "CORE_NAVIGATIONCORE",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "NavigationCore geladen, aktiviert und Consumer-gebunden",
+      "evidence": "loaded=True; activated=True"
+    },
+    {
+      "suite": "framework-runtime",
+      "id": "CORE_WINDOWCORE",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "WindowCore geladen, aktiviert und Consumer-gebunden",
+      "evidence": "loaded=True; activated=True"
+    },
+    {
+      "suite": "framework-runtime",
+      "id": "CORE_TABLECORE",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "TableCore geladen, aktiviert und Consumer-gebunden",
+      "evidence": "loaded=True; activated=True"
+    },
+    {
+      "suite": "framework-runtime",
+      "id": "CORE_DESIGNCORE",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "DesignCore geladen, aktiviert und Consumer-gebunden",
+      "evidence": "loaded=True; activated=True"
+    },
+    {
+      "suite": "framework-runtime",
+      "id": "CORE_INTERACTIONCORE",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "InteractionCore geladen, aktiviert und Consumer-gebunden",
+      "evidence": "loaded=True; activated=True"
+    },
+    {
+      "suite": "framework-runtime",
+      "id": "CORE_CAPABILITYCORE",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "CapabilityCore geladen, aktiviert und Consumer-gebunden",
+      "evidence": "loaded=True; activated=True"
+    },
+    {
+      "suite": "framework-runtime",
+      "id": "CORE_MOBILECORE",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "MobileCore geladen, aktiviert und Consumer-gebunden",
+      "evidence": "loaded=True; activated=True"
+    },
+    {
+      "suite": "security-baseline",
+      "id": "NO_DANGEROUS_JS",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Keine offensichtlichen gefährlichen JavaScript-Konstrukte",
+      "evidence": ""
+    }
+  ],
+  "treeDigest": "41207fed8efd0476e2d9e1e3a808ad2d0591236b2caa614b17df2b7e1613f33f"
+}

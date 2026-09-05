@@ -1,0 +1,25 @@
+{
+  "version": "4.1.7",
+  "status": "CANDIDATE",
+  "scope": "Registertrennung, Instrumente, LED-Leiste, Assistent, Buerofenster und Navigation",
+  "checks": {
+    "source_based_on_v4_1_6": true,
+    "diagnostic_tabs_strict_css_override": true,
+    "status_led_rail_visible_again": true,
+    "large_sensor_lamps_hidden": true,
+    "gauge_sensitivity_increased": true,
+    "assistant_start_scrolls_and_sets_active_state": true,
+    "office_mode_opens_window": true,
+    "timeline_error_spikes_added": true,
+    "nav_groups_plus_minus_toggles": true,
+    "colored_navigation_icons": true,
+    "project_metadata_updated": true
+  },
+  "notPerformed": [
+    "Node.js syntax check: node executable not available in this shell.",
+    "Real browser interaction test on target PC.",
+    "Real probe-service test.",
+    "Router/FRITZ!Box live test."
+  ],
+  "decision": "READY_FOR_TARGET_BROWSER_TEST"
+}

@@ -1,0 +1,28 @@
+{
+  "requestId": "NL-PERF-V1-CANDIDATE",
+  "project": "Netzwerk-Leitstand",
+  "level": "CANDIDATE",
+  "status": "REQUESTED_INTERNAL",
+  "externalCertification": false,
+  "scope": [
+    "new-test-workspaces",
+    "test-management",
+    "card-controls",
+    "audio-configuration",
+    "visibility-runtime"
+  ],
+  "requiredEvidence": [
+    "static-no-per-card-timer",
+    "background-pause-browser-smoke",
+    "app-public-sync",
+    "tablecore-row-limit",
+    "target-pc-idle-load",
+    "target-pc-normal-load",
+    "target-pc-analysis-load"
+  ],
+  "stableBlockedBy": [
+    "target-pc-self-load-evidence",
+    "responsive-layout-evidence",
+    "real-audio-runtime-evidence"
+  ]
+}

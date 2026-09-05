@@ -1,0 +1,42 @@
+{
+  "project": "Netzwerk-Leitstand",
+  "version": "4.3.8",
+  "status": "PASS",
+  "level": "CANDIDATE",
+  "usage": "TEST_ONLY",
+  "scope": "P1 Framework-Runtime- und TÜV-Reparatur",
+  "checks": [
+    {
+      "id": "REL-01",
+      "result": "PASS",
+      "name": "Release-Check"
+    },
+    {
+      "id": "MIG-01",
+      "result": "PASS",
+      "name": "Migrations-Preflight"
+    },
+    {
+      "id": "CORE-01",
+      "result": "PASS",
+      "name": "8 allgemeine Cores geladen, aktiviert und Consumer-gebunden"
+    },
+    {
+      "id": "VER-01",
+      "result": "PASS",
+      "name": "Versionskonsistenz 4.3.8"
+    },
+    {
+      "id": "CERT-01",
+      "result": "PASS",
+      "name": "Candidate-Zertifikat reproduzierbar"
+    },
+    {
+      "id": "UNI-01",
+      "result": "PASS_WITH_ENV_WARNING",
+      "name": "Universeller TÜV",
+      "note": "PowerShell-static-check unter Linux nicht ausführbar"
+    }
+  ],
+  "publishApproved": false
+}

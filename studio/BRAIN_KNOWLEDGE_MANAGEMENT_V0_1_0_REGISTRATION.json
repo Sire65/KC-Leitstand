@@ -1,0 +1,1 @@
+{"moduleId":"shared.brain-knowledge-management","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","cores":["TableCore","DesignCore"],"storage":"FrameworkSecureStorage","runtimeMode":"DRAFT_ONLY","stableRelease":false}

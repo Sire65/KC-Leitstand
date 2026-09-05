@@ -1,0 +1,47 @@
+{
+  "version": "4.3.5",
+  "status": "YELLOW_CANDIDATE",
+  "gate": "DEEP_CONSOLIDATION_STATIC_PASS",
+  "checks": [
+    {
+      "id": "DC-01",
+      "result": "PASS",
+      "text": "Historische CSS-Kaskade exakt konsolidiert"
+    },
+    {
+      "id": "DC-02",
+      "result": "PASS",
+      "text": "App/Public JavaScript identisch"
+    },
+    {
+      "id": "DC-03",
+      "result": "PASS",
+      "text": "TShark Browser-Timeout vorhanden"
+    },
+    {
+      "id": "DC-04",
+      "result": "PASS",
+      "text": "TShark Prozess-Timeout vorhanden"
+    },
+    {
+      "id": "DC-05",
+      "result": "PASS",
+      "text": "Sensor-IDs eindeutig und Registerzuordnung einfach"
+    },
+    {
+      "id": "DC-06",
+      "result": "PASS",
+      "text": "Bürobild, Hotspots, Herz/EKG und Prüfdienst-Endpunkte vorhanden"
+    },
+    {
+      "id": "DC-07",
+      "result": "PENDING_TARGET_PC",
+      "text": "TShark-Analyse auf Windows-Ziel-PC"
+    },
+    {
+      "id": "DC-08",
+      "result": "PENDING_TARGET_PC",
+      "text": "Live-Regression FRITZ!Box 6690"
+    }
+  ]
+}

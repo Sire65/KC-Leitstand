@@ -1,0 +1,29 @@
+{
+  "projectId": "NL",
+  "baselineVersion": "4.1.8",
+  "protectedBehaviors": [
+    "dashboard-navigation",
+    "live-diagnosis",
+    "incident-page",
+    "test-switches",
+    "device-page",
+    "wifi-page",
+    "fritzbox-page",
+    "docsis-page",
+    "reports",
+    "measurement-log",
+    "settings",
+    "help",
+    "office-mode",
+    "office-hotspots",
+    "ekg",
+    "gauges",
+    "probe-service-api",
+    "report-export",
+    "pcap-import-analysis"
+  ],
+  "protectedFiles": [
+    "probe/Netzwerk_Pruefdienst_V4.ps1"
+  ],
+  "migrationRule": "No component migration may overwrite project configuration or protected domain logic."
+}

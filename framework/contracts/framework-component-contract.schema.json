@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "framework-component-contract.schema.json",
+  "title": "Framework Component Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "componentId",
+    "componentType",
+    "version",
+    "apiVersion",
+    "owner",
+    "entrypoints",
+    "dependencies",
+    "capabilities",
+    "migration",
+    "qa"
+  ],
+  "properties": {
+    "componentId": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9.-]+$"
+    },
+    "componentType": {
+      "enum": [
+        "core",
+        "shell",
+        "adapter",
+        "project-config"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "apiVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "entrypoints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "supportedDevices": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "desktop",
+          "tablet",
+          "mobile"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "configurationSchema": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "migration": {
+      "type": "object",
+      "required": [
+        "strategy",
+        "preserveProjectConfig",
+        "rollbackRequired"
+      ],
+      "properties": {
+        "strategy": {
+          "enum": [
+            "replace-compatible",
+            "adapter",
+            "manual"
+          ]
+        },
+        "preserveProjectConfig": {
+          "type": "boolean"
+        },
+        "rollbackRequired": {
+          "type": "boolean"
+        },
+        "preflight": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "postflight": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "qa": {
+      "type": "object",
+      "required": [
+        "staticChecks",
+        "regressionGates"
+      ],
+      "properties": {
+        "staticChecks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "regressionGates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

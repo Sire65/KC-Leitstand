@@ -1,0 +1,3 @@
+/* V4.2.5: Herz wird durch dieselbe JavaScript-Taktquelle wie das EKG animiert. */
+.head-heart{animation:none!important;will-change:transform,opacity;transition:none!important;transform-origin:50% 58%!important}
+.master-stopped .head-heart,.animations-off .head-heart,.reduced-motion .head-heart{animation:none!important}

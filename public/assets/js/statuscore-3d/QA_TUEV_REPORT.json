@@ -1,0 +1,60 @@
+{
+  "report": "STATUSCORE_3D_V0_3_7_RUNTIME_REBUILD",
+  "result": "YELLOW_CANDIDATE",
+  "staticChecks": [
+    {
+      "id": "R-01",
+      "test": "Rays drawn before sphere",
+      "result": "PASS"
+    },
+    {
+      "id": "R-02",
+      "test": "Rods drawn after sphere",
+      "result": "PASS"
+    },
+    {
+      "id": "R-03",
+      "test": "White rod centers permanent",
+      "result": "PASS"
+    },
+    {
+      "id": "R-04",
+      "test": "Rod strobe additive brightness",
+      "result": "PASS"
+    },
+    {
+      "id": "R-05",
+      "test": "Offline disables rotation heartbeat rays strobe",
+      "result": "PASS"
+    },
+    {
+      "id": "R-06",
+      "test": "Freeze API captures exact render time",
+      "result": "PASS"
+    },
+    {
+      "id": "R-07",
+      "test": "Demo exposes all six states and external Stop button",
+      "result": "PASS"
+    },
+    {
+      "id": "R-08",
+      "test": "No external libraries or network calls",
+      "result": "PASS"
+    }
+  ],
+  "pending": [
+    "visual runtime confirmation in target browser",
+    "integration in network control center"
+  ],
+  "status": "YELLOW_CANDIDATE",
+  "updatedAt": "2026-07-15T11:59:21.129386+00:00",
+  "scope": "Denkzentrum compact placement, organic breathing, stronger asynchronous strobes, energy level and isolated simulation; target-device visual validation pending",
+  "version": "0.5.1-braincore-v2",
+  "checks": {
+    "syntax": "PASS",
+    "static_contract": "PASS",
+    "simulation_isolation": "PASS",
+    "runtime_device_visual": "PENDING"
+  }
+}

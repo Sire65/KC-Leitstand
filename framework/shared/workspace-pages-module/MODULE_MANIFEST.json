@@ -1,0 +1,26 @@
+﻿{
+    "id":  "shared.workspace-pages",
+    "version":  "0.2.0",
+    "status":  "ARCHITECTURE_CANDIDATE",
+    "release":  "CANDIDATE",
+    "description":  "Seitenmodell fuer Leitstand-Arbeitsflaechen mit fachlich sauberen Testzuordnungen.",
+    "requires":  [
+                     "shared.test-ownership-matrix",
+                     "shared.test-definition-store"
+                 ],
+    "optional":  [
+                     "WindowCore",
+                     "SettingsCore",
+                     "CapabilityCore",
+                     "LayoutEditor"
+                 ],
+    "forbidden":  [
+                      "measurement start",
+                      "probe execution",
+                      "sensor mutation",
+                      "forced layout migration",
+                      "app.js dependency"
+                  ],
+    "rules":  "MODULE_RULES.json",
+    "standardized":  true
+}

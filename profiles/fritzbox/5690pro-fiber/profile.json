@@ -1,0 +1,21 @@
+{
+  "id": "5690pro-fiber",
+  "name": "FRITZ!Box 5690 Pro",
+  "access": "fiber-dsl",
+  "docsis": null,
+  "wifi": "Wi-Fi 7",
+  "tr064": true,
+  "defaultHost": "fritz.box",
+  "features": [
+    "Fiber",
+    "DSL",
+    "WAN",
+    "Mesh",
+    "Zigbee",
+    "DECT"
+  ],
+  "recommended": {
+    "interval": 15,
+    "deep": 60
+  }
+}

@@ -1,0 +1,1 @@
+{"id":"shared.device-discovery-orchestrator","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","release":"BLOCKED","mode":"DISCOVERY_AND_PROPOSAL_ONLY","requires":["shared.sensor-catalog","shared.secure-storage","SystemAssessmentCore"],"forbidden":["automatic sensor activation","direct hardware mutation","global failure propagation"]}

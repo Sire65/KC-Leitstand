@@ -1,0 +1,7 @@
+/* V4.3.0: fachlich getrennte Register; keine Aenderung an Herz, EKG, Buero oder Messlogik. */
+.register-tabs{display:flex;flex-wrap:wrap;gap:5px}.register-tabs .diag-tab{min-width:92px}
+.register-view{display:grid;gap:12px}.register-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid #40677c;border-radius:7px;background:linear-gradient(135deg,#123247,#0a1f2c)}
+.register-heading h2{margin:0;color:#e5f5ff;font-size:19px}.register-heading p{margin:4px 0 0;color:#abc3d1}.register-heading .sensor-count{white-space:nowrap;padding:6px 9px;border:1px solid #4d7186;border-radius:16px;background:#071923;color:#cce7f5;font-size:12px}
+.register-empty{padding:20px;border:1px dashed #496d80;border-radius:7px;background:#081a25;color:#b9ceda}.register-empty b{display:block;color:#e1f2fb;margin-bottom:6px}
+.register-grid{display:grid;grid-template-columns:repeat(4,minmax(170px,1fr));gap:10px}.register-view .cockpit-detail{grid-column:1/-1}
+@media(max-width:1100px){.register-grid{grid-template-columns:repeat(2,minmax(160px,1fr))}}@media(max-width:700px){.register-grid{grid-template-columns:1fr}.register-heading{display:block}.register-heading .sensor-count{display:inline-block;margin-top:8px}}

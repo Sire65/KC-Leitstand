@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "network-leitstand/sensor-registry-v2.schema.json",
+  "title": "SensorRegistry 2.0",
+  "type": "object",
+  "required": ["schemaVersion", "profiles", "sensors"],
+  "properties": {
+    "schemaVersion": {"const": "2.0.0"},
+    "profiles": {"type": "array", "items": {"enum": ["basis", "erweitert", "experte"]}},
+    "sensors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "register", "category", "source", "rawUnit", "healthRule", "thresholds", "intervalClass", "loadClass", "profiles", "history", "tooltip", "explanation", "alarmPolicy", "supportState"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+([._-][a-z0-9]+)+$"},
+          "name": {"type": "string", "minLength": 3},
+          "register": {"type": "string"},
+          "category": {"type": "string"},
+          "source": {"type": "string"},
+          "rawUnit": {"type": "string"},
+          "healthRule": {"type": "string"},
+          "thresholds": {"type": "object"},
+          "intervalClass": {"enum": ["realtime", "fast", "normal", "slow", "on-demand", "incident"]},
+          "loadClass": {"enum": ["L0", "L1", "L2", "L3", "L4", "L5"]},
+          "profiles": {"type": "array", "items": {"enum": ["basis", "erweitert", "experte"]}},
+          "history": {"type": "boolean"},
+          "tooltip": {"type": "string"},
+          "explanation": {"type": "string"},
+          "alarmPolicy": {"type": "string"},
+          "supportState": {"enum": ["required", "optional", "provider-dependent", "device-dependent"]}
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,31 @@
+{
+  "version": "4.2.7",
+  "status": "YELLOW_CANDIDATE",
+  "checks": [
+    {
+      "id": "HEART-01",
+      "result": "PASS",
+      "detail": "Normalpuls 60/min"
+    },
+    {
+      "id": "HEART-02",
+      "result": "PASS",
+      "detail": "Herzkontraktion und Glow verstaerkt"
+    },
+    {
+      "id": "OFFICE-01",
+      "result": "PASS",
+      "detail": "Leitstandbild in app und public vorhanden"
+    },
+    {
+      "id": "OFFICE-02",
+      "result": "PASS",
+      "detail": "10 Hotspots und 4 Schaltpultaktionen vorhanden"
+    },
+    {
+      "id": "REG-01",
+      "result": "PASS",
+      "detail": "Pruefdienst unveraendert"
+    }
+  ]
+}

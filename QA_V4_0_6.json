@@ -1,0 +1,16 @@
+{
+  "version": "4.0.6",
+  "gate": "GREEN",
+  "tests": {
+    "JS_SYNTAX": true,
+    "MONITOR_GRID": true,
+    "MONITOR_SCROLL": true,
+    "NO_TEXT_ELLIPSIS": true,
+    "ALL_OPERATION_STEPS": true,
+    "ACTIVE_AUTO_SCROLL": true,
+    "SENSOR_SCROLL": true,
+    "TABLE_SCROLL": true,
+    "RESPONSIVE_GAUGES": true,
+    "LAG_HEIGHT": true
+  }
+}

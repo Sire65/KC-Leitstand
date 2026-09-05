@@ -1,0 +1,19 @@
+﻿{
+  "id": "shared.navigation-tab-order",
+  "name": "Navigation Tab Order Module",
+  "version": "0.1.0",
+  "class": "SHARED_MODULE",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "category": "Navigation",
+  "runtime": "browser",
+  "externalLibraries": [],
+  "dependencies": {
+    "required": ["NavigationCore", "InteractionCore"],
+    "optional": ["SettingsCore", "CapabilityCore"],
+    "forbidden": ["measurement logic", "sensor mutation", "probe execution"]
+  },
+  "consumers": ["Netzwerk-Leitstand", "Framework Studio", "future programs"],
+  "limits": {"coreTabs": ["internet", "router", "pc", "protocol"], "overflowMode": "more-menu", "testsAreGrouped": true}
+}
+

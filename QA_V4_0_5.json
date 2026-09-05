@@ -1,0 +1,17 @@
+{
+  "version": "4.0.5",
+  "gate": "GREEN",
+  "tests": {
+    "JS_SYNTAX": true,
+    "ACCORDION": true,
+    "EXPAND_ALL": true,
+    "COLLAPSE_ALL": true,
+    "SECTION_LOCK": true,
+    "SETTINGS_NAV": true,
+    "MODEL_COMBO": true,
+    "PROFILE_FOLDER": true,
+    "INTERNAL_SCROLL": true,
+    "MOBILE_SETTINGS": true
+  },
+  "models": 10
+}

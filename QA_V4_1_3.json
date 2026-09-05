@@ -1,0 +1,39 @@
+{
+  "version": "4.1.3",
+  "status": "CONTROL_COCKPIT_ROUTER_DETECT_CANDIDATE",
+  "framework_basis": "Framework Studio V1.38.22 Stable Foundation Candidate",
+  "checks": {
+    "version_consistency": true,
+    "html_no_duplicate_ids": true,
+    "javascript_bracket_balance": true,
+    "javascript_node_check_available": false,
+    "powershell_probe_syntax": true,
+    "diagnostic_tabs_top_compact": true,
+    "category_cards_tables_bars": true,
+    "master_switch_stops_tests_and_visual_motion": true,
+    "instrument_switches_present": true,
+    "lag_switch_stops_recording": true,
+    "router_detect_button_present": true,
+    "router_detect_state_present": true,
+    "deep_analysis_progress_bar": true,
+    "tooltips_info_cards": true,
+    "realistic_ekg_and_pulse_label": true,
+    "hourglass_and_scanring_restored": true,
+    "compact_test_control_table": true,
+    "animations_off_respected": true,
+    "probe_service_changed": false,
+    "new_framework_core_created": false
+  },
+  "open_runtime_checks": [
+    "Live browser test with active local probe on target PC.",
+    "Router detection against the real home router.",
+    "Animation-off visual verification in browser.",
+    "Long-running test that disabled instruments stop recording samples.",
+    "JavaScript node --check on a machine with Node.js installed."
+  ],
+  "notes": [
+    "The browser app does not overclaim direct SMART, WLAN channel or router-internal access.",
+    "Router recognition uses available profile, reachability and imported router/FRITZ!Box files.",
+    "The local PowerShell probe service was intentionally left unchanged."
+  ]
+}

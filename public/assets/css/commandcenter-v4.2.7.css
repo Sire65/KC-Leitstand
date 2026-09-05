@@ -1,0 +1,4 @@
+/* V4.2.7: ruhiger Normalpuls und deutlich sichtbarer Herzschlag. Keine Aenderung an Leitstand/Buero. */
+.head-heart{transform-origin:50% 54%!important;transition:none!important;min-width:34px;min-height:34px}
+.head-pulse[data-rhythm="normal"] .head-heart,.head-pulse[data-rhythm="warning"] .head-heart{outline:1px solid rgba(255,255,255,.10);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.head-heart{transition:none!important}}

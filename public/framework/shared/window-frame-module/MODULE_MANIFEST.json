@@ -1,0 +1,54 @@
+﻿{
+    "id":  "shared.window-frame",
+    "name":  "Window Frame Module",
+    "version":  "0.2.2",
+    "class":  "SHARED_MODULE",
+    "status":  "ARCHITECTURE_CANDIDATE",
+    "release":  "CANDIDATE",
+    "category":  "Workspace",
+    "runtime":  "browser",
+    "externalLibraries":  [
+
+                          ],
+    "dependencies":  {
+                         "required":  [
+                                          "WindowCore",
+                                          "InteractionCore"
+                                      ],
+                         "optional":  [
+                                          "DesignCore",
+                                          "SettingsCore",
+                                          "CapabilityCore"
+                                      ],
+                         "forbidden":  [
+                                           "NetworkMonitorCore business logic",
+                                           "probe execution",
+                                           "sensor mutation"
+                                       ]
+                     },
+    "consumers":  [
+                      "Netzwerk-Leitstand",
+                      "Framework Studio",
+                      "future programs"
+                  ],
+    "limits":  {
+                   "minWidth":  180,
+                   "minHeight":  120,
+                   "targetFps":  60,
+                   "minimumReachableWindows":  1,
+                   "closeMode":  "taskbar"
+               },
+    "edgeFeedback":  {
+                         "status":  "candidate",
+                         "levels":  [
+                                        "idle",
+                                        "hover",
+                                        "warn",
+                                        "hot",
+                                        "limit"
+                                    ],
+                         "purpose":  "visual edge feedback while moving and resizing"
+                     },
+    "rules":  "MODULE_RULES.json",
+    "standardized":  true
+}

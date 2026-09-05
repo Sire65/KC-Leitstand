@@ -1,0 +1,1 @@
+{"schemaVersion":"1.0.0","id":"shared.supabase-sync.rules","version":"0.1.0","offlineFirst":true,"authRequired":true,"rlsRequired":true,"payload":"ciphertext-only","serviceRoleBrowser":false,"defaultEnabled":false}

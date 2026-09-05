@@ -1,0 +1,29 @@
+{
+  "policy": "CORE_FIRST_NEW_WORKSPACE_V1",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "effectiveScope": "all new workspace UI and all future UI development",
+  "required": {
+    "visualTokensAndContrast": "DesignCore",
+    "windowLifecycle": "WindowCore",
+    "tablesSearchFilterSelection": "TableCore",
+    "userActionsAndAudit": "InteractionCore",
+    "layoutPersistence": "FrameworkSecureStorage encrypted IndexedDB",
+    "measurementAssessment": "SystemAssessmentCore via LeitstandBrainCoordinator"
+  },
+  "legacyBoundary": {
+    "allowed": [
+      "read existing measurement results",
+      "bridge existing test power switches",
+      "use existing emergency-stop safety state",
+      "open old view as temporary fallback"
+    ],
+    "forbidden": [
+      "add new legacy tabs",
+      "add new legacy cards",
+      "add new legacy tables",
+      "add new legacy window implementations",
+      "duplicate measurement runtimes"
+    ],
+    "removal": "only after migrated function has passed acceptance"
+  }
+}

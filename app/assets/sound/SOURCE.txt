@@ -1,0 +1,8 @@
+﻿Brain mystic loop asset
+Title: Mysterious Drone Pad Loop - Leitstand generated
+Source reference requested by user: Pixabay Mysterious Drone Pad (in perfect loop) by Liecio, https://pixabay.com/sound-effects/musical-mysterious-drone-pad-in-perfect-loop-257593/
+Downloaded: not possible in automation, Pixabay returned HTTP 403 protection page on 2026-07-17
+Generated locally: 2026-07-17
+License: Project-owned generated audio asset
+Use: Quiet Brain/Mystik loop in Netzwerk Leitstand AudioCore.
+Design: dark low drone, soft minor pad, very quiet mallet/xylophone-like accents, 32 second seamless loop.

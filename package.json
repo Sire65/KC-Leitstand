@@ -1,0 +1,17 @@
+{
+  "name": "netzwerk-leitstand",
+  "version": "5.4.2",
+  "private": true,
+  "description": "Netzwerk-Leitstand V5.4.2 BrainCore V2 Organism Runtime Candidate",
+  "scripts": {
+    "static-check": "powershell -NoProfile -ExecutionPolicy Bypass -File tests/static-check.ps1",
+    "migration-preflight": "python tools/migration-preflight.py",
+    "validate-release": "python tools/release-check.py",
+    "release-check": "python tools/release-check.py",
+    "tuev:quick": "python tools/framework-tuev.py quick --level CANDIDATE",
+    "tuev:release": "python tools/framework-tuev.py release --level CANDIDATE",
+    "tuev:stable": "python tools/framework-tuev.py release --level STABLE",
+    "tuev:verify": "python tools/framework-tuev.py verify",
+    "tuev:project": "python tools/framework-tuev-universal.py"
+  }
+}

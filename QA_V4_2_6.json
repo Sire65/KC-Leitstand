@@ -1,0 +1,20 @@
+{
+  "version": "4.2.6",
+  "status": "CANDIDATE",
+  "gate": "YELLOW_TARGET_RUNTIME_TEST_REQUIRED",
+  "checks": {
+    "javascriptSyntax": "PASS",
+    "publicMirror": "PASS",
+    "heartEkgSharedState": "PASS",
+    "normalRhythm": "PASS",
+    "warningRhythm": "PASS",
+    "criticalVfSimulation": "PASS",
+    "asystoleFlatline": "PASS",
+    "signalLossSeparated": "PASS",
+    "probeUnchanged": "PASS"
+  },
+  "notes": [
+    "Ziel-PC- und Live-FRITZ!Box-Test erforderlich.",
+    "Die Herz/EKG-Anzeige ist eine technische Metapher, keine medizinische Diagnose."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "version": "4.3.0",
+  "status": "YELLOW_CANDIDATE",
+  "checks": {
+    "sensor_ids_unique": "PASS",
+    "one_primary_register": "PASS",
+    "internet_pc_separated": "PASS",
+    "office_assets_present": "PASS",
+    "probe_unchanged": "PASS_SHA256_5bf291d45d13ee26e50293050f214c32cb27837b180d2e34fabde107d8449775",
+    "browser_runtime": "TARGET_PC_REQUIRED"
+  }
+}

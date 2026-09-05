@@ -1,0 +1,1 @@
+{"id":"shared.secure-storage","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","release":"BLOCKED","description":"AES-GCM-verschluesselter IndexedDB-Speicher fuer neue Leitstand-Module.","requires":["IndexedDB","WebCrypto"],"forbidden":["plaintext localStorage","extractable device key","constant IV","silent legacy deletion","service role key"],"standardized":true}

@@ -1,0 +1,27 @@
+{
+  "version": "4.3.11",
+  "status": "PASS",
+  "scope": "Windows path handling and certificate startup",
+  "checks": [
+    {
+      "id": "PATH-01",
+      "result": "PASS",
+      "text": "CMD invokes verifier without trailing-backslash Root argument"
+    },
+    {
+      "id": "PATH-02",
+      "result": "PASS",
+      "text": "PowerShell derives root from PSScriptRoot"
+    },
+    {
+      "id": "PATH-03",
+      "result": "PASS",
+      "text": "Optional Root input sanitized"
+    },
+    {
+      "id": "PATH-04",
+      "result": "PASS",
+      "text": "No Python needed for normal start"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"schemaVersion":"1.0.0","sampleMs":5000,"saveMs":30000,"maxHistoryPoints":360,"renderOnlyWhenVisible":true,"metrics":["uiLag","longTasks","browserHeapWhenAvailable","resourceRequests","transferSize","activeTests","enabledCatalogSensors"],"exactProcessMetricsRequireProbe":true}

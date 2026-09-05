@@ -1,0 +1,20 @@
+{
+  "id": "6670-cable",
+  "name": "FRITZ!Box 6670 Cable",
+  "access": "cable",
+  "docsis": "3.1",
+  "wifi": "Wi-Fi 7",
+  "tr064": true,
+  "defaultHost": "fritz.box",
+  "features": [
+    "DOCSIS",
+    "WAN",
+    "Mesh",
+    "Zigbee",
+    "DECT"
+  ],
+  "recommended": {
+    "interval": 15,
+    "deep": 60
+  }
+}

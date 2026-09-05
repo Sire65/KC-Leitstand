@@ -1,0 +1,905 @@
+﻿/* Netzwerk-Leitstand V4.3.5 - konsolidierte CSS-Kaskade aus allen vorhandenen Versionen. Quelldateien bleiben erhalten. */
+
+/* SOURCE: assets/css/commandcenter-v4.1.css */
+.test-live{
+  background:
+    radial-gradient(circle at 12% 20%, rgba(64,173,255,.18), transparent 34%),
+    radial-gradient(circle at 80% 12%, rgba(44,219,116,.12), transparent 28%),
+    linear-gradient(135deg,#0b2230,#07131d 62%,#091b26);
+  border:1px solid rgba(119,171,199,.45);
+  box-shadow:0 18px 46px rgba(0,0,0,.28), inset 0 0 28px rgba(64,173,255,.08);
+}
+.head-pulse{
+  border:1px solid rgba(44,219,116,.35);
+  border-radius:10px;
+  padding:6px 8px;
+  background:rgba(3,15,23,.48);
+}
+.head-ekg{
+  filter:drop-shadow(0 0 8px rgba(44,219,116,.45));
+}
+.master-stopped .head-ekg{
+  filter:none;
+}
+.command-gauges{
+  grid-template-columns:repeat(5,minmax(150px,1fr));
+}
+.gauge{
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;
+  background:
+    radial-gradient(circle at 50% 8%,rgba(64,173,255,.18),transparent 40%),
+    linear-gradient(180deg,#102b3a,#091923);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 14px 34px rgba(0,0,0,.24);
+}
+.gauge:before{
+  content:"";
+  position:absolute;
+  inset:8px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.06);
+  pointer-events:none;
+}
+.gauge canvas{
+  width:100%;
+  height:145px;
+}
+.gauge b{
+  letter-spacing:.04em;
+}
+.ai-assistant{
+  display:grid;
+  grid-template-columns:minmax(220px,.9fr) minmax(260px,1.4fr);
+  gap:12px;
+  align-items:start;
+  border-color:rgba(64,173,255,.5);
+  background:
+    linear-gradient(135deg,rgba(64,173,255,.12),rgba(44,219,116,.07)),
+    #0a1b27;
+}
+.ai-assistant ol{
+  margin:0;
+  padding-left:22px;
+}
+.ai-assistant li{
+  margin:0 0 8px;
+  line-height:1.35;
+}
+.ai-assistant li b{
+  color:#dff4ff;
+}
+.profile-chip small{
+  color:var(--muted);
+}
+.router-profile-note{
+  margin-top:8px;
+  padding:8px;
+  border:1px solid #31576d;
+  border-radius:7px;
+  background:#071823;
+  color:#cfe0ea;
+  font-size:12px;
+}
+@media(max-width:1100px){
+  .command-gauges{grid-template-columns:repeat(2,minmax(150px,1fr))}
+  .ai-assistant{grid-template-columns:1fr}
+}
+
+/* SOURCE: assets/css/commandcenter-v4.1.1.css */
+.head-heart{
+  width:30px;
+  height:26px;
+  font-size:0!important;
+  left:10px!important;
+  top:22px!important;
+  transform:rotate(-45deg);
+  background:var(--green);
+  border-radius:7px 7px 4px 4px;
+  box-shadow:0 0 14px var(--green);
+  animation:heartBeat var(--heart-speed,1.05s) cubic-bezier(.2,.8,.25,1) infinite!important;
+}
+.head-heart:before,
+.head-heart:after{
+  content:"";
+  position:absolute;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:inherit;
+}
+.head-heart:before{top:-15px;left:0}
+.head-heart:after{left:15px;top:0}
+body.heart-yellow .head-heart{background:var(--yellow);box-shadow:0 0 16px var(--yellow)}
+body.heart-red .head-heart{background:var(--red);box-shadow:0 0 18px var(--red)}
+.master-stopped .head-heart{
+  animation:none!important;
+  background:#65727a!important;
+  box-shadow:none!important;
+}
+@keyframes heartBeat{
+  0%,100%{transform:rotate(-45deg) scale(.92)}
+  8%{transform:rotate(-45deg) scale(1.18)}
+  14%{transform:rotate(-45deg) scale(.96)}
+  22%{transform:rotate(-45deg) scale(1.09)}
+  34%{transform:rotate(-45deg) scale(.94)}
+}
+.scan-ring:before{
+  animation-duration:var(--scan-speed,1.2s)!important;
+  border-top-color:var(--scan-color,var(--blue))!important;
+  border-right-color:var(--scan-color,var(--blue))!important;
+  filter:drop-shadow(0 0 8px var(--scan-color,var(--blue)));
+}
+.scan-ring .hourglass{
+  animation-duration:var(--glass-speed,1.8s)!important;
+  color:var(--scan-color,var(--blue));
+  text-shadow:0 0 10px var(--scan-color,var(--blue));
+}
+.master-stopped .scan-ring:before,
+.master-stopped .scan-ring .hourglass{
+  animation-play-state:paused!important;
+  filter:none;
+  color:#65727a!important;
+}
+.diagnostic-tabs{
+  display:grid;
+  gap:10px;
+  margin:10px 0;
+}
+.tab-strip{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.diag-tab{
+  border:1px solid #456a7f;
+  background:#0b2230;
+  color:#dcecf4;
+  border-radius:7px;
+  padding:8px 11px;
+  font-weight:800;
+  cursor:pointer;
+}
+.diag-tab.active{
+  border-color:var(--blue);
+  background:#183f56;
+  box-shadow:0 0 0 2px rgba(64,173,255,.18);
+}
+.tab-panel{
+  display:none;
+  grid-template-columns:repeat(3,minmax(180px,1fr));
+  gap:8px;
+}
+.tab-panel.active{display:grid}
+.test-tile{
+  min-height:84px;
+  border:1px solid #31576d;
+  border-radius:8px;
+  background:linear-gradient(180deg,#0f2a3a,#071a25);
+  padding:10px;
+}
+.test-tile b{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  color:#edf9ff;
+}
+.test-tile span{
+  display:block;
+  color:#91a9b9;
+  margin-top:6px;
+  line-height:1.3;
+}
+.test-tile .state{
+  font-size:11px;
+  border-radius:999px;
+  padding:2px 7px;
+  color:#07131d;
+}
+.state.green{background:var(--green)}
+.state.yellow{background:var(--yellow)}
+.state.red{background:var(--red);color:white}
+.state.gray{background:#7d8a91;color:white}
+@media(max-width:1000px){.tab-panel{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.tab-panel{grid-template-columns:1fr}.diag-tab{flex:1 1 45%}}
+
+/* SOURCE: assets/css/commandcenter-v4.1.2.css */
+/* Netzwerk-Leitstand V4.1.2 - Routerimport, SMART und WLAN */
+.diagnostic-tabs{
+  margin-top:10px;
+  position:relative;
+  z-index:3;
+  border-color:#27485c;
+}
+.tab-strip{
+  gap:6px;
+  overflow-x:auto;
+  padding-bottom:4px;
+  scrollbar-width:thin;
+}
+.diag-tab{
+  min-height:38px;
+  white-space:nowrap;
+  letter-spacing:0;
+  font-size:12px;
+}
+.diag-tab.active{
+  box-shadow:0 0 0 1px rgba(44,219,116,.55),0 0 14px rgba(44,219,116,.16);
+}
+.tab-panel{
+  align-items:stretch;
+}
+.test-tile{
+  min-height:86px;
+}
+.import-summary{
+  margin-top:12px;
+  display:grid;
+  gap:10px;
+}
+.hint-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.hint-grid>div{
+  border:1px solid #29475a;
+  background:#0b1f2b;
+  border-radius:8px;
+  padding:12px;
+}
+.hint-grid b{display:block;margin-bottom:5px;color:#d9f5ff}
+.hint-grid p{margin:0;color:#9db5c4;line-height:1.45}
+.mini-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:8px;
+}
+.mini-stat{
+  border:1px solid #2b4b60;
+  background:#081b26;
+  border-radius:8px;
+  padding:10px;
+  min-width:0;
+}
+.mini-stat b,.mini-stat span{
+  display:block;
+  color:#9db5c4;
+  font-size:12px;
+}
+.mini-stat strong{
+  display:block;
+  color:#e4f7ff;
+  font-size:18px;
+  margin:4px 0;
+  overflow-wrap:anywhere;
+}
+.mini-stat.green{border-color:rgba(44,219,116,.55)}
+.mini-stat.yellow{border-color:rgba(255,208,47,.65)}
+.mini-stat.red{border-color:rgba(255,76,62,.65)}
+.mini-stat.blue{border-color:rgba(64,173,255,.6)}
+.nav-item .nav-icon,
+.quick-icon{
+  font-family:Segoe UI,Arial,sans-serif;
+  letter-spacing:0;
+  font-weight:800;
+}
+.gauge canvas{
+  transition:filter .2s ease;
+}
+body:not(.master-stopped) .gauge canvas{
+  filter:drop-shadow(0 0 6px rgba(64,173,255,.16));
+}
+@media(max-width:980px){
+  .hint-grid{grid-template-columns:1fr}
+  .mini-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .diag-tab{flex:0 0 auto;min-width:108px}
+}
+@media(max-width:560px){
+  .mini-grid{grid-template-columns:1fr}
+  .diag-tab{min-width:46%}
+}
+
+/* SOURCE: assets/css/commandcenter-v4.1.3.css */
+/* Netzwerk-Leitstand V4.1.3 - Control-Cockpit, echte Schalter, Infokarten */
+.content{padding-top:8px!important}
+.status-led-rail{margin-bottom:6px!important}
+.cockpit-tabs{margin:-2px 0 8px!important;padding:8px!important;position:sticky;top:0;z-index:30;background:linear-gradient(145deg,#132e3f,#0a1c28)}
+.cockpit-tabs .tab-strip{margin-bottom:4px}
+.cockpit-tabs .diag-tab{min-height:30px!important;padding:5px 10px!important;font-size:12px!important;border-radius:6px!important}
+.cockpit-tabs .tab-panel{grid-template-columns:repeat(6,minmax(120px,1fr));gap:6px!important}
+.cockpit-tabs .test-tile{min-height:78px!important;padding:8px!important;position:relative;overflow:hidden}
+.test-tile .tile-switch{position:absolute;right:7px;bottom:6px;transform:scale(.74);transform-origin:right bottom}
+.panel-detail{grid-column:1/-1;display:grid;grid-template-columns:minmax(220px,1fr) minmax(280px,1.4fr);gap:8px;border:1px solid #284b5f;background:#071a25;border-radius:8px;padding:8px;min-height:90px}
+.panel-detail p{margin:4px 0;color:#b8cedb;line-height:1.35}.panel-detail table{font-size:12px}.panel-detail th,.panel-detail td{padding:5px 6px}
+.panel-bars{height:92px;display:flex;align-items:end;gap:8px;padding:8px;border:1px solid #21465a;border-radius:7px;background:#061721}
+.panel-bars div{flex:1;min-width:0;height:100%;display:flex;flex-direction:column;justify-content:end;align-items:center;gap:3px;color:#9db5c4;font-size:11px}
+.panel-bars i{width:70%;min-height:5px;border-radius:5px 5px 0 0;background:#65727a;box-shadow:0 0 8px #0008}.panel-bars i.green{background:var(--green)}.panel-bars i.yellow{background:var(--yellow)}.panel-bars i.red{background:var(--red)}.panel-bars i.gray{background:#65727a}.panel-bars b{font-size:11px;color:#dcecf4}
+.scan-ring:before{animation-duration:var(--scan-speed,2.8s)!important}.scan-ring .hourglass{font-size:0!important;animation-duration:var(--glass-speed,3.4s)!important}.scan-ring .hourglass span{width:28px;height:42px;display:block;position:relative;border:3px solid currentColor;border-radius:7px;clip-path:polygon(8% 0,92% 0,62% 50%,92% 100%,8% 100%,38% 50%);filter:drop-shadow(0 0 8px currentColor)}.scan-ring .hourglass span:before,.scan-ring .hourglass span:after{content:"";position:absolute;left:8px;right:8px;background:currentColor}.scan-ring .hourglass span:before{top:6px;height:12px;clip-path:polygon(0 0,100% 0,50% 100%)}.scan-ring .hourglass span:after{bottom:6px;height:12px;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.head-heart{width:28px!important;height:25px!important;border-radius:7px 7px 3px 3px!important;left:10px!important;top:19px!important}.head-heart:before,.head-heart:after{width:28px!important;height:28px!important}.head-heart:before{top:-14px!important}.head-heart:after{left:14px!important}.pulse-label{display:flex!important;justify-content:space-between;gap:8px;align-items:center}.pulse-label small{font-size:10px;color:#9db5c4;font-weight:800;white-space:nowrap}
+.deep-progress{margin-top:12px;border:1px solid #2d5369;border-radius:8px;padding:10px;background:#071b26}.deep-progress>div:first-child{display:flex;justify-content:space-between;color:#cfe3ee;font-weight:800}.deep-bar{height:18px;border:1px solid #4c7186;border-radius:999px;background:#06131c;overflow:hidden;margin-top:8px}.deep-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--yellow),var(--red));transition:width .25s linear}.deep-progress.active{box-shadow:0 0 12px rgba(255,208,47,.25)}
+.test-control-table{width:100%;border:1px solid #29495c;border-radius:8px;overflow:auto;background:#081b26}.test-control-table table{font-size:13px}.test-control-table td,.test-control-table th{padding:6px 8px}.test-control-table small{display:block;color:#8fa9b9;line-height:1.25}.compact-switch{transform:scale(.78);transform-origin:right center;display:block;margin-left:auto}
+.instrument-switch{position:absolute;right:8px;top:8px;transform:scale(.72);transform-origin:right top;z-index:4}.gauge{position:relative}.gauge[data-instrument] b{padding-right:42px}
+.info-card{position:fixed;z-index:9999;max-width:320px;display:none;padding:10px 12px;border:1px solid #6f93a7;border-radius:8px;background:#081b26;color:#e2edf4;box-shadow:0 12px 32px rgba(0,0,0,.45);font-size:13px;line-height:1.42;pointer-events:none}.info-card.show{display:block}
+.animations-off *{animation-play-state:paused!important}.animations-off .head-ekg{opacity:.75}.animations-off .scan-ring:before,.animations-off .scan-ring .hourglass{animation:none!important}.master-stopped .gauge canvas,.animations-off .gauge canvas{filter:none!important}.master-stopped .panel-bars i{background:#65727a!important;box-shadow:none!important}
+@media(max-width:1250px){.cockpit-tabs .tab-panel{grid-template-columns:repeat(3,minmax(150px,1fr))}.panel-detail{grid-template-columns:1fr}}
+@media(max-width:700px){.cockpit-tabs{position:relative}.cockpit-tabs .tab-panel{grid-template-columns:1fr}.panel-detail{grid-template-columns:1fr}.panel-bars{height:82px}.test-control-table{font-size:12px}}
+
+/* SOURCE: assets/css/commandcenter-v4.1.4.css */
+/* Netzwerk-Leitstand V4.1.4 - echte Register-Cockpits und Bedienkorrekturen */
+.dashboard-controls{display:flex;align-items:center;gap:10px;margin-bottom:8px!important;padding:10px 12px!important}
+.dashboard-controls>div{flex:1}.dashboard-controls b{display:block;letter-spacing:.7px}.dashboard-controls small{display:block;color:var(--muted);margin-top:2px}
+.top-toggle{font-size:15px!important;font-weight:900}
+.cockpit-tabs{position:relative!important;top:auto!important;margin:0 0 8px!important}
+.cockpit-tabs .tab-panel.register-cockpit{display:none;grid-template-columns:repeat(4,minmax(180px,1fr));gap:8px!important}
+.cockpit-tabs .tab-panel.register-cockpit.active{display:grid}
+.command-gauges{display:none!important}
+.cockpit-instrument{min-height:154px;border:1px solid #31576d;border-radius:8px;background:linear-gradient(180deg,#102d3d,#071923);padding:9px;position:relative;overflow:hidden}
+.cockpit-instrument header{height:28px;display:flex;align-items:center;gap:8px;justify-content:space-between}
+.cockpit-instrument header b{font-size:13px;letter-spacing:.8px;color:#edf9ff}
+.cockpit-instrument small{display:block;text-align:center;color:#9db5c4;font-weight:800;margin-top:3px}
+.cockpit-instrument.is-off{opacity:.68;filter:saturate(.65)}
+.only-switch{transform:scale(.74);transform-origin:right center;flex:0 0 auto}
+.dial{--p:0%;width:94px;height:94px;border-radius:50%;margin:6px auto 0;display:grid;place-items:center;position:relative;background:conic-gradient(currentColor var(--p),#203847 0);color:var(--green);box-shadow:inset 0 0 18px #000,0 0 10px #0008}
+.dial:before{content:"";position:absolute;width:66px;height:66px;border-radius:50%;background:#071923;border:1px solid #29495c}
+.dial span{position:relative;z-index:1;text-align:center;font-size:13px;font-weight:900;line-height:1.15;max-width:62px;word-break:break-word}
+.dial.yellow{color:var(--yellow)}.dial.red{color:var(--red)}.dial.gray{color:#65727a}.dial.blue{color:var(--blue)}
+.cockpit-detail{grid-column:1/-1;border:1px solid #284b5f;border-radius:8px;background:#071a25;padding:9px;display:grid;gap:8px;min-height:96px}
+.cockpit-detail table{font-size:12px}.cockpit-detail th,.cockpit-detail td{padding:5px 6px}
+.cockpit-actions{display:flex;gap:7px;flex-wrap:wrap}
+.cockpit-action{padding:7px 10px!important}
+.cockpit-bar{display:grid;grid-template-columns:130px 1fr 70px;gap:8px;align-items:center;font-size:12px}
+.cockpit-bar i{height:14px;border:1px solid #36586b;border-radius:999px;background:#06131c;overflow:hidden}
+.cockpit-bar i b{display:block;height:100%;min-width:4px;background:#65727a}.cockpit-bar i b.green{background:var(--green)}.cockpit-bar i b.yellow{background:var(--yellow)}.cockpit-bar i b.red{background:var(--red)}.cockpit-bar em{text-align:right;color:#dcecf4;font-style:normal;font-weight:800}
+.assistant-actions{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.assistant-actions button:disabled{opacity:.45;cursor:not-allowed}
+.assistant-walk{margin:8px 0}.assistant-step{border:1px solid #31576d;border-radius:8px;background:#071a25;padding:10px}.assistant-step small{color:#8fa9b9}.assistant-step h3{margin:4px 0 6px}.assistant-step p{margin:0 0 6px;line-height:1.4}.assistant-step em{color:#b8cedb;font-style:normal}
+.info-cards-off .info-card{display:none!important}
+.head-heart{width:30px!important;height:26px!important;left:10px!important;top:22px!important;transform:rotate(-45deg);background:var(--green)!important;border-radius:7px 7px 4px 4px!important;box-shadow:0 0 14px var(--green);animation:heartBeat var(--heart-speed,1.05s) cubic-bezier(.2,.8,.25,1) infinite!important}
+.head-heart:before,.head-heart:after{content:"";position:absolute;width:30px!important;height:30px!important;border-radius:50%;background:inherit}
+.head-heart:before{top:-15px!important;left:0!important}.head-heart:after{left:15px!important;top:0!important}
+body.heart-yellow .head-heart{background:var(--yellow)!important;box-shadow:0 0 16px var(--yellow)}body.heart-red .head-heart{background:var(--red)!important;box-shadow:0 0 18px var(--red)}
+.scan-ring:before{animation-name:spin!important;animation-duration:var(--scan-speed,2.8s)!important;animation-iteration-count:infinite!important;animation-timing-function:linear!important;border-top-color:var(--scan-color,var(--blue))!important;border-right-color:var(--scan-color,var(--blue))!important;filter:drop-shadow(0 0 8px var(--scan-color,var(--blue)))}
+.scan-ring .hourglass{font-size:34px!important;color:var(--scan-color,var(--blue));text-shadow:0 0 10px var(--scan-color,var(--blue));animation-name:flip!important;animation-duration:var(--glass-speed,3.4s)!important;animation-iteration-count:infinite!important;animation-timing-function:ease-in-out!important}
+.scan-ring .hourglass span,.scan-ring .hourglass:before,.scan-ring .hourglass:after{display:none!important}
+.master-stopped .head-heart,.master-stopped .head-ekg,.master-stopped .scan-ring:before,.master-stopped .scan-ring .hourglass,.animations-off .head-heart,.animations-off .head-ekg,.animations-off .scan-ring:before,.animations-off .scan-ring .hourglass{animation-play-state:paused!important}
+@media(max-width:1250px){.cockpit-tabs .tab-panel.register-cockpit{grid-template-columns:repeat(2,minmax(180px,1fr))}}
+@media(max-width:700px){.dashboard-controls{display:grid;grid-template-columns:1fr auto}.dashboard-controls .btn{min-height:42px}.cockpit-tabs .tab-panel.register-cockpit{grid-template-columns:1fr}.cockpit-bar{grid-template-columns:1fr}.cockpit-actions .btn{width:100%}}
+
+/* SOURCE: assets/css/commandcenter-v4.1.5.css */
+/* Netzwerk-Leitstand V4.1.5 - Register sauber getrennt, kompakter Kopfbereich */
+.dashboard-controls{display:none!important}
+.dashboard-inline-controls{display:flex;align-items:center;gap:8px;margin:0 0 7px;padding:5px 6px;border:1px solid #2b5267;border-radius:7px;background:#071923}
+.dashboard-inline-controls .switch{transform:scale(.76);transform-origin:left center;width:50px;height:28px;flex:0 0 auto}
+.dashboard-inline-controls .switch span:before{width:21px;height:21px}
+.dashboard-inline-controls .switch input:checked+span:before{transform:translateX(23px)}
+.dashboard-inline-controls .btn{padding:6px 9px!important;font-size:12px!important;min-height:30px}
+.dashboard-inline-controls .inline-help{margin-left:auto;color:#8fa9b9;font-size:12px;white-space:nowrap}
+.cockpit-tabs{padding:8px!important;margin-bottom:6px!important}
+.cockpit-tabs .tab-strip{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.cockpit-tabs .diag-tab{padding:6px 10px!important;font-size:12px!important}
+.cockpit-tabs .tab-panel.register-cockpit{grid-template-columns:repeat(4,minmax(170px,1fr));gap:7px!important}
+.cockpit-instrument{min-height:136px!important;padding:8px!important}
+.dial{width:82px!important;height:82px!important;margin-top:2px!important}
+.dial:before{width:57px!important;height:57px!important}
+.dial span{font-size:12px!important;max-width:54px!important}
+.cockpit-detail{min-height:auto!important;padding:8px!important}
+.status-led-rail{display:none!important}
+.status-led{height:24px!important;padding:3px 6px!important;font-size:10px!important}
+.test-live{margin:6px 0 8px!important}
+.router-detect-panel[hidden]{display:none!important}
+.router-detect-panel{position:fixed;inset:0;z-index:140;background:#0008;display:grid;place-items:center;padding:18px}
+.router-detect-box{width:min(560px,94vw);border:1px solid #5a8298;border-radius:8px;background:linear-gradient(145deg,#102d3d,#071923);box-shadow:0 18px 40px #000;padding:12px}
+.router-detect-box header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.router-detect-box header b{letter-spacing:1px}
+.router-detect-bar{height:18px;border:1px solid #42677c;background:#06131c;border-radius:999px;overflow:hidden;margin:10px 0}
+.router-detect-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#1f7aa8,#44c3ff);box-shadow:0 0 12px #40adff;transition:width .18s linear}
+#routerDetectResult{display:grid;gap:6px;font-size:13px}
+#routerDetectResult .result-line{border:1px solid #284b5f;border-radius:6px;background:#071a25;padding:7px}
+#routerDetectResult .result-line.good{border-color:#2cdb74}
+#routerDetectResult .result-line.warn{border-color:#ffd02f}
+.chart{background:linear-gradient(180deg,#071923,#051018);border-radius:6px}
+.master-stopped .router-detect-bar i{background:#65727a;box-shadow:none}
+@media(max-width:900px){
+ .dashboard-inline-controls{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px}
+ .dashboard-inline-controls .inline-help{grid-column:1/-1;margin-left:0}
+ .cockpit-tabs .tab-panel.register-cockpit{grid-template-columns:repeat(2,minmax(150px,1fr))}
+}
+@media(max-width:620px){
+ .dashboard-inline-controls{grid-template-columns:auto 1fr}
+ .dashboard-inline-controls .btn{width:100%}
+ .cockpit-tabs .tab-panel.register-cockpit{grid-template-columns:1fr}
+}
+
+/* SOURCE: assets/css/commandcenter-v4.1.6.css */
+/* Netzwerk-Leitstand V4.1.7 - Registertrennung, Instrumente und Navigation */
+.command-gauges{display:grid!important}
+.dashboard-inline-controls{position:absolute;right:8px;top:8px;z-index:3;margin:0!important;max-width:430px}
+.cockpit-tabs{position:relative!important;padding-top:8px!important}
+.cockpit-tabs .tab-strip{padding-right:445px;min-height:36px}
+.nav-parent{width:100%;display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:center;margin:3px 0 5px;padding:9px;border:0;border-left:3px solid #22c55e;border-radius:6px;color:#eef7ef;background:#172d44;text-align:left;cursor:pointer}
+.nav-parent b{font-size:13px;letter-spacing:.03em}.nav-parent i,.nav-parent span{font-style:normal;color:#bfd1c4;font-weight:900}
+.nav-group.closed .nav-parent i{display:none}
+.nav-group:not(.closed) .nav-parent span{display:none}
+.nav-group.closed .nav-parent span{display:inline-grid;place-items:center}
+.nav-group:not(.closed) .nav-parent i{display:inline-grid;place-items:center}
+.nav-group-stammdaten.closed .nav-subitems{display:none}
+.nav-subitems{padding-left:15px;border-left:1px solid rgba(255,255,255,.16);margin-left:11px}
+.nav-item[data-icon]::before{content:attr(data-icon);display:inline-grid;place-items:center;width:24px;height:24px;margin-right:8px;border-radius:6px;color:#06131c;background:linear-gradient(145deg,#7be7ff,#2c9be2);box-shadow:inset 0 0 0 1px #ffffff55,0 0 8px #40adff55;font-weight:900}
+.nav-group:nth-of-type(1) .nav-item[data-icon]::before{background:linear-gradient(145deg,#8ee8ff,#40adff)}
+.nav-group:nth-of-type(2) .nav-item[data-icon]::before{background:linear-gradient(145deg,#fff17a,#ffb02f)}
+.nav-group:nth-of-type(3) .nav-item[data-icon]::before{background:linear-gradient(145deg,#8ff0a8,#2cdb74)}
+.nav-group:nth-of-type(4) .nav-item[data-icon]::before{background:linear-gradient(145deg,#ffb199,#ff6b5d)}
+.quick-icons button:nth-child(4n+1){color:#40adff;border-color:#347ca2}
+.quick-icons button:nth-child(4n+2){color:#ffd02f;border-color:#9c7b20}
+.quick-icons button:nth-child(4n+3){color:#2cdb74;border-color:#277747}
+.quick-icons button:nth-child(4n){color:#ff7b68;border-color:#9a4038}
+.nav-sub{padding-left:10px!important;font-size:13px}
+.cockpit-tabs .tab-panel.register-cockpit{display:none!important}
+.cockpit-tabs .tab-panel.register-cockpit.active{display:grid!important}
+.cockpit-tabs .tab-panel.register-cockpit:not(.active){visibility:hidden!important;height:0!important;min-height:0!important;overflow:hidden!important;padding:0!important;margin:0!important}
+.status-led-rail{display:flex!important;gap:4px!important;align-items:center!important;overflow-x:auto!important;padding:4px 6px!important;margin:0 0 7px!important;background:#06131c!important;border:1px solid #365d72!important;border-radius:6px!important;scrollbar-width:thin!important}
+.status-led{height:23px!important;padding:2px 6px!important;font-size:10px!important;line-height:1!important}
+.status-led span:not(.led-state){max-width:86px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sensor-lamps{display:none!important}
+.test-live{grid-template-columns:92px minmax(0,1fr) 260px!important;min-height:104px!important}
+.scan-ring{width:76px!important;height:76px!important}
+.scan-ring .hourglass{font-size:28px!important}
+.head-pulse{min-height:78px!important}
+.command-gauges{grid-template-columns:repeat(5,minmax(150px,1fr))!important}
+.gauge{min-height:156px!important;padding:7px!important;overflow:hidden!important}
+.gauge canvas{height:112px!important}
+.gauge span{font-size:14px!important}
+.settings-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.settings-tab{border:1px solid #587487;border-radius:6px;background:#17394d;color:#fff;padding:8px 11px;font-weight:800;cursor:pointer}
+.settings-tab.active{background:#28617f;box-shadow:inset 0 -3px 0 #2cdb74}
+.settings-panel{display:none}.settings-panel.active{display:block}
+.router-profile-registry{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:10px}
+.router-profile-card{border:1px solid #31576d;border-radius:8px;background:#071a25;padding:10px;display:grid;gap:5px}
+.router-profile-card h3{margin:0;font-size:15px}.router-profile-card small{color:#8fa9b9}
+.switch-audit-table td.ok{color:#2cdb74;font-weight:900}.switch-audit-table td.warn{color:#ffd02f;font-weight:900}
+.office-view{position:relative;min-height:calc(100vh - 116px);border:1px solid #35586e;border-radius:8px;overflow:hidden;background:#03070b;display:grid;place-items:center}
+.office-view[hidden]{display:none!important}
+.office-view img{width:100%;height:100%;max-height:calc(100vh - 116px);object-fit:contain;display:block}
+.office-caption{position:absolute;left:16px;bottom:16px;display:flex;gap:10px;align-items:center;padding:8px 10px;border:1px solid #5a8298;border-radius:7px;background:#06131ccc}
+.office-return[hidden]{display:none!important}
+.office-return{padding:7px 10px!important}
+.office-mode #officeView{display:none!important}
+.office-window-image{display:block;width:100%;height:min(68vh,620px);object-fit:contain;background:#03070b;border:1px solid #284b5f;border-radius:6px}
+.office-window-caption{display:flex;gap:10px;align-items:center;margin-top:8px;color:#b8cfdd}
+.ai-assistant.assistant-running{border-color:#40adff;box-shadow:0 0 0 1px #40adff55,0 0 18px #40adff33}
+.timeline-legend{display:flex;gap:10px;flex-wrap:wrap;color:#8fa9b9;font-size:12px;margin-top:6px}
+.timeline-legend b{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px}
+.timeline-legend .ok b{background:#40adff}.timeline-legend .warn b{background:#ffd02f}.timeline-legend .err b{background:#ff4c3e}
+@media(max-width:1200px){
+ .dashboard-inline-controls{position:static;max-width:none;margin-bottom:7px!important}
+ .cockpit-tabs .tab-strip{padding-right:0}
+ .router-profile-registry{grid-template-columns:1fr}
+ .command-gauges{grid-template-columns:repeat(2,minmax(150px,1fr))!important}
+}
+@media(max-width:700px){
+ .test-live{grid-template-columns:68px minmax(0,1fr)!important}
+ .head-pulse{grid-column:1/-1}
+ .command-gauges{grid-template-columns:1fr!important}
+}
+
+/* SOURCE: assets/css/commandcenter-v4.1.8.css */
+/* Netzwerk-Leitstand V4.1.8 - interaktiver Bueromodus */
+.office-overlay{position:fixed;inset:0;z-index:9000;background:#02060a;display:grid;grid-template-rows:auto 1fr;color:#e9f7ff}
+.office-overlay[hidden]{display:none!important}
+.office-toolbar{min-height:54px;display:flex;align-items:center;gap:12px;padding:8px 16px;border-bottom:1px solid #31596d;background:linear-gradient(180deg,#101c25,#071018);box-shadow:0 8px 24px #0008}
+.office-toolbar strong{font-size:16px;letter-spacing:.06em}
+.office-toolbar .office-status{margin-left:auto;color:#9fc3d5;font-size:13px}
+.office-chair-exit{width:48px;height:38px;border:1px solid #d44b4b;border-radius:7px;background:#261015;color:#fff;font-size:23px;cursor:pointer}
+.office-chair-exit:hover,.office-chair-exit:focus-visible{background:#7d1d25;outline:2px solid #fff;outline-offset:2px}
+.office-stage{position:relative;min-height:0;overflow:hidden;display:grid;place-items:center;background:#02060a}
+.office-scene{position:relative;width:min(100vw,calc((100vh - 55px)*1.5));aspect-ratio:3/2;max-height:calc(100vh - 55px)}
+.office-scene>img{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.office-hotspot{position:absolute;border:1px solid transparent;background:transparent;border-radius:12px;cursor:pointer;color:transparent;padding:0}
+.office-hotspot::after{content:attr(data-label);position:absolute;left:50%;bottom:calc(100% + 7px);transform:translateX(-50%) translateY(5px);padding:5px 8px;border:1px solid #70b9df;border-radius:5px;background:#061722eF;color:#fff;font:600 12px/1.2 system-ui;white-space:nowrap;opacity:0;pointer-events:none;transition:.16s}
+.office-hotspot:hover,.office-hotspot:focus-visible{border-color:#7bd8ff;box-shadow:0 0 0 2px #0a95c855,0 0 25px #41c8ff88;background:#49c7ff12;outline:none}
+.office-hotspot:hover::after,.office-hotspot:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0)}
+.office-hotspot[data-action="danger"]:hover,.office-hotspot[data-action="danger"]:focus-visible{border-color:#ff7777;box-shadow:0 0 0 2px #c82c2c55,0 0 25px #ff414188}
+.office-live-note{position:absolute;left:1.5%;bottom:1.5%;padding:6px 9px;border:1px solid #446a7d;border-radius:6px;background:#06131ddd;color:#c8e1ee;font-size:12px;pointer-events:none}
+@media(max-width:800px){.office-toolbar{padding:6px 8px}.office-toolbar strong{font-size:13px}.office-toolbar .office-status{display:none}.office-hotspot::after{font-size:11px}.office-chair-exit{width:44px}}
+
+/* SOURCE: assets/css/commandcenter-v4.2.1.css */
+/* Netzwerk-Leitstand V4.2.1 - Framework Shell Stabilisierung */
+:root{--shell-header-h:68px;--shell-status-h:32px;--shell-panel-w:360px}
+body{padding-bottom:var(--shell-status-h)}
+.main{height:calc(100vh - var(--shell-status-h))}
+.shell-greeting{display:flex;align-items:center;gap:18px;min-width:0}
+.shell-greeting>h1,.shell-greeting>small{display:none}
+.shell-greeting-line{display:flex;align-items:center;gap:10px;min-width:220px}
+.shell-greeting-line>span:last-child{display:grid;gap:2px}
+.shell-greeting-line b{font-size:15px;letter-spacing:.02em;color:#f5fbff}
+.shell-greeting-line small{display:block!important;font-size:11px;color:#9db4c2}
+.shell-project-icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid #55778a;border-radius:10px;background:linear-gradient(#24485e,#102936);box-shadow:inset 0 1px #ffffff24,0 3px 10px #0007;color:#8ed8ff;font-size:22px}
+.top-right{gap:7px}.shell-header-tool{min-width:38px;height:38px;padding:0 9px;font-weight:900}.shell-header-tool:focus-visible{outline:3px solid #79d9ff;outline-offset:2px}
+.shell-digital-clock{min-width:122px;display:grid!important;justify-items:end;line-height:1.05;padding:2px 9px;border-left:1px solid #456475}
+.shell-digital-clock b{font-size:16px;letter-spacing:.08em;color:#f5fbff}.shell-digital-clock small{display:block!important;font-size:10px;color:#9db4c2}
+.user-actions{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)}
+.user-actions button{padding:5px 7px;white-space:normal;line-height:1.05}
+.nav-parent{display:grid!important;grid-template-columns:22px minmax(0,1fr) 20px;align-items:center;width:100%;text-align:left}
+.nav-parent .group-plus{font-size:17px;font-weight:900}.nav-parent i{text-align:right;font-style:normal;color:#9fc0d2}
+.nav-group.closed .nav-item{display:none}.nav-group:not(.closed) .nav-parent{background:rgba(64,142,184,.13);border-color:#4a7d98}
+.nav-item.active{border-left-color:#4bd2ff!important;background:linear-gradient(90deg,rgba(34,170,225,.24),rgba(34,170,225,.06))!important;box-shadow:inset 0 0 0 1px rgba(96,204,248,.18)}
+.shell-nav-icon{display:inline-grid;place-items:center;width:26px;margin-right:5px}.shell-nav-label{vertical-align:middle}
+.shell-smart-panel{width:var(--shell-panel-w);z-index:110}.shell-smart-panel header{min-height:54px}.smart-tabs{grid-template-columns:repeat(4,1fr)!important}.smart-tabs button{min-width:0;padding:8px 4px;font-size:11px}.shell-smart-panel article{border-left:3px solid #3d91b9}
+.shell-status-bar{height:var(--shell-status-h)}.shell-status-bar>*{height:26px}.shell-status-bar button:hover{background:#153344}.shell-status-bar button:focus-visible{outline:2px solid #79d9ff;outline-offset:-2px}
+html[data-device-mode="tablet"]{--shell-panel-w:min(42vw,360px)}
+html[data-device-mode="tablet"] .shell-smart-panel{box-shadow:-8px 0 24px #000a}
+html[data-device-mode="tablet"] .top-right .plant{display:none}
+html[data-device-mode="smartphone"]{--shell-status-h:30px;--shell-panel-w:min(92vw,360px)}
+html[data-device-mode="smartphone"] .shell-greeting-line>span:last-child{display:none}
+html[data-device-mode="smartphone"] .shell-project-icon{width:36px;height:36px}
+html[data-device-mode="smartphone"] .shell-header-tool{min-width:34px;height:34px;padding:0 6px}
+html[data-device-mode="smartphone"] #shellNotifications,html[data-device-mode="smartphone"] #shellSearch{display:none}
+html[data-device-mode="smartphone"] .shell-digital-clock{min-width:62px;border-left:0;padding:0 2px}
+html[data-device-mode="smartphone"] .shell-digital-clock small{display:none!important}
+html[data-device-mode="smartphone"] .shell-status-bar{left:0;bottom:62px;overflow-x:auto;scrollbar-width:thin}
+html[data-device-mode="smartphone"] .shell-smart-panel{top:58px;bottom:92px}
+@media(max-width:900px){.shell-status-bar span:nth-of-type(2),.shell-status-bar span:nth-of-type(3){display:none}}
+
+/* SOURCE: assets/css/commandcenter-v4.2.2.css */
+/* Netzwerk-Leitstand V4.2.2 - Framework Shell Stabilisierung */
+:root{--shell-header-h:68px;--shell-status-h:32px;--shell-panel-w:360px}
+body{padding-bottom:var(--shell-status-h)}
+.main{height:calc(100vh - var(--shell-status-h))}
+.shell-greeting{display:flex;align-items:center;gap:18px;min-width:0}
+.shell-greeting>h1,.shell-greeting>small{display:none}
+.shell-greeting-line{display:flex;align-items:center;gap:10px;min-width:220px}
+.shell-greeting-line>span:last-child{display:grid;gap:2px}
+.shell-greeting-line b{font-size:15px;letter-spacing:.02em;color:#f5fbff}
+.shell-greeting-line small{display:block!important;font-size:11px;color:#9db4c2}
+.shell-project-icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid #55778a;border-radius:10px;background:linear-gradient(#24485e,#102936);box-shadow:inset 0 1px #ffffff24,0 3px 10px #0007;color:#8ed8ff;font-size:22px}
+.top-right{gap:7px}.shell-header-tool{min-width:38px;height:38px;padding:0 9px;font-weight:900}.shell-header-tool:focus-visible{outline:3px solid #79d9ff;outline-offset:2px}
+.shell-digital-clock{min-width:122px;display:grid!important;justify-items:end;line-height:1.05;padding:2px 9px;border-left:1px solid #456475}
+.shell-digital-clock b{font-size:16px;letter-spacing:.08em;color:#f5fbff}.shell-digital-clock small{display:block!important;font-size:10px;color:#9db4c2}
+.user-actions{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)}
+.user-actions button{padding:5px 7px;white-space:normal;line-height:1.05}
+.nav-parent{display:grid!important;grid-template-columns:22px minmax(0,1fr) 20px;align-items:center;width:100%;text-align:left}
+.nav-parent .group-plus{font-size:17px;font-weight:900}.nav-parent i{text-align:right;font-style:normal;color:#9fc0d2}
+.nav-group.closed .nav-item{display:none}.nav-group:not(.closed) .nav-parent{background:rgba(64,142,184,.13);border-color:#4a7d98}
+.nav-item.active{border-left-color:#4bd2ff!important;background:linear-gradient(90deg,rgba(34,170,225,.24),rgba(34,170,225,.06))!important;box-shadow:inset 0 0 0 1px rgba(96,204,248,.18)}
+.shell-nav-icon{display:inline-grid;place-items:center;width:26px;margin-right:5px}.shell-nav-label{vertical-align:middle}
+.shell-smart-panel{width:var(--shell-panel-w);z-index:110}.shell-smart-panel header{min-height:54px}.smart-tabs{grid-template-columns:repeat(4,1fr)!important}.smart-tabs button{min-width:0;padding:8px 4px;font-size:11px}.shell-smart-panel article{border-left:3px solid #3d91b9}
+.shell-status-bar{height:var(--shell-status-h)}.shell-status-bar>*{height:26px}.shell-status-bar button:hover{background:#153344}.shell-status-bar button:focus-visible{outline:2px solid #79d9ff;outline-offset:-2px}
+html[data-device-mode="tablet"]{--shell-panel-w:min(42vw,360px)}
+html[data-device-mode="tablet"] .shell-smart-panel{box-shadow:-8px 0 24px #000a}
+html[data-device-mode="tablet"] .top-right .plant{display:none}
+html[data-device-mode="smartphone"]{--shell-status-h:30px;--shell-panel-w:min(92vw,360px)}
+html[data-device-mode="smartphone"] .shell-greeting-line>span:last-child{display:none}
+html[data-device-mode="smartphone"] .shell-project-icon{width:36px;height:36px}
+html[data-device-mode="smartphone"] .shell-header-tool{min-width:34px;height:34px;padding:0 6px}
+html[data-device-mode="smartphone"] #shellNotifications,html[data-device-mode="smartphone"] #shellSearch{display:none}
+html[data-device-mode="smartphone"] .shell-digital-clock{min-width:62px;border-left:0;padding:0 2px}
+html[data-device-mode="smartphone"] .shell-digital-clock small{display:none!important}
+html[data-device-mode="smartphone"] .shell-status-bar{left:0;bottom:62px;overflow-x:auto;scrollbar-width:thin}
+html[data-device-mode="smartphone"] .shell-smart-panel{top:58px;bottom:92px}
+@media(max-width:900px){.shell-status-bar span:nth-of-type(2),.shell-status-bar span:nth-of-type(3){display:none}}
+
+/* V4.2.2: ruhige Uhr, Nullstellung, Navi-Breitenanzeige und direkte Buerosteuerung */
+.shell-digital-clock{width:132px;min-width:132px;max-width:132px;font-variant-numeric:tabular-nums;contain:layout paint;overflow:hidden}
+.shell-digital-clock b{width:100%;text-align:right;white-space:nowrap}
+.shell-digital-clock small{width:100%;text-align:right;white-space:nowrap}
+.resize-status{right:-104px!important;top:50%!important;transform:translateY(-50%);min-width:68px;text-align:center;background:#07141deb!important;border:1px solid #76d7ff;color:#fff;box-shadow:0 5px 16px #0008}
+.office-console-actions{position:absolute;left:31%;top:57%;width:44%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;z-index:30;opacity:0;transform:translateY(7px);pointer-events:none;transition:opacity .16s,transform .16s}
+.office-hotspot[data-office-command="console"]:hover + .office-console-actions,.office-hotspot[data-office-command="console"]:focus-visible + .office-console-actions,.office-console-actions:hover,.office-console-actions:focus-within{opacity:1;transform:translateY(0);pointer-events:auto}
+.office-console-actions button{min-height:34px;border:1px solid #75c8ee;border-radius:6px;background:linear-gradient(#17384a,#091a24);color:#eefaff;font:800 11px/1 system-ui;letter-spacing:.04em;box-shadow:0 5px 15px #0009;cursor:pointer}
+.office-console-actions button:hover,.office-console-actions button:focus-visible{background:#1d617f;outline:2px solid #fff;outline-offset:2px}
+.office-console-actions button[data-office-action="start-all"]{border-color:#43d681}.office-console-actions button[data-office-action="stop-all"]{border-color:#ff6464}
+.master-stopped canvas{filter:saturate(.2);}
+@media(max-width:800px){.office-console-actions{left:18%;top:54%;width:66%;grid-template-columns:repeat(2,1fr)}.shell-digital-clock{width:76px;min-width:76px;max-width:76px}}
+
+/* SOURCE: assets/css/commandcenter-v4.2.3.css */
+/* V4.2.3: Reparatur der Buero-Hotspots und Direktsteuerung */
+.office-scene{isolation:isolate}
+.office-scene>img{position:relative;z-index:1;pointer-events:none}
+.office-hotspot{z-index:10;pointer-events:auto!important}
+.office-hotspot::after{z-index:50}
+.office-hotspot:hover,.office-hotspot:focus-visible,.office-hotspot.office-active{
+  border:2px solid #7bd8ff!important;
+  box-shadow:0 0 0 3px #0a95c866,0 0 28px #41c8ffaa!important;
+  background:#49c7ff20!important;
+}
+.office-hotspot:hover::after,.office-hotspot:focus-visible::after,.office-hotspot.office-active::after{
+  opacity:1!important;transform:translateX(-50%) translateY(0)!important;
+}
+.office-console-actions{z-index:40!important}
+.office-console-actions.office-visible{opacity:1!important;transform:translateY(0)!important;pointer-events:auto!important}
+.office-live-note{z-index:60}
+@media (hover:none){
+ .office-hotspot:focus-visible{border-width:3px!important}
+ .office-console-actions{opacity:1;transform:none;pointer-events:auto;left:19%;top:55%;width:64%;grid-template-columns:repeat(2,1fr)}
+}
+
+/* SOURCE: assets/css/commandcenter-v4.2.4.css */
+/* Netzwerk-Leitstand V4.2.4 - finale Korrekturen */
+.office-return{white-space:nowrap;font-weight:900;border-color:#39d98a!important;background:linear-gradient(180deg,#153d33,#0b2823)!important;color:#d9ffec!important;box-shadow:0 0 0 1px rgba(57,217,138,.2),0 0 14px rgba(57,217,138,.18)}
+.office-return:not([hidden]){display:inline-flex!important;align-items:center;gap:7px}
+.office-return:not([hidden])::before{content:"<-";font-size:16px}
+/* Konfliktfreie, symmetrische Herzform ohne eingebeulte Ecke. */
+.head-heart{width:38px!important;height:35px!important;left:7px!important;top:12px!important;transform:none!important;border-radius:0!important;clip-path:polygon(50% 96%,42% 87%,31% 76%,19% 64%,9% 51%,3% 38%,3% 25%,8% 13%,18% 5%,30% 3%,40% 7%,50% 18%,60% 7%,70% 3%,82% 5%,92% 13%,97% 25%,97% 38%,91% 51%,81% 64%,69% 76%,58% 87%)!important;background:var(--green)!important;box-shadow:none!important;filter:drop-shadow(0 0 8px var(--green));animation:heartPulse var(--heart-speed,1s) cubic-bezier(.22,.8,.28,1) infinite!important;transform-origin:50% 58%!important}
+.head-heart::before,.head-heart::after{display:none!important;content:none!important}
+body.heart-yellow .head-heart{background:var(--yellow)!important;filter:drop-shadow(0 0 9px var(--yellow))}
+body.heart-red .head-heart{background:var(--red)!important;filter:drop-shadow(0 0 10px var(--red))}
+.master-stopped .head-heart{animation:none!important;transform:scale(.92)!important;opacity:.55}
+@keyframes heartPulse{0%,100%{transform:scale(.94)}10%{transform:scale(1.12)}22%{transform:scale(.98)}34%{transform:scale(1.06)}48%{transform:scale(.94)}}
+/* Jede Anzeige besitzt nur einen Schalter; Alt-/Doppelinstanzen werden visuell abgesichert. */
+.gauge .mini-switch:not(.instrument-switch),.cockpit-instrument .mini-switch:not(.only-switch){display:none!important}
+
+/* SOURCE: assets/css/commandcenter-v4.2.5.css */
+/* V4.2.5: Herz wird durch dieselbe JavaScript-Taktquelle wie das EKG animiert. */
+.head-heart{animation:none!important;will-change:transform,opacity;transition:none!important;transform-origin:50% 58%!important}
+.master-stopped .head-heart,.animations-off .head-heart,.reduced-motion .head-heart{animation:none!important}
+
+/* SOURCE: assets/css/commandcenter-v4.2.6.css */
+/* V4.2.6: gut erkennbare, zustandsabhaengige System-Herz/EKG-Anzeige */
+.head-pulse{transition:border-color .2s ease,box-shadow .2s ease;background:linear-gradient(180deg,rgba(5,24,34,.98),rgba(3,16,24,.98))}
+.head-pulse[data-rhythm="normal"]{border-color:#246f4a;box-shadow:inset 0 0 18px rgba(44,219,116,.08)}
+.head-pulse[data-rhythm="warning"]{border-color:#8a7420;box-shadow:inset 0 0 22px rgba(255,208,47,.12)}
+.head-pulse[data-rhythm="vf"]{border-color:#a93229;box-shadow:inset 0 0 28px rgba(255,76,62,.16)}
+.head-pulse[data-rhythm="asystole"]{border-color:#b84137;box-shadow:inset 0 0 30px rgba(255,102,88,.13)}
+.head-pulse[data-rhythm="signal"]{border-color:#9a642c;box-shadow:inset 0 0 22px rgba(255,157,54,.10)}
+.head-pulse[data-rhythm="off"],.head-pulse[data-rhythm="standby"]{border-color:#425967;box-shadow:none}
+.head-pulse[data-rhythm="vf"] .pulse-label small,.head-pulse[data-rhythm="asystole"] .pulse-label small{color:#ff7569;font-weight:900;text-shadow:0 0 8px rgba(255,76,62,.55)}
+.head-pulse[data-rhythm="warning"] .pulse-label small{color:#ffe05e;font-weight:900}
+.head-pulse[data-rhythm="signal"] .pulse-label small{color:#ffb75f;font-weight:900}
+.head-heart{will-change:transform,opacity,filter;background-clip:padding-box!important}
+body.heart-flat .head-heart{filter:grayscale(.28) drop-shadow(0 0 4px rgba(255,102,88,.45))!important}
+body.heart-vf .head-heart{filter:drop-shadow(0 0 14px #ff4c3e)!important}
+.pulse-label small{max-width:190px;overflow:hidden;text-overflow:ellipsis}
+
+/* SOURCE: assets/css/commandcenter-v4.2.7.css */
+/* V4.2.7: ruhiger Normalpuls und deutlich sichtbarer Herzschlag. Keine Aenderung an Leitstand/Buero. */
+.head-heart{transform-origin:50% 54%!important;transition:none!important;min-width:34px;min-height:34px}
+.head-pulse[data-rhythm="normal"] .head-heart,.head-pulse[data-rhythm="warning"] .head-heart{outline:1px solid rgba(255,255,255,.10);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.head-heart{transition:none!important}}
+
+/* SOURCE: assets/css/commandcenter-v4.3.0.css */
+/* V4.3.0: fachlich getrennte Register; keine Aenderung an Herz, EKG, Buero oder Messlogik. */
+.register-tabs{display:flex;flex-wrap:wrap;gap:5px}.register-tabs .diag-tab{min-width:92px}
+.register-view{display:grid;gap:12px}.register-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid #40677c;border-radius:7px;background:linear-gradient(135deg,#123247,#0a1f2c)}
+.register-heading h2{margin:0;color:#e5f5ff;font-size:19px}.register-heading p{margin:4px 0 0;color:#abc3d1}.register-heading .sensor-count{white-space:nowrap;padding:6px 9px;border:1px solid #4d7186;border-radius:16px;background:#071923;color:#cce7f5;font-size:12px}
+.register-empty{padding:20px;border:1px dashed #496d80;border-radius:7px;background:#081a25;color:#b9ceda}.register-empty b{display:block;color:#e1f2fb;margin-bottom:6px}
+.register-grid{display:grid;grid-template-columns:repeat(4,minmax(170px,1fr));gap:10px}.register-view .cockpit-detail{grid-column:1/-1}
+@media(max-width:1100px){.register-grid{grid-template-columns:repeat(2,minmax(160px,1fr))}}@media(max-width:700px){.register-grid{grid-template-columns:1fr}.register-heading{display:block}.register-heading .sensor-count{display:inline-block;margin-top:8px}}
+
+
+/* V4.3.23 - gezielte Verdichtung des laufenden Messbereichs; keine weiteren Layoutaenderungen */
+.test-live{
+  grid-template-columns:92px minmax(300px,1fr) 280px 300px!important;
+  align-items:center!important;
+  min-height:96px!important;
+  height:96px!important;
+  max-height:96px!important;
+  overflow:hidden!important;
+}
+.test-live>div:nth-child(2){min-width:0!important;align-self:center!important}
+.test-live>div:nth-child(2) .progress-shell{max-width:520px!important;width:100%!important}
+.head-pulse,.sensor-lamps{height:78px!important;min-height:78px!important;max-height:78px!important;box-sizing:border-box!important}
+.head-pulse{align-self:center!important}
+.sensor-lamps{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,1fr)!important;
+  gap:4px!important;
+  overflow:hidden!important;
+  padding:4px!important;
+  border:1px solid #294b5e!important;
+  border-radius:5px!important;
+  background:#06151e!important;
+  align-self:center!important;
+}
+.sensor-lamp{
+  min-width:0!important;min-height:0!important;height:auto!important;
+  padding:2px 3px!important;
+  display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;gap:2px!important;
+  font-size:9px!important;line-height:1!important;text-align:center!important;overflow:hidden!important;
+}
+.sensor-lamp i{width:12px!important;height:12px!important;margin:0!important;flex:0 0 12px!important}
+.sensor-lamp>span{max-width:100%!important;overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.sensor-lamp .mini-switch{display:none!important}
+.operation-monitor,.monitor-screen,.operation-queue{overflow-anchor:none!important}
+.operation-monitor{contain:layout paint!important}
+.operation-queue{scroll-behavior:auto!important}
+@media(max-width:1250px){
+ .test-live{grid-template-columns:82px minmax(270px,1fr) 250px 270px!important;height:96px!important;max-height:96px!important}
+ .sensor-lamps{grid-column:auto!important;grid-template-columns:repeat(4,minmax(0,1fr))!important}
+}
+@media(max-width:980px){
+ .test-live{grid-template-columns:78px minmax(250px,1fr) 240px!important;height:auto!important;max-height:none!important}
+ .sensor-lamps{grid-column:1/-1!important;height:72px!important;min-height:72px!important;max-height:72px!important}
+}
+
+
+/* V4.3.24 - nur vereinbarte Verdichtung: LED-Reihe in LED-Block, Internetdetail rechts */
+.status-led-rail{display:none!important}
+.test-live{grid-template-columns:84px minmax(260px,1fr) 252px 430px!important}
+.head-pulse{margin-left:0!important}
+.sensor-lamps{grid-template-columns:repeat(5,minmax(0,1fr))!important;grid-template-rows:repeat(3,1fr)!important;gap:3px!important}
+.sensor-lamp.status-led{border:1px solid #294b5e!important;background:#071923!important;color:#d8e7ef!important;border-radius:4px!important;height:auto!important;min-width:0!important;cursor:pointer!important}
+.sensor-lamp.status-led i{border-radius:50%!important;background:#65727a!important}
+.sensor-lamp.status-led.green i{background:var(--green)!important;box-shadow:0 0 7px var(--green)!important}
+.sensor-lamp.status-led.yellow i{background:var(--yellow)!important;box-shadow:0 0 7px var(--yellow)!important}
+.sensor-lamp.status-led.red i{background:var(--red)!important;box-shadow:0 0 7px var(--red)!important}
+.sensor-lamp.status-led.testing i{background:var(--blue)!important;box-shadow:0 0 7px var(--blue)!important}
+.sensor-lamp.status-led.off i{background:#59636a!important;box-shadow:none!important}
+.sensor-lamp.status-led small{font-size:7px;color:#91a9b7;line-height:1;white-space:nowrap}
+.register-cockpit[data-panel="internet"] .register-grid{grid-template-columns:repeat(4,minmax(150px,1fr)) minmax(390px,2.2fr)!important;align-items:stretch!important}
+.register-cockpit[data-panel="internet"] .internet-detail{grid-column:5!important;grid-row:1!important;min-height:100%!important;height:auto!important;align-self:stretch!important}
+.info-card{z-index:8500!important;max-width:min(320px,calc(100vw - 16px))!important}
+.window,.router-detect-panel{z-index:9000!important}
+@media(max-width:1450px){.register-cockpit[data-panel="internet"] .register-grid{grid-template-columns:repeat(4,minmax(145px,1fr))!important}.register-cockpit[data-panel="internet"] .internet-detail{grid-column:1/-1!important;grid-row:auto!important}}
+@media(max-width:1250px){.test-live{grid-template-columns:78px minmax(250px,1fr) 240px 390px!important}.sensor-lamps{grid-template-columns:repeat(5,minmax(0,1fr))!important}}
+
+/* V4.3.25 gezielte Bedienkorrekturen */
+.dashboard-inline-controls{max-width:none!important;display:flex!important;align-items:center!important;gap:8px!important}
+.dashboard-inline-controls .inline-section-tools{position:static!important;display:flex!important;gap:5px!important;margin-left:0!important;padding:0!important;background:transparent!important;border:0!important}
+.dashboard-inline-controls .inline-section-tools button{height:30px;min-width:34px;padding:4px 8px;border:1px solid #476b7f;border-radius:5px;background:#17384d;color:#f2fbff;font-weight:800}
+.dashboard-inline-controls .inline-section-tools #lockSections{min-width:52px}
+.test-live{min-height:112px!important;align-items:center!important;padding-top:10px!important;padding-bottom:10px!important;overflow:visible!important}
+.test-live .sensor-lamps{min-height:76px!important;align-content:center!important;overflow:visible!important}
+.test-live .sensor-lamp{min-height:31px!important;line-height:1.15!important;overflow:visible!important}
+.test-live .last-cycle{display:block!important;min-height:18px!important;margin-top:5px!important;overflow:visible!important}
+.operation-monitor .monitor-head{min-height:38px!important}
+.operation-monitor .op-time b{display:inline-block!important;min-width:64px!important;font-variant-numeric:tabular-nums!important;color:#dff7ff!important}
+
+/* V4.3.26 gezielter UI-Feinschliff */
+html,body,.shell,.main{width:100%!important;max-width:100%!important}
+.shell{overflow:hidden!important}.main{overflow:hidden!important}.content{width:100%!important;max-width:none!important;scrollbar-gutter:auto!important;padding-right:8px!important}
+.dashboard-inline-controls{display:flex!important;align-items:center!important;gap:8px!important;min-height:42px!important}
+.dashboard-inline-controls>*{align-self:center!important}.dashboard-inline-controls .btn{height:32px!important;padding:5px 12px!important}.master-home-switch{height:32px!important;margin:0!important}.inline-section-tools button{height:32px!important;display:grid!important;place-items:center!important}
+.sensor-lamps{border:0!important;box-shadow:none!important;background:transparent!important;padding:0!important;overflow:visible!important}
+.sensor-lamp.status-led{min-height:32px!important}.sensor-lamp.status-led>span{font-size:8px!important}.sensor-lamp.status-led small{font-size:7px!important}
+.gauge canvas{filter:drop-shadow(0 0 5px rgba(64,173,255,.24))}.gauge{position:relative}.gauge:after{content:"LIVE";position:absolute;right:7px;bottom:6px;font-size:8px;color:#40adff;opacity:.75;animation:gaugeLive 1.4s ease-in-out infinite alternate}@keyframes gaugeLive{to{opacity:.28}}
+html.animations-off .gauge:after{animation:none!important}
+.chart-wrap{position:relative;min-width:0}.chart-tooltip{position:absolute;z-index:30;pointer-events:none;padding:7px 9px;border:1px solid #6da2bd;border-radius:5px;background:#061722f2;color:#eaf8ff;font-size:11px;line-height:1.35;box-shadow:0 5px 18px #0009;min-width:150px}
+.timeline-range-row{display:grid;grid-template-columns:auto minmax(120px,1fr) auto;align-items:center;gap:9px;margin:6px 0 2px;color:#9db9c8;font-size:11px}.timeline-range-row input{width:100%}.cause-total-pct{float:right;color:#ffb16f;font-size:14px}
+
+/* V4.3.27: kompakte Alarmhistorie, symmetrische Live-Leiste und Warnton-Einstellungen */
+.test-live{grid-template-columns:minmax(360px,1.25fr) 250px 252px 430px!important;gap:8px!important;align-items:stretch!important}
+.live-progress-card,.alert-history-card,.head-pulse,.sensor-lamps{height:88px!important;min-height:88px!important;max-height:88px!important;box-sizing:border-box!important;border:1px solid #28576d;border-radius:9px;background:linear-gradient(180deg,rgba(7,31,43,.98),rgba(3,19,28,.98));box-shadow:inset 0 0 18px rgba(0,153,220,.05)}
+.live-progress-card{display:grid;grid-template-columns:92px minmax(0,1fr);align-items:center;padding:6px 12px;overflow:hidden}
+.live-progress-content{min-width:0}.live-progress-content .progress-shell{width:100%!important;max-width:none!important}.live-progress-card .scan-ring{justify-self:center}
+.alert-history-card{position:relative;padding:6px 9px;overflow:visible}.alert-history-head{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#bcd7e6}.alert-range{display:flex;gap:2px}.alert-range button{border:1px solid #315d73;background:#0c2735;color:#a8c7d7;border-radius:4px;font-size:9px;padding:2px 4px;cursor:pointer}.alert-range button.active{background:#14617c;color:white;border-color:#35b7df}.alert-history-card canvas{display:block;width:100%;height:48px}.alert-history-counts{position:absolute;left:10px;right:10px;bottom:4px;display:flex;justify-content:space-between;font-size:10px}.alert-history-counts .yellow{color:#ffd34d}.alert-history-counts .red{color:#ff675b}.alert-history-tip{position:absolute;z-index:40;min-width:150px;padding:7px;border:1px solid #4a7f95;border-radius:6px;background:#071923;color:#d9edf7;font-size:11px;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.setting-row output{min-width:52px;text-align:right;color:#d8eef8;font-weight:700}
+@media(max-width:1500px){.test-live{grid-template-columns:minmax(330px,1.1fr) 225px 240px 390px!important}}
+@media(max-width:1250px){.test-live{grid-template-columns:minmax(330px,1fr) 220px 240px!important;height:auto!important;max-height:none!important}.sensor-lamps{grid-column:1/-1!important;height:76px!important;min-height:76px!important;max-height:76px!important}.live-progress-card,.alert-history-card,.head-pulse{height:88px!important}}
+
+
+/* V4.3.28 - gezielte UI-Korrektur: Vollbreite, LED-Lesbarkeit, gleiche Hoehen, echte Trendlinie */
+html,body{margin:0!important;padding-left:0!important;padding-right:0!important;overflow-x:hidden!important;max-width:100vw!important}
+body,.shell,.app-shell,.main,.content,#dashboard,.page.active{box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important}
+.content{padding-right:0!important;margin-right:0!important;scrollbar-gutter:auto!important}
+.shell,.app-shell,.main{right:0!important;margin-right:0!important}
+.test-live{height:116px!important;min-height:116px!important;max-height:116px!important;align-items:stretch!important;overflow:hidden!important}
+.live-progress-card,.alert-history-card,.head-pulse,.sensor-lamps{height:100%!important;min-height:0!important;max-height:none!important;align-self:stretch!important}
+.sensor-lamps{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;grid-template-rows:repeat(3,minmax(0,1fr))!important;gap:4px!important;padding:5px!important;border:1px solid #28576d!important;border-radius:9px!important;background:linear-gradient(180deg,rgba(7,31,43,.98),rgba(3,19,28,.98))!important;box-shadow:inset 0 0 18px rgba(0,153,220,.05)!important;overflow:hidden!important}
+.sensor-lamp.status-led{height:auto!important;min-height:0!important;padding:3px 2px!important;display:grid!important;grid-template-rows:13px 12px 10px!important;place-items:center!important;align-content:center!important;gap:1px!important;line-height:1!important;overflow:hidden!important}
+.sensor-lamp.status-led i{width:11px!important;height:11px!important;min-width:11px!important;min-height:11px!important;margin:0!important}
+.sensor-lamp.status-led>span{display:block!important;width:100%!important;font-size:7.5px!important;line-height:11px!important;text-align:center!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;color:#dcecf4!important}
+.sensor-lamp.status-led small{display:block!important;width:100%!important;font-size:7px!important;line-height:9px!important;text-align:center!important;white-space:nowrap!important;overflow:hidden!important;color:#9eb7c5!important}
+.chart-wrap canvas.chart{display:block!important;width:100%!important}
+.grid2{min-width:0!important}.grid2>.card{min-width:0!important;overflow:hidden!important}
+@media(max-width:1500px){.test-live{height:124px!important;min-height:124px!important;max-height:124px!important}.sensor-lamp.status-led>span{font-size:7px!important}}
+
+/* V5.0.2 StatusCore-3D compact brain placement */
+.brain-router-row{display:grid;grid-template-columns:minmax(390px,1.35fr) minmax(300px,.65fr);gap:14px;align-items:start;margin:12px 0}
+.brain-router-row>.card{margin:0;min-width:0}
+.brain-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.brain-section-head small{display:block;color:#7ecfe8;font-weight:800;letter-spacing:.08em}
+.brain-section-head h2{margin:2px 0 0}
+.router-brain-source{display:flex;flex-direction:column;justify-content:flex-start;min-height:255px}
+.brain-router-summary{border:1px solid rgba(84,190,221,.28);background:rgba(3,17,28,.46);border-radius:12px;padding:14px;line-height:1.55;min-height:150px}
+.router-brain-source .secondary{margin-top:12px;align-self:flex-start}
+.brain-card{min-height:255px;overflow:visible;position:relative;z-index:3}
+.brain-card statuscore-3d{display:block;width:100%;height:210px;min-height:210px;position:relative;z-index:4}
+.brain-caption{font-size:12px;color:#a9bed0;text-align:center;margin-top:4px}
+@media(max-width:1050px){.brain-router-row{grid-template-columns:1fr}.brain-card statuscore-3d{height:230px;min-height:230px}}
+
+/* Dedicated brain visibility switch */
+.brain-off .brain-card{display:none!important}
+.brain-off .brain-router-row{grid-template-columns:1fr!important}
+
+/* V5.4.0 BrainCore V2 placement and visibility */
+.brain-router-row{grid-template-columns:minmax(250px,.42fr) minmax(440px,1fr)!important;align-items:stretch!important;position:relative;z-index:8}
+.router-brain-source{min-height:235px!important;padding:12px!important}
+.brain-router-summary{min-height:92px!important;padding:10px!important}
+.brain-card{min-height:300px!important;z-index:20!important;overflow:visible!important}
+.brain-card statuscore-3d{height:255px!important;min-height:255px!important;overflow:visible!important;z-index:21!important}
+.brain-card .brain-caption{margin-top:0!important}
+@media(max-width:1100px){.brain-router-row{grid-template-columns:1fr!important}.brain-card{order:-1}}
+
+
+/* V5.4.1 - compact Denkzentrum beside IPv4/IPv6; simulation only, no unrelated layout changes */
+.diag-brain-row{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:12px;align-items:stretch}
+.diag-brain-row>#diagTabPanels{min-width:0}
+.brain-inline-card{margin:0!important;min-height:0!important;height:100%;padding:10px!important;overflow:hidden!important;z-index:12!important}
+.brain-inline-card .brain-section-head{margin-bottom:2px}
+.brain-inline-card .brain-section-head h2{font-size:15px;margin:1px 0}
+.brain-head-actions{display:flex;align-items:center;gap:7px}
+.brain-sim-open{padding:5px 8px!important;font-size:10px!important}
+.brain-inline-card statuscore-3d{display:block!important;width:100%!important;height:190px!important;min-height:190px!important;overflow:hidden!important;z-index:13!important}
+.brain-inline-card .brain-caption{font-size:10px;line-height:1.25;margin-top:0;text-align:center;color:#91acbb}
+.brain-energy{display:grid;grid-template-columns:auto minmax(42px,auto);gap:3px 9px;align-items:center;margin:3px 3px 2px;font-size:10px;color:#a8c6d6}
+.brain-energy b{justify-self:end;color:var(--brain-energy-color,#72ef9f);font-size:11px;font-weight:900;font-variant-numeric:tabular-nums;text-shadow:0 0 8px color-mix(in srgb,var(--brain-energy-color,#72ef9f) 65%,transparent)}
+.brain-energy i{grid-column:1/-1;height:7px;border-radius:99px;background:#071a24;overflow:hidden;border:1px solid #28576d;box-shadow:inset 0 0 8px rgba(0,0,0,.55)}
+.brain-energy em{display:block;width:18%;height:100%;background:linear-gradient(90deg,var(--brain-energy-color,#2bd86c),var(--brain-energy-glow,#9affbb));box-shadow:0 0 9px var(--brain-energy-color,#2bd86c);transition:width .35s linear,background .25s linear,box-shadow .25s linear}
+.brain-energy[data-energy-state="unknown"]{--brain-energy-color:#7d8b96;--brain-energy-glow:#c2cad0}
+.brain-energy[data-energy-state="low"]{--brain-energy-color:#ffd02f;--brain-energy-glow:#fff0a3}
+.brain-energy[data-energy-state="medium"]{--brain-energy-color:#40adff;--brain-energy-glow:#b8dcff}
+.brain-energy[data-energy-state="high"]{--brain-energy-color:#2bd86c;--brain-energy-glow:#9affbb}
+.brain-router-row{grid-template-columns:1fr!important;margin-top:10px!important}
+.router-brain-source{min-height:150px!important}
+.brain-off .diag-brain-row{grid-template-columns:1fr!important}.brain-off .brain-inline-card{display:none!important}
+@media(max-width:1250px){.diag-brain-row{grid-template-columns:minmax(0,1fr) 310px}.brain-inline-card statuscore-3d{height:175px!important;min-height:175px!important}}
+@media(max-width:980px){.diag-brain-row{grid-template-columns:1fr}.brain-inline-card{min-height:245px!important}.brain-inline-card statuscore-3d{height:205px!important;min-height:205px!important}}
+.brain-sim-modal[hidden]{display:none!important}.brain-sim-modal{position:fixed;inset:0;z-index:10020;display:grid;place-items:center;background:rgba(0,8,14,.74);backdrop-filter:blur(3px)}
+.brain-sim-dialog{width:min(560px,calc(100vw - 32px));border:1px solid #33718c;border-radius:12px;background:#09202d;box-shadow:0 20px 70px #000;padding:16px;color:#e9f8ff}
+.brain-sim-dialog header{display:flex;justify-content:space-between;align-items:flex-start}.brain-sim-dialog h2{margin:2px 0 0}.brain-sim-dialog small{color:#74d9ff;font-weight:900}.brain-sim-dialog p{color:#9bb5c3}
+.brain-sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.brain-sim-grid label{display:grid;gap:5px;font-weight:800}.brain-sim-grid select{padding:9px;background:#061923;color:#fff;border:1px solid #2d657d;border-radius:6px}
+.brain-sim-actions{display:flex;gap:8px;margin-top:14px}.brain-sim-status{margin-top:12px;padding:9px;border:1px solid #21485b;background:#061923;border-radius:6px;color:#9edcf3}
+body.sim-heart-notice{--heart-speed:.82s}body.sim-heart-alarm{--heart-speed:.58s}body.sim-heart-critical{--heart-speed:.38s}
+body.sim-timer-notice{--scan-speed:1.8s;--glass-speed:2.2s}body.sim-timer-alarm{--scan-speed:1.1s;--glass-speed:1.35s}body.sim-timer-critical{--scan-speed:.58s;--glass-speed:.72s}
+
+
+/* V5.4.2 - reversible layout editor for test fields only */
+.layout-edit-open{padding:5px 8px!important;font-size:10px!important}
+.layout-editor-panel[hidden]{display:none!important}
+.layout-editor-panel{position:fixed;right:18px;top:82px;z-index:12000;width:min(390px,calc(100vw - 36px));max-height:calc(100vh - 100px);overflow:auto;border:1px solid #357a96;border-radius:12px;background:#09202d;box-shadow:0 18px 60px rgba(0,0,0,.72);padding:14px;color:#e9f8ff}
+.layout-editor-panel header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.layout-editor-panel h2{margin:2px 0 10px}.layout-editor-panel small{color:#72d9ff;font-weight:900}.layout-editor-mode,.layout-editor-actions{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0}.layout-editor-mode .active{box-shadow:0 0 0 2px #37dfff inset}.layout-lock-all{display:flex;gap:8px;align-items:center;margin:10px 0;padding:8px;border:1px solid #21485b;border-radius:7px}.layout-visibility-list{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.layout-visibility-list label{display:flex;align-items:center;gap:6px;padding:6px;border:1px solid #21485b;border-radius:6px;background:#061923}.layout-editor-help{font-size:11px;color:#9bb5c3;line-height:1.45}.layout-editor-status{padding:8px;border:1px solid #21485b;border-radius:6px;background:#061923;color:#9edcf3;font-size:11px}
+body.layout-editing .test-live,body.layout-editing .diag-brain-row{overflow:visible!important}
+body.layout-editing [data-layout-id]{position:relative!important;outline:1px dashed rgba(83,213,255,.72)!important;outline-offset:2px;z-index:100!important;min-width:120px!important;min-height:70px!important}
+body.layout-editing [data-layout-id].layout-locked{outline-color:rgba(255,211,76,.6)!important}
+.layout-field-tools{position:absolute;left:6px;top:6px;z-index:10050;display:none;align-items:center;gap:4px;padding:3px;border:1px solid #3c819d;border-radius:6px;background:rgba(3,18,27,.94);box-shadow:0 3px 16px #000}
+body.layout-editing .layout-field-tools{display:flex}.layout-field-tools button{width:27px;height:27px;border:1px solid #315f72;border-radius:5px;background:#102d3b;color:#e8f9ff;cursor:pointer;font-weight:900}.layout-field-tools button:hover{background:#17445a}.layout-move-handle{cursor:move!important;font-size:17px!important}.layout-resize-handle{position:absolute;z-index:10040;display:none;background:transparent}
+body.layout-editing .layout-resize-handle{display:block}.layout-resize-handle.n,.layout-resize-handle.s{left:14px;right:14px;height:9px;cursor:ns-resize}.layout-resize-handle.n{top:-5px}.layout-resize-handle.s{bottom:-5px}.layout-resize-handle.e,.layout-resize-handle.w{top:14px;bottom:14px;width:9px;cursor:ew-resize}.layout-resize-handle.e{right:-5px}.layout-resize-handle.w{left:-5px}.layout-resize-handle.ne,.layout-resize-handle.nw,.layout-resize-handle.se,.layout-resize-handle.sw{width:14px;height:14px}.layout-resize-handle.ne{right:-7px;top:-7px;cursor:nesw-resize}.layout-resize-handle.nw{left:-7px;top:-7px;cursor:nwse-resize}.layout-resize-handle.se{right:-7px;bottom:-7px;cursor:nwse-resize}.layout-resize-handle.sw{left:-7px;bottom:-7px;cursor:nesw-resize}
+body:not(.layout-editing) .layout-field-tools,body:not(.layout-editing) .layout-resize-handle{display:none!important}
+.layout-field-hidden{display:none!important}
+@media(max-width:900px){.layout-editor-panel{top:60px;right:8px;width:calc(100vw - 16px)}.layout-visibility-list{grid-template-columns:1fr}}
+
+
+/* V5.4.47 - Denkzentrum reactor telemetry replaces simple energy bar */
+.brain-reactor-telemetry{position:absolute;right:8px;top:62px;width:92px;display:grid;grid-template-columns:1fr;gap:4px;margin:0;z-index:30}
+.brain-reactor-metric{min-width:0;height:31px;border:1px solid rgba(84,190,221,.30);border-radius:5px;background:linear-gradient(180deg,rgba(9,36,52,.82),rgba(4,18,28,.74));color:#dff6ff;padding:3px 5px;text-align:left;box-shadow:inset 0 0 10px rgba(255,255,255,.032),0 0 7px rgba(0,0,0,.22);cursor:pointer;overflow:hidden}
+.brain-reactor-metric span{display:block;font-size:6.7px;font-weight:900;letter-spacing:.04em;color:#8fd9ef;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brain-reactor-metric b{display:block;margin-top:1px;font-size:11px;font-weight:950;font-variant-numeric:tabular-nums;color:var(--metric-color,#20d36b);text-shadow:0 0 8px color-mix(in srgb,var(--metric-color,#20d36b) 68%,transparent);white-space:nowrap}
+.brain-reactor-metric[data-state="green"]{--metric-color:#20d36b;border-color:rgba(32,211,107,.38)}
+.brain-reactor-metric[data-state="yellow"]{--metric-color:#ffe45e;border-color:rgba(255,228,94,.50)}
+.brain-reactor-metric[data-state="orange"]{--metric-color:#ff8a1f;border-color:rgba(255,138,31,.58)}
+.brain-reactor-metric[data-state="red"]{--metric-color:#ff3b30;border-color:rgba(255,59,48,.72);box-shadow:0 0 12px rgba(255,59,48,.28),inset 0 0 14px rgba(255,255,255,.04)}
+.brain-reactor-metric[data-state="orange"] b{animation:brainMetricFlicker .92s infinite alternate}.brain-reactor-metric[data-state="red"] b{animation:brainMetricFlicker .58s infinite alternate}
+@keyframes brainMetricFlicker{from{filter:brightness(1);text-shadow:0 0 8px var(--metric-color)}to{filter:brightness(1.55);text-shadow:0 0 14px #fff,0 0 20px var(--metric-color)}}
+.brain-metric-popover{position:absolute;right:10px;top:70px;width:min(310px,calc(100% - 20px));z-index:80;border:1px solid rgba(116,217,255,.48);border-radius:8px;background:rgba(4,20,31,.96);box-shadow:0 16px 45px rgba(0,0,0,.55),0 0 20px rgba(64,173,255,.18);padding:10px;color:#e9f8ff;font-size:11px;line-height:1.35}
+.brain-metric-popover[hidden]{display:none!important}.brain-metric-popover button{position:absolute;right:6px;top:5px;border:1px solid rgba(255,255,255,.22);background:#0a2738;color:#fff;border-radius:5px;font-weight:900}.brain-metric-popover h3{margin:0 24px 6px 0;font-size:12px}.brain-metric-popover p{margin:4px 0;color:#a9c4d2}.brain-metric-popover ul{margin:6px 0 0 16px;padding:0}.brain-metric-popover li{margin:3px 0}.brain-metric-popover strong{color:#fff}
+
+
+
+/* V5.4.49 - seitliche Denkzentrum-Telemetrie */
+.brain-inline-card{position:relative}.brain-inline-card statuscore-3d{display:block!important;width:calc(100% - 104px)!important;margin-right:104px!important}.brain-reactor-metric:focus-visible{outline:2px solid #ffffff;outline-offset:2px}@media(max-width:760px){.brain-reactor-telemetry{position:relative;right:auto;top:auto;width:auto;grid-template-columns:repeat(3,minmax(0,1fr));margin:2px 2px 4px}.brain-inline-card statuscore-3d{width:100%!important;margin-right:0!important}}
+
+
+
+
+
+/* V5.5.1 - AudioCore controls */
+.audio-toggle{position:absolute;right:8px;bottom:8px;top:auto;width:22px;height:22px;border:1px solid #527286;border-radius:50%;background:#071923;color:#dff6ff;display:grid;place-items:center;font-size:13px;font-weight:900;cursor:pointer;z-index:9;box-shadow:0 0 10px #0008}
+.audio-toggle:hover{border-color:#8ae6ff;background:#10324a}
+.audio-toggle.active{border-color:#2cdb74;color:#2cdb74;box-shadow:0 0 12px rgba(44,219,116,.35)}
+.audio-toggle.muted{color:#829ba8;text-decoration:line-through}
+.foldable,.gauge,.lag-panel,.operation-monitor,.cycle-panel{position:relative}
+.audio-channel-list{display:grid;grid-template-columns:repeat(2,minmax(160px,1fr));gap:8px}.audio-channel-row{display:flex;align-items:center;gap:8px;padding:8px;border:1px solid #29495c;border-radius:6px;background:#071923}.audio-channel-row b{flex:1}.audio-channel-row .audio-toggle{position:static;right:auto;bottom:auto;top:auto;flex:0 0 28px;transform:none}
+.head-pulse>.audio-toggle{top:8px;bottom:auto;right:8px}@media(max-width:800px){.audio-channel-list{grid-template-columns:1fr}}
+
+.audio-toggle::before{content:"\1F507";line-height:1}.audio-toggle.active::before{content:"\1F50A"}
+
+
+.audio-device-status{margin-top:8px;padding:8px 10px;border:1px solid #29495c;border-radius:6px;background:#061720;color:#a9c3cf;font-size:12px}.audio-device-status.ok{border-color:#2cdb74;color:#dfffea}.audio-device-status.warn{border-color:#f0b43c;color:#ffe6a8}
+
+
+
+
+
+

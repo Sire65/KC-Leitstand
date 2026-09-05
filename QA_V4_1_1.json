@@ -1,0 +1,29 @@
+﻿{
+    "version":  "4.1.1",
+    "status":  "TABS_EKG_GITHUB_CANDIDATE",
+    "baseVersion":  "4.1.0",
+    "gate":  "YELLOW_STATIC_CHECK_PASSED_BROWSER_RUNTIME_OPEN",
+    "tests":  {
+                  "DIAGNOSTIC_TABS_PRESENT":  true,
+                  "DYNAMIC_EKG_PRESENT":  true,
+                  "DYNAMIC_SCAN_RING_PRESENT":  true,
+                  "GAUGE_STANDBY_PRESENT":  true,
+                  "GITHUB_READY_FILES_PRESENT":  true,
+                  "MASTER_NAVIGATION_PRESERVED":  true,
+                  "JSON_PARSE":  true,
+                  "PROBE_UNCHANGED":  true,
+                  "BROWSER_RUNTIME_TEST":  false,
+                  "VISIBLE_TEXT_ASCII_CLEANUP":  true,
+                  "DIRECT_ID_REFERENCES":  true,
+                  "NAV_TARGETS_PRESENT":  true,
+                  "JS_BRACKET_BALANCE":  true,
+                  "NODE_SYNTAX_CHECK":  false
+              },
+    "notes":  [
+                  "Diagnostic tabs group visible tests without overloading the cockpit.",
+                  "Heartbeat, EKG sweep, scan ring and hourglass react to alarm load.",
+                  "The probe service and measurement algorithms were intentionally left unchanged.",
+                  "Visible legacy mojibake in index.html and app.js was replaced with stable ASCII labels.",
+                  "Node.js was not available in this Codex runtime; JavaScript was checked by structural bracket balance and reference audits."
+              ]
+}

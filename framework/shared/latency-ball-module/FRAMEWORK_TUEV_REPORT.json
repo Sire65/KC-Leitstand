@@ -1,0 +1,32 @@
+﻿{
+    "moduleId":  "shared.latency-ball",
+    "version":  "0.2.0",
+    "result":  "CANDIDATE",
+    "checks":  [
+                   {
+                       "id":  "LB-BOUNDARY-01",
+                       "result":  "PASS",
+                       "text":  "Module contains no network probe or Leitstand business logic."
+                   },
+                   {
+                       "id":  "LB-API-01",
+                       "result":  "PASS",
+                       "text":  "Public API is documented in LATENCY_BALL_API_CONTRACT.json."
+                   },
+                   {
+                       "id":  "LB-MOTION-01",
+                       "result":  "PASS",
+                       "text":  "Animation can be disabled through setAnimation(false)."
+                   },
+                   {
+                       "id":  "LB-REUSE-01",
+                       "result":  "PASS",
+                       "text":  "Runtime exposes global factory and custom element for arbitrary host programs."
+                   }
+               ],
+    "openGates":  [
+                      "Browser smoke test in target host",
+                      "DesignCore token mapping",
+                      "EventBus adapter binding"
+                  ]
+}

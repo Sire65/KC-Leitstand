@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "shared.test-workspace-layout.rules",
+  "version": "0.1.0",
+  "storageVersion": 1,
+  "columns": 6,
+  "rowUnitPx": 42,
+  "gapPx": 10,
+  "coordinates": ["column", "row", "widthUnits", "heightUnits"],
+  "collisionPolicy": "REJECT_AND_KEEP_LAST_VALID",
+  "invalidStorageFallback": "DEFAULT_LAYOUT",
+  "keyboardRequired": true,
+  "existingRuntimeFallbackRequired": true
+}

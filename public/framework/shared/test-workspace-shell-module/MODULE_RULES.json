@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "shared.test-workspace-shell.rules",
+  "version": "0.3.0",
+  "mode": "CORE_FIRST_MIGRATION_CANDIDATE",
+  "corePolicy": "NEW_UI_CORE_ONLY",
+  "requiredCores": ["DesignCore","WindowCore","TableCore","InteractionCore"],
+  "columns": 6,
+  "pageIsolation": true,
+  "overviewSummaryOnly": true,
+  "emptyPagePlaceholderRequired": true,
+  "existingRuntimeFallbackRequired": true,
+  "forbidden": [
+    "measurement-start",
+    "sensor-mutation",
+    "probe-execution",
+    "duplicate-measurement-runtime",
+    "new-legacy-ui",
+    "direct-window-state",
+    "direct-table-state"
+  ]
+}

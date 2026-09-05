@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "nl.test-workspace-migration",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "mode": "PREVIEW_ONLY",
+  "sourceOfTruth": [
+    "FrameworkTestDefinitionStore",
+    "FrameworkTestOwnershipMatrix",
+    "FrameworkWorkspacePages",
+    "FrameworkTestCardLayoutSpec"
+  ],
+  "requiredPages": [
+    "overview",
+    "internet",
+    "router",
+    "wifi",
+    "pc",
+    "devices",
+    "protocol"
+  ],
+  "grid": {
+    "columns": 6,
+    "sizes": ["S", "M", "L", "XL"],
+    "coordinateMigration": "BLOCKED_UNTIL_SEPARATE_GATE"
+  },
+  "forbidden": [
+    "measurement-start",
+    "probe-execution",
+    "sensor-mutation",
+    "scheduler-execution",
+    "automatic-layout-migration",
+    "existing-view-removal",
+    "app-js-dependency"
+  ],
+  "rollback": {
+    "strategy": "close-preview-and-use-existing-runtime",
+    "existingRuntimeChanged": false,
+    "storedMeasurementDataChanged": false
+  },
+  "requiredGates": [
+    "STATIC_CHECK",
+    "MIGRATION_PREFLIGHT",
+    "RELEASE_CHECK",
+    "ARCHITECTURE_TUEV",
+    "LAYOUT_BROWSER_SMOKE",
+    "APP_PUBLIC_SYNC"
+  ]
+}

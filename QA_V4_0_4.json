@@ -1,0 +1,13 @@
+{
+  "version": "4.0.4",
+  "gate": "GREEN",
+  "tests": {
+    "JS_SYNTAX": true,
+    "CONTENT_MIN_HEIGHT": true,
+    "GRID_MINMAX": true,
+    "VISIBLE_SCROLLBAR": true,
+    "SCROLLBAR_HOVER": true,
+    "MOBILE_TOUCH_SCROLL": true,
+    "BOTTOM_SPACE": true
+  }
+}

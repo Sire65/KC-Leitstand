@@ -1,0 +1,15 @@
+{
+  "version": "4.0.9",
+  "gate": "GREEN",
+  "tests": {
+    "JS_SYNTAX": true,
+    "PROBE_BYTE_IDENTICAL": true,
+    "MASTER_STOPS_LAG": true,
+    "MASTER_STOPS_EKG": true,
+    "MASTER_STOPS_OPERATION": true,
+    "LED_LIVE_STATES": true,
+    "OP_TIME_DEFINED": true,
+    "DUPLICATE_CAUSE_REMOVED": true,
+    "SLOWER_ECG": true
+  }
+}

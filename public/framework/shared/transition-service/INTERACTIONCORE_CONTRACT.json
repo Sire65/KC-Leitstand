@@ -1,0 +1,7 @@
+{
+  "requiredSignals": [
+    "motion.enabled",
+    "motion.reduced"
+  ],
+  "animationOffBehavior": "finish-all-to-target"
+}

@@ -1,0 +1,23 @@
+{
+  "version": "4.1.0",
+  "status": "COMMAND_CENTER_ASSISTANT_CANDIDATE",
+  "baseVersion": "4.0.11",
+  "gate": "YELLOW_STATIC_CHECK_PASSED_BROWSER_RUNTIME_OPEN",
+  "tests": {
+    "MASTER_NAVIGATION_PRESERVED": true,
+    "COMMAND_GAUGES_PRESENT": true,
+    "PC_HEALTH_GAUGE_PRESENT": true,
+    "STORAGE_GAUGE_PRESENT": true,
+    "AI_ASSISTANT_PRESENT": true,
+    "ROUTER_PROFILE_EXTENSIONS_PRESENT": true,
+    "CUSTOM_ROUTER_PROFILE_PRESENT": true,
+    "JSON_PARSE": true,
+    "PROBE_UNCHANGED": true,
+    "BROWSER_RUNTIME_TEST": false
+  },
+  "notes": [
+    "The command-center UI was enhanced without changing the probe service.",
+    "Internet-based router profile completion is intentionally not automatic; it is prepared as a future approved import workflow.",
+    "The master NavigationCore adapter from V4.0.11 remains in place."
+  ]
+}

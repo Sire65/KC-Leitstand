@@ -1,0 +1,18 @@
+(function(g){'use strict';
+function E(c){let e=Error(c);e.code=c;throw e} function clone(x){return JSON.parse(JSON.stringify(x))}
+function checksum(x){let s=JSON.stringify(x),h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h+=(h<<1)+(h<<4)+(h<<7)+(h<<8)+(h<<24)}return 'fnv-'+(h>>>0).toString(16)}
+function create(policy){policy=Object.assign({retention:7,requireEncryption:true,allowExternalTargets:false},policy||{}); const backups=[],journal=[];
+ function event(e){journal.push(Object.freeze(Object.assign({at:new Date().toISOString()},e))); return journal[journal.length-1]}
+ function assertTarget(t){if(!t||!t.kind)E('BACKUP_TARGET_REQUIRED'); if(t.kind==='EXTERNAL'&&!policy.allowExternalTargets)E('EXTERNAL_TARGET_NOT_ALLOWED'); return t}
+ function rotate(){while(backups.length>policy.retention){let old=backups.shift();event({type:'BACKUP_ROTATED_OUT',backupId:old.backupId})}}
+ function createBackup(x){if(!x||!x.scope||!x.version||x.data===undefined)E('BACKUP_INPUT_REQUIRED'); assertTarget(x.target||{kind:'LOCAL'}); if(policy.requireEncryption&&!x.encrypted)E('BACKUP_ENCRYPTION_REQUIRED'); let b=Object.freeze({backupId:'backup-'+Date.now()+'-'+backups.length,scope:x.scope,version:x.version,type:x.type||'FULL',encrypted:!!x.encrypted,target:(x.target||{kind:'LOCAL'}),createdAt:new Date().toISOString(),checksum:checksum(x.data),data:clone(x.data),schemaVersion:x.schemaVersion||x.version}); backups.push(b); event({type:'BACKUP_CREATED',backupId:b.backupId,scope:b.scope,type:b.type}); rotate(); return b}
+ function verify(b){if(!b||!b.checksum||b.data===undefined)E('BACKUP_VERIFY_INPUT_REQUIRED'); return Object.freeze({state:checksum(b.data)===b.checksum?'VALID':'INVALID',backupId:b.backupId||null})}
+ function testRestore(b){let v=verify(b); event({type:'TEST_RESTORE_'+v.state,backupId:b&&b.backupId}); return Object.freeze({state:v.state==='VALID'?'TEST_RESTORE_OK':'TEST_RESTORE_FAILED'})}
+ function planRestore(b,ctx){let v=verify(b); if(v.state!=='VALID')E('BACKUP_INVALID'); let test=testRestore(b); if(test.state!=='TEST_RESTORE_OK')E('TEST_RESTORE_REQUIRED'); let safety=createBackup({scope:b.scope,version:b.version,type:'SAFETY_BEFORE_RESTORE',encrypted:b.encrypted,target:{kind:'LOCAL'},data:{safetyFor:b.backupId,context:ctx||null},schemaVersion:b.schemaVersion}); let plan=Object.freeze({state:'RESTORE_PLAN_READY',backupId:b.backupId,safetyBackupId:safety.backupId,scope:b.scope,schemaVersion:b.schemaVersion}); event({type:'RESTORE_PLAN_READY',backupId:b.backupId,safetyBackupId:safety.backupId}); return plan}
+ function commitRestore(plan){if(!plan||plan.state!=='RESTORE_PLAN_READY')E('RESTORE_PLAN_REQUIRED'); event({type:'RESTORE_COMMITTED',backupId:plan.backupId,safetyBackupId:plan.safetyBackupId}); return Object.freeze({state:'RESTORE_COMMITTED',backupId:plan.backupId})}
+ function abortRestore(plan,reason){if(!plan||!plan.backupId)E('RESTORE_PLAN_REQUIRED'); event({type:'RESTORE_ABORTED',backupId:plan.backupId,reason:reason||'USER_ABORT'}); return Object.freeze({state:'RESTORE_ABORTED'})}
+ function snapshot(){return Object.freeze({backups:backups.map(b=>({backupId:b.backupId,type:b.type,scope:b.scope,version:b.version,encrypted:b.encrypted,target:b.target,checksum:b.checksum})),journal:journal.map(e=>Object.assign({},e))})}
+ return Object.freeze({version:'1.2.0',createBackup,verify,testRestore,planRestore,commitRestore,abortRestore,snapshot})
+}
+g.BackupCore=Object.freeze({version:'1.2.0',apiVersion:'1',create});
+})(typeof window!=='undefined'?window:globalThis);

@@ -1,0 +1,24 @@
+{
+  "version": "4.1.4",
+  "status": "REGISTER_COCKPITS_ASSISTANT_FIX_CANDIDATE",
+  "checks": {
+    "registers_have_own_cockpits": true,
+    "global_dashboard_gauges_hidden": true,
+    "home_master_switch_present": true,
+    "router_detect_home_present": true,
+    "router_detect_tab_present": true,
+    "info_window_toggle_present": true,
+    "custom_info_cards_default_off": true,
+    "single_switch_per_register_instrument": true,
+    "assistant_guided_steps_present": true,
+    "top_right_expand_collapse_present": true,
+    "old_probe_unchanged": true,
+    "new_framework_core_created": false
+  },
+  "open_runtime_checks": [
+    "Visual browser test for heartbeat, scanring and hourglass.",
+    "Touch test on tablet/mobile.",
+    "Router detection against the real router.",
+    "Assistant flow with real fault data."
+  ]
+}

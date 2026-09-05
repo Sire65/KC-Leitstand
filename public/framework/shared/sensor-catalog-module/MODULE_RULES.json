@@ -1,0 +1,1 @@
+{"schemaVersion":"1.0.0","definitionCount":1200,"defaultEnabled":false,"adapterDefault":"UNBOUND","maxVisibleRows":100,"generation":"lazy on first catalog access","assignmentStorage":"FrameworkSecureStorage","activationGate":["device match","adapter available","load budget","scheduler approval","user confirmation","TUEV candidate approval"]}

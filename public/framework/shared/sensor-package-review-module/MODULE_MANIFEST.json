@@ -1,0 +1,1 @@
+{"id":"shared.sensor-package-review","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","release":"BLOCKED","mode":"ACTIVATION_INTENT_ONLY","requires":["shared.sensor-catalog","shared.device-discovery-orchestrator","shared.secure-storage"],"forbidden":["sensor activation","measurement execution","adapter binding"]}

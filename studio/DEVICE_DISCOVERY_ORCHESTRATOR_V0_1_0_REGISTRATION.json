@@ -1,0 +1,1 @@
+{"moduleId":"shared.device-discovery-orchestrator","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","cores":["CapabilityCore","TableCore","DesignCore"],"domainIsolation":true,"automaticActivation":false,"stableRelease":false}

@@ -1,0 +1,14 @@
+{
+  "version": "4.0.3",
+  "gate": "GREEN",
+  "tests": {
+    "JS_SYNTAX": true,
+    "PERMANENT_LAG_TEST": true,
+    "LAG_HISTORY": true,
+    "CENTRAL_MONITOR": true,
+    "OPERATION_QUEUE": true,
+    "SYSTEM_HEARTBEAT": true,
+    "RUNNING_OPERATION": true,
+    "MOBILE_LAYOUT": true
+  }
+}

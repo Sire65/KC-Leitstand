@@ -1,0 +1,12 @@
+{
+  "publishes": [
+    "transition.started",
+    "transition.updated",
+    "transition.retargeted",
+    "transition.completed",
+    "transition.cancelled",
+    "transition.failed",
+    "transition.motion.changed"
+  ],
+  "businessDataForbidden": true
+}

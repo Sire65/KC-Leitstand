@@ -1,0 +1,131 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectId": "NL",
+  "componentId": "NavigationCore",
+  "projectIcon": "network-control-room",
+  "defaultExpandedGroup": "leitstand",
+  "maxOpenGroups": 1,
+  "userPanel": {
+    "visible": true,
+    "displayName": "Hans",
+    "showAutomaticMode": true,
+    "showOfficeModeStart": true
+  },
+  "groups": [
+    {
+      "id": "leitstand",
+      "label": "Leitstand",
+      "items": [
+        {
+          "id": "dashboard",
+          "label": "Dashboard",
+          "page": "dashboard",
+          "icon": "home"
+        },
+        {
+          "id": "live-diagnose",
+          "label": "Live-Diagnose",
+          "page": "current",
+          "icon": "pulse"
+        },
+        {
+          "id": "incidents",
+          "label": "Störungen",
+          "page": "incidents",
+          "icon": "warning"
+        }
+      ]
+    },
+    {
+      "id": "monitoring",
+      "label": "Überwachung",
+      "items": [
+        {
+          "id": "tests",
+          "label": "Prüfkreise",
+          "page": "tests",
+          "icon": "check"
+        },
+        {
+          "id": "devices-monitor",
+          "label": "Geräte",
+          "page": "devices",
+          "icon": "devices"
+        },
+        {
+          "id": "wifi",
+          "label": "Mesh/WLAN",
+          "page": "wifi",
+          "icon": "wifi"
+        },
+        {
+          "id": "fritz",
+          "label": "FRITZ!Box",
+          "page": "fritz",
+          "icon": "router"
+        },
+        {
+          "id": "docsis",
+          "label": "DOCSIS",
+          "page": "docsis",
+          "icon": "signal"
+        }
+      ]
+    },
+    {
+      "id": "masterdata",
+      "label": "Stammdaten",
+      "items": [
+        {
+          "id": "settings",
+          "label": "Einstellungen",
+          "page": "settings",
+          "icon": "settings"
+        },
+        {
+          "id": "devices-master",
+          "label": "Geräte",
+          "page": "devices",
+          "icon": "devices"
+        },
+        {
+          "id": "router-profiles",
+          "label": "Routerprofile",
+          "page": "settings",
+          "settingsPanel": "routerProfiles",
+          "icon": "router"
+        }
+      ]
+    },
+    {
+      "id": "evaluation",
+      "label": "Auswertung",
+      "items": [
+        {
+          "id": "reports",
+          "label": "Berichte",
+          "page": "reports",
+          "icon": "report"
+        },
+        {
+          "id": "measurements",
+          "label": "Messprotokoll",
+          "page": "measurements",
+          "icon": "table"
+        },
+        {
+          "id": "pcap",
+          "label": "Paketmitschnitt",
+          "page": "pcap",
+          "icon": "capture"
+        },
+        {
+          "id": "help",
+          "label": "Hilfe",
+          "page": "help",
+          "icon": "help"
+        }
+      ]
+    }
+  ]
+}

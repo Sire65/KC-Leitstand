@@ -1,0 +1,27 @@
+﻿{
+  "id": "shared.test-scheduler-model",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "description": "Planungsmodell fuer Testausfuehrung nach Prioritaet, Lastklasse und Ausfuehrungsklasse. Fuehrt keine Messungen aus.",
+  "requires": ["shared.test-definition-store"],
+  "optional": ["SchedulerCore", "CapabilityCore", "SettingsCore"],
+  "forbidden": [
+    "probe execution",
+    "timer start",
+    "network access",
+    "sensor mutation",
+    "app.js dependency"
+  ],
+  "policy": {
+    "mode": "PLAN_ONLY_NO_EXECUTION",
+    "maxConcurrent": {
+      "permanent": 4,
+      "cyclic": 6,
+      "event": 3,
+      "manual": 2,
+      "deep": 1
+    },
+    "loadClasses": ["none", "low", "medium", "high"]
+  }
+}

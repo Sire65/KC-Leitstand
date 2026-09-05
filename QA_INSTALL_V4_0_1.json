@@ -1,0 +1,9 @@
+{
+  "gate": "GREEN",
+  "tests": {
+    "INSTALLER": true,
+    "ARCHIVE_GUARD": true,
+    "APP": true,
+    "PROBE": true
+  }
+}

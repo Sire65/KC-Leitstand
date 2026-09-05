@@ -1,0 +1,20 @@
+{
+  "id": "7690-dsl",
+  "name": "FRITZ!Box 7690",
+  "access": "dsl",
+  "docsis": null,
+  "wifi": "Wi-Fi 7",
+  "tr064": true,
+  "defaultHost": "fritz.box",
+  "features": [
+    "DSL",
+    "WAN",
+    "Mesh",
+    "Zigbee",
+    "DECT"
+  ],
+  "recommended": {
+    "interval": 15,
+    "deep": 60
+  }
+}

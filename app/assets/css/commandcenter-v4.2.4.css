@@ -1,0 +1,13 @@
+/* Netzwerk-Leitstand V4.2.4 - finale Korrekturen */
+.office-return{white-space:nowrap;font-weight:900;border-color:#39d98a!important;background:linear-gradient(180deg,#153d33,#0b2823)!important;color:#d9ffec!important;box-shadow:0 0 0 1px rgba(57,217,138,.2),0 0 14px rgba(57,217,138,.18)}
+.office-return:not([hidden]){display:inline-flex!important;align-items:center;gap:7px}
+.office-return:not([hidden])::before{content:"↩";font-size:16px}
+/* Konfliktfreie, symmetrische Herzform ohne eingebeulte Ecke. */
+.head-heart{width:38px!important;height:35px!important;left:7px!important;top:12px!important;transform:none!important;border-radius:0!important;clip-path:polygon(50% 96%,42% 87%,31% 76%,19% 64%,9% 51%,3% 38%,3% 25%,8% 13%,18% 5%,30% 3%,40% 7%,50% 18%,60% 7%,70% 3%,82% 5%,92% 13%,97% 25%,97% 38%,91% 51%,81% 64%,69% 76%,58% 87%)!important;background:var(--green)!important;box-shadow:none!important;filter:drop-shadow(0 0 8px var(--green));animation:heartPulse var(--heart-speed,1s) cubic-bezier(.22,.8,.28,1) infinite!important;transform-origin:50% 58%!important}
+.head-heart::before,.head-heart::after{display:none!important;content:none!important}
+body.heart-yellow .head-heart{background:var(--yellow)!important;filter:drop-shadow(0 0 9px var(--yellow))}
+body.heart-red .head-heart{background:var(--red)!important;filter:drop-shadow(0 0 10px var(--red))}
+.master-stopped .head-heart{animation:none!important;transform:scale(.92)!important;opacity:.55}
+@keyframes heartPulse{0%,100%{transform:scale(.94)}10%{transform:scale(1.12)}22%{transform:scale(.98)}34%{transform:scale(1.06)}48%{transform:scale(.94)}}
+/* Jede Anzeige besitzt nur einen Schalter; Alt-/Doppelinstanzen werden visuell abgesichert. */
+.gauge .mini-switch:not(.instrument-switch),.cockpit-instrument .mini-switch:not(.only-switch){display:none!important}

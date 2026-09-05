@@ -1,0 +1,608 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Netzwerk-Leitstand V5.4.2</title>
+<style>
+:root{--nav:270px;--bg:#07131d;--panel:#102432;--panel2:#0a1c28;--line:#35586e;--text:#e2edf4;--muted:#8fa9b9;--green:#2cdb74;--yellow:#ffd02f;--red:#ff4c3e;--blue:#40adff;--metal:#7f9aab}
+*{box-sizing:border-box}.content{scrollbar-width:auto;scrollbar-color:#527286 #07131d}html,body{margin:0;height:100%;font:14px "Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);overflow:hidden}button,input,select{font:inherit}
+.shell{height:100%;display:grid;grid-template-columns:var(--nav) 1fr}.nav{position:relative;background:linear-gradient(90deg,#091722,#102b3b);border-right:2px solid #49697d;display:flex;flex-direction:column;min-width:0;transition:.2s;z-index:20}.nav.collapsed{width:64px}.shell.collapsed{grid-template-columns:64px 1fr}
+.nav-head{height:68px;display:flex;align-items:center;gap:10px;padding:10px;border-bottom:1px solid var(--line)}.logo{font-size:34px;color:var(--yellow);text-shadow:0 0 15px #ffd02f}.nav-title b{display:block;letter-spacing:1px}.nav-title small{color:var(--muted)}.nav.collapsed .nav-title,.nav.collapsed .nav-label,.nav.collapsed .nav-tools span{display:none}
+.nav-tools{display:flex;gap:5px;padding:8px;border-bottom:1px solid var(--line)}.iconbtn{width:38px;height:36px;padding:0;border:1px solid #587487;background:#17394d;color:white;border-radius:5px;cursor:pointer}.iconbtn:hover{background:#255b78}
+.nav-scroll{overflow:auto;padding:6px;flex:1}.nav-item{width:100%;height:42px;display:flex;align-items:center;gap:12px;padding:0 11px;margin:2px 0;border:0;border-left:3px solid transparent;border-radius:4px;background:transparent;color:#cfe0ea;text-align:left;cursor:pointer}.nav-item:hover,.nav-item.active{background:#173b50;border-left-color:var(--blue)}.nav-icon{width:24px;text-align:center;font-size:18px;flex:0 0 24px}.nav-bottom{padding:7px;border-top:1px solid var(--line);display:flex;justify-content:space-around}.collapse-handle{position:absolute;right:-15px;top:78px;width:30px;height:52px;border-radius:0 8px 8px 0;background:#183c51;border:1px solid #607e91;color:white;z-index:30}
+.main{min-width:0;min-height:0;height:100vh;display:grid;grid-template-rows:68px minmax(0,1fr);background:radial-gradient(circle at 50% -20%,#24485f,#07131d 45%)}.top{display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:linear-gradient(#19384b,#0b1e2a);border-bottom:2px solid #506e80;box-shadow:0 5px 18px #0008}.top h1{font-size:19px;margin:0;letter-spacing:2px}.top small{color:var(--muted)}.top-right{display:flex;gap:12px;align-items:center}.plant{padding:10px 16px;border:2px solid;border-radius:6px;font-weight:900;letter-spacing:1px}.green{color:var(--green)}.yellow{color:var(--yellow)}.red{color:var(--red)}.blue{color:var(--blue)}
+.content{min-height:0;height:100%;overflow-y:scroll;overflow-x:hidden;padding:16px;padding-bottom:48px;scrollbar-gutter:stable}
+.content::-webkit-scrollbar{width:14px}
+.content::-webkit-scrollbar-track{background:#07131d;border-left:1px solid #29495c}
+.content::-webkit-scrollbar-thumb{background:#527286;border:3px solid #07131d;border-radius:10px}
+.content::-webkit-scrollbar-thumb:hover{background:#7f9aab}.page{display:none}.page.active{display:block}.hero{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(110deg,#15364a,#0a1e2b);border:1px solid #46687d;border-radius:8px;padding:16px 20px;box-shadow:inset 0 0 24px #0005}.hero h2{font-size:24px;margin:3px 0}.hero p{margin:0;color:#b3c8d5}.score{width:88px;height:88px;border:9px solid var(--green);border-radius:50%;display:grid;place-items:center;font-size:22px;font-weight:900;box-shadow:0 0 18px #2cdb7466}
+.gauges{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0}.gauge,.card,.switch-card,.window{background:linear-gradient(145deg,#132e3f,#0a1c28);border:1px solid var(--line);border-radius:8px;box-shadow:inset 0 0 18px #0005,0 4px 12px #0006}.gauge{text-align:center;padding:8px}.gauge b,.gauge span{display:block}.gauge span{font-size:16px;font-weight:800}.grid2{display:grid;grid-template-columns:2fr 1fr;gap:12px}.card{padding:14px;margin-bottom:12px}.card h2{font-size:15px;letter-spacing:1px;margin:0 0 10px}.chart{width:100%;height:210px}.pill{display:inline-block;padding:4px 8px;border-radius:999px;font-weight:800;background:#173447}.pill.green{background:#173f2b}.pill.yellow{background:#4b3e12}.pill.red{background:#4d201e}.pill.blue{background:#153b57}
+table{width:100%;border-collapse:collapse}th,td{padding:8px;border-bottom:1px solid #29495c;text-align:left}th{font-size:12px;color:#a5c4d6;position:sticky;top:0;background:#102432}.table-wrap{max-height:480px;overflow:auto;border:1px solid #29495c}.toolbar{display:flex;gap:8px;align-items:center;margin-bottom:10px}.toolbar input,.toolbar select{background:#071823;color:white;border:1px solid #496a7e;border-radius:5px;padding:8px}.toolbar .spacer{flex:1}.btn{background:#183e54;color:white;border:1px solid #5a788b;border-radius:5px;padding:9px 13px;font-weight:700;cursor:pointer}.btn:hover{background:#28617f}.btn.danger{border-color:#a04d48}
+.switch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.switch-card{padding:16px;display:flex;justify-content:space-between;align-items:center}.switch-card p{margin:4px 0;color:var(--muted)}.switch{position:relative;width:62px;height:34px}.switch input{display:none}.switch span{position:absolute;inset:0;border-radius:40px;background:#3b4b56;border:2px solid #748895}.switch span:before{content:"";position:absolute;width:26px;height:26px;left:3px;top:2px;border-radius:50%;background:#c6d0d6;transition:.2s}.switch input:checked+span{background:#164e31;border-color:var(--green);box-shadow:0 0 14px #2cdb7466}.switch input:checked+span:before{transform:translateX(28px);background:#62f29d}.master{padding:18px;border:2px solid #607e91;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.loadbar{height:18px;background:#071721;border:1px solid #48697c;border-radius:99px;overflow:hidden}.loadbar div{height:100%;width:18%;background:linear-gradient(90deg,#2cdb74,#d7e85e)}
+.instrument-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{font-size:28px;font-weight:900}.sub{color:var(--muted)}.finding{padding:10px;border-left:5px solid var(--blue);background:#091b27;margin:7px 0}.finding.red{border-color:var(--red)}.finding.yellow{border-color:var(--yellow)}.finding.green{border-color:var(--green)}
+.window-layer{position:fixed;inset:68px 0 0 var(--nav);pointer-events:none;z-index:50}.shell.collapsed~.window-layer{left:64px}.window{position:absolute;width:520px;min-width:320px;min-height:220px;pointer-events:auto;resize:both;overflow:auto}.window-head{height:38px;display:flex;align-items:center;padding-left:12px;background:#183b50;border-bottom:1px solid #5b7789;cursor:move}.window-head b{flex:1}.window-controls{display:flex}.window-controls button{width:38px;height:36px;border:0;background:transparent;color:white;font-size:18px}.window-controls button:hover{background:#2c5a74}.window-controls .close:hover{background:#b8322c}.window-body{padding:12px}.window.max{inset:8px!important;width:auto!important;height:auto!important;resize:none}.window.min .window-body{display:none}.window.min{min-height:38px;height:38px!important;resize:none}
+.help-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.mobile-status{display:none}
+.test-live{display:grid;grid-template-columns:150px 1fr 190px;gap:16px;align-items:center;margin:12px 0;padding:14px 18px;border:2px solid #4d7085;border-radius:8px;background:linear-gradient(145deg,#102b3b,#071923);box-shadow:inset 0 0 24px #0008}
+.scan-ring{width:112px;height:112px;border-radius:50%;position:relative;margin:auto;border:8px solid #29495b;box-shadow:inset 0 0 20px #000,0 0 14px #40adff44}
+.scan-ring:before{content:"";position:absolute;inset:-8px;border-radius:50%;border:8px solid transparent;border-top-color:var(--blue);border-right-color:var(--blue);animation:spin 1.2s linear infinite}
+.scan-ring.paused:before{animation-play-state:paused;border-top-color:var(--metal);border-right-color:var(--metal)}
+.scan-ring .hourglass{position:absolute;inset:0;display:grid;place-items:center;font-size:42px;animation:flip 2.2s ease-in-out infinite}
+.scan-ring.paused .hourglass{animation-play-state:paused}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes flip{0%,42%{transform:rotate(0)}58%,100%{transform:rotate(180deg)}}
+.test-live h2{margin:0 0 4px;font-size:17px;letter-spacing:1px}.test-live .bigstate{font-size:23px;font-weight:900}.test-live .phase{color:#b8cfdd;margin-top:5px}.progress-shell{height:24px;background:#06131c;border:1px solid #527286;border-radius:4px;overflow:hidden;position:relative;margin:10px 0}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#1f7aa8,#44c3ff);transition:width .25s linear;box-shadow:0 0 14px #40adff88}.progress-text{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;font-weight:800;text-shadow:0 1px 2px #000}
+.sensor-lamps{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.sensor-lamp{padding:6px 7px;border:1px solid #38586a;border-radius:4px;font-size:11px;background:#0a1b26}.sensor-lamp i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;background:#556a76}.sensor-lamp.running i{background:var(--blue);box-shadow:0 0 9px var(--blue);animation:pulse .8s infinite alternate}.sensor-lamp.done i{background:var(--green);box-shadow:0 0 7px var(--green)}.sensor-lamp.off i{background:#59636a}
+@keyframes pulse{to{opacity:.35}}
+.last-cycle{font-size:12px;color:var(--muted);line-height:1.7}
+@media(max-width:700px){.test-live{grid-template-columns:82px 1fr}.scan-ring{width:72px;height:72px}.scan-ring .hourglass{font-size:29px}.sensor-lamps{grid-column:1/-1;grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){:root{--nav:64px}.shell{grid-template-columns:64px 1fr}.nav{width:64px}.nav-title,.nav-label,.nav-tools span{display:none}.gauges,.instrument-row{grid-template-columns:repeat(2,1fr)}.grid2,.switch-grid{grid-template-columns:1fr}.window-layer{left:64px}}
+@media(max-width:600px){.shell{display:block}.nav{position:fixed;bottom:0;left:0;right:0;top:auto;width:auto;height:62px;z-index:80;border-right:0;border-top:1px solid var(--line)}.nav-head,.nav-tools,.collapse-handle,.nav-scroll .nav-item:nth-child(n+6){display:none}.nav-scroll{display:flex;padding:4px;overflow:hidden}.nav-item{justify-content:center;height:52px}.nav-label{display:none}.nav-bottom{display:none}.main{height:calc(100vh - 62px);grid-template-rows:58px 1fr}.top{padding:0 10px}.top h1{font-size:14px}.top small,#clock{display:none}.plant{padding:7px;font-size:11px}.content{padding:8px 8px 38px;overflow-y:scroll;-webkit-overflow-scrolling:touch}.gauges{grid-template-columns:repeat(2,1fr)}.grid2,.switch-grid,.instrument-row,.help-grid{grid-template-columns:1fr}.hero{padding:12px}.hero h2{font-size:18px}.score{width:68px;height:68px}.window-layer{inset:58px 0 62px 0}.window{left:4px!important;top:4px!important;width:calc(100% - 8px)!important;height:calc(100% - 8px)!important;resize:none}.mobile-status{display:block}}
+
+/* V4.0.9 - permanenter Lag-Test und zentraler Betriebsmonitor */
+.control-center{display:grid;grid-template-columns:250px 1fr 250px;gap:12px;margin:12px 0}
+.lag-panel,.operation-monitor,.cycle-panel{background:linear-gradient(145deg,#102d3e,#071923);border:2px solid #496f85;border-radius:9px;box-shadow:inset 0 0 28px #0008,0 4px 14px #0007;min-height:230px}
+.lag-panel,.cycle-panel{padding:14px}
+.operation-monitor{padding:0;overflow:hidden;position:relative}
+.monitor-head{height:38px;display:flex;align-items:center;gap:8px;padding:0 12px;background:linear-gradient(#1d4358,#102a39);border-bottom:1px solid #5a7b8e}
+.monitor-head .lamp{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 9px var(--green)}
+.monitor-head b{letter-spacing:1px;flex:1}
+.monitor-screen{height:192px;padding:14px 16px;background:
+  linear-gradient(rgba(16,58,75,.13) 50%,rgba(0,0,0,.13) 50%),
+  radial-gradient(circle at 50% 45%,#0d3040,#031017 75%);
+background-size:100% 4px,100% 100%;font:14px Consolas,"Courier New",monospace;position:relative;overflow:hidden}
+.monitor-screen:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(70,210,255,.05),transparent);animation:screenSweep 3s linear infinite}
+@keyframes screenSweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.operation-line{margin:4px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.operation-line.primary{font-size:19px;font-weight:900;color:#8ee8ff;text-shadow:0 0 8px #40adff66}
+.operation-line.ok{color:var(--green)}.operation-line.warn{color:var(--yellow)}.operation-line.err{color:var(--red)}
+.cursor{display:inline-block;width:9px;height:16px;background:#7be4ff;margin-left:5px;vertical-align:-2px;animation:cursorBlink .75s steps(1) infinite}
+@keyframes cursorBlink{50%{opacity:0}}
+.lag-title,.cycle-title{font-size:13px;letter-spacing:1px;color:#a9c6d7}
+.lag-value{font:900 39px Consolas;margin:8px 0 2px;text-shadow:0 0 12px currentColor}
+.lag-scale{height:18px;border:1px solid #4a6c80;background:#06141d;border-radius:4px;overflow:hidden;margin:10px 0}
+.lag-fill{height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--yellow),var(--red));transition:width .25s}
+.lag-history{height:66px;width:100%;display:block;border:1px solid #294b5e;background:#06151e}
+.lag-note,.cycle-note{color:var(--muted);font-size:12px;line-height:1.5}
+.heartbeat{display:flex;align-items:center;justify-content:center;height:80px;font-size:48px;color:var(--green);text-shadow:0 0 15px var(--green);animation:heart 1.2s ease-in-out infinite}
+@keyframes heart{0%,100%{transform:scale(.92);opacity:.65}45%{transform:scale(1.08);opacity:1}}
+.operation-queue{display:grid;gap:6px;margin-top:10px}.queue-row{display:flex;justify-content:space-between;padding:6px 8px;border:1px solid #294b5e;background:#091a24;border-radius:4px;font-size:12px}.queue-row.active{border-color:var(--blue);box-shadow:0 0 9px #40adff55}.queue-row.done{color:#8ad9a9}
+@media(max-width:1050px){.control-center{grid-template-columns:220px 1fr}.cycle-panel{grid-column:1/-1}.operation-monitor{min-height:230px}}
+@media(max-width:700px){.control-center{grid-template-columns:1fr}.lag-panel,.operation-monitor,.cycle-panel{min-height:auto}.monitor-screen{height:190px}}
+
+/* V4.0.9 Bereiche, Scrollschutz und Einstellungen */
+.section-global-tools{position:sticky;top:0;z-index:18;display:flex;justify-content:flex-end;gap:6px;margin:-4px 0 8px;pointer-events:none}
+.section-global-tools button{pointer-events:auto;width:38px;height:36px;padding:0;border:1px solid #5b7b8e;border-radius:5px;background:#15384b;color:white;font-size:18px;box-shadow:0 3px 10px #0008}
+.section-global-tools button:hover{background:#28617e}.section-global-tools button.active{color:var(--yellow);border-color:var(--yellow)}
+.foldable{position:relative}.fold-head{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;margin:-4px -4px 8px;padding:5px 4px;border-radius:4px}.fold-head:hover{background:#153447}.fold-head h2{margin:0;flex:1}.fold-toggle{width:28px;height:28px;border:1px solid #4d6c7e;border-radius:4px;background:#112f40;color:white;font-weight:900}.fold-body{display:block}.foldable.collapsed>.fold-body{display:none}.foldable.collapsed{padding-bottom:8px}.foldable.collapsed .fold-toggle{transform:rotate(-90deg)}
+.content.sections-locked .fold-head{cursor:not-allowed}.content.sections-locked .fold-head:after{content:"LOCK";font-size:12px}
+.scroll-safe{overflow:auto;scrollbar-gutter:stable}.scroll-safe::-webkit-scrollbar{width:12px;height:12px}.scroll-safe::-webkit-scrollbar-track{background:#06131c}.scroll-safe::-webkit-scrollbar-thumb{background:#4f7185;border:3px solid #06131c;border-radius:8px}.scroll-safe::-webkit-scrollbar-thumb:hover{background:#7f9aab}
+.card,.gauge,.lag-panel,.operation-monitor,.cycle-panel{min-width:0}.monitor-screen{overflow:auto}.operation-queue{max-height:105px;overflow:auto}.sensor-lamps{max-height:115px;overflow:auto}.table-wrap{overflow:auto}.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(280px,1fr));gap:12px}.setting-group{padding:14px;background:#0a1b27;border:1px solid #34576b;border-radius:7px}.setting-group h3{margin:0 0 12px;color:#cfe3ee}.setting-row{display:grid;grid-template-columns:1fr minmax(170px,240px);gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid #203d4e}.setting-row:last-child{border-bottom:0}.setting-row label{color:#c8dbe6}.setting-row small{display:block;color:var(--muted);margin-top:3px}.setting-row input,.setting-row select{width:100%;background:#061721;color:white;border:1px solid #4d6e82;border-radius:5px;padding:9px}.profile-info{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.profile-chip{padding:8px;background:#102d3e;border:1px solid #34596e;border-radius:5px}.settings-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}.compact .card{padding:9px}.compact .gauges,.compact .control-center{gap:7px}.reduced-motion *{animation:none!important;transition:none!important}
+@media(max-width:800px){.settings-grid{grid-template-columns:1fr}.setting-row{grid-template-columns:1fr}.profile-info{grid-template-columns:1fr}.section-global-tools{top:0}}
+
+/* V4.0.9 - Screenshot-basierter Viewport-/Overflow-Audit */
+.control-center{grid-template-columns:minmax(250px,280px) minmax(520px,1fr) minmax(250px,280px);align-items:stretch}
+.lag-panel,.operation-monitor,.cycle-panel{height:300px;min-height:300px;max-height:300px}
+.lag-panel,.cycle-panel{overflow:auto}
+.operation-monitor{display:grid;grid-template-rows:38px minmax(0,1fr);overflow:hidden}
+.monitor-screen{height:auto;min-height:0;overflow-y:auto!important;overflow-x:hidden!important;padding:12px 16px 18px;scrollbar-gutter:stable}
+.operation-queue{max-height:none!important;overflow:visible!important;padding-bottom:4px}
+.operation-line{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.35}
+.operation-line.primary{min-height:28px}
+.queue-row{min-height:31px;flex:none}
+.test-live{grid-template-columns:150px minmax(0,1fr) minmax(190px,230px)}
+.sensor-lamps{max-height:132px;overflow-y:auto;overflow-x:hidden;scrollbar-gutter:stable}
+.gauges{grid-template-columns:repeat(4,minmax(220px,1fr))}
+.gauge{overflow:auto}
+.card{overflow:auto}
+.card canvas{max-width:100%}
+.table-wrap{max-height:min(62vh,680px);overflow:auto!important;scrollbar-gutter:stable}
+.fold-body{min-width:0}
+.foldable>.fold-body{overflow:auto;scrollbar-gutter:stable}
+.foldable.collapsed>.fold-body{overflow:hidden}
+.lag-history{height:92px}
+.lag-scale{height:22px}
+.lag-value{margin-top:12px}
+@media(max-width:1300px){
+ .control-center{grid-template-columns:240px minmax(460px,1fr)}
+ .cycle-panel{grid-column:1/-1;height:auto;min-height:130px;max-height:190px}
+ .gauges{grid-template-columns:repeat(2,minmax(240px,1fr))}
+}
+@media(max-width:850px){
+ .control-center{grid-template-columns:1fr}
+ .lag-panel,.operation-monitor,.cycle-panel{height:auto;min-height:230px;max-height:none}
+ .operation-monitor{min-height:330px}
+ .gauges{grid-template-columns:1fr}
+ .test-live{grid-template-columns:90px minmax(0,1fr)}
+ .sensor-lamps{grid-column:1/-1;max-height:180px}
+}
+
+/* V4.0.9 - Top-Liveleiste, EKG, Direkt-Schalter, vertikales Klappen */
+.test-live{grid-template-columns:118px minmax(0,1fr) 300px!important;gap:14px!important;align-items:center!important;padding:10px 14px!important;margin:0 0 10px!important;min-height:126px}
+.scan-ring{width:92px!important;height:92px!important}.scan-ring .hourglass{font-size:34px!important}
+.sensor-lamps{display:grid!important;grid-template-columns:repeat(2,minmax(130px,1fr))!important;gap:5px!important;max-height:none!important;overflow:visible!important}
+.sensor-lamp{display:grid;grid-template-columns:12px 1fr 42px;align-items:center;gap:6px;padding:5px 7px!important;min-height:30px}
+.sensor-lamp i{margin:0!important}
+.mini-switch{position:relative;width:38px;height:21px;justify-self:end}
+.mini-switch input{display:none}.mini-switch span{position:absolute;inset:0;border-radius:20px;background:#394a55;border:1px solid #6d8290;transition:.2s}
+.mini-switch span:before{content:"";position:absolute;width:15px;height:15px;left:2px;top:2px;border-radius:50%;background:#c8d1d6;transition:.2s}
+.mini-switch input:checked+span{background:#164e31;border-color:var(--green);box-shadow:0 0 8px #2cdb7466}
+.mini-switch input:checked+span:before{transform:translateX(17px);background:#65f29d}
+.control-center{grid-template-columns:250px minmax(500px,1fr) 280px!important;margin-top:0!important}
+.cycle-panel{display:grid;grid-template-rows:auto 64px auto 74px auto;align-content:start}
+.heartbeat{height:58px!important;font-size:42px!important}
+.ekg-wrap{height:74px;border:1px solid #294b5e;background:#06151e;border-radius:4px;overflow:hidden;margin:6px 0}
+.ekg-canvas{width:100%;height:100%;display:block}
+.foldable{transition:max-height .22s ease,padding .22s ease}
+.foldable>.fold-body{display:block;max-height:5000px;opacity:1;overflow:auto;transition:max-height .25s ease,opacity .18s ease,padding .18s ease}
+.foldable.collapsed>.fold-body{display:block!important;max-height:0!important;opacity:0;overflow:hidden!important;padding-top:0!important;padding-bottom:0!important}
+.fold-head{position:relative;z-index:2}
+.fold-toggle{transition:transform .2s ease}
+.foldable.collapsed .fold-toggle{transform:rotate(-90deg)}
+@media(max-width:1250px){
+ .test-live{grid-template-columns:100px minmax(0,1fr) 260px!important}
+ .control-center{grid-template-columns:230px minmax(420px,1fr)!important}
+ .cycle-panel{grid-column:1/-1}
+}
+@media(max-width:850px){
+ .test-live{grid-template-columns:84px 1fr!important}
+ .sensor-lamps{grid-column:1/-1;grid-template-columns:1fr!important}
+ .control-center{grid-template-columns:1fr!important}
+}
+
+/* V4.0.9 compact command wall */
+.status-led-rail{display:flex;gap:5px;align-items:center;overflow-x:auto;padding:5px 8px;margin:0 0 6px;background:#071923;border:1px solid #365d72;border-radius:6px;scrollbar-width:thin}
+.status-led{flex:0 0 auto;display:flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid #35586b;border-radius:4px;background:#0b2230;color:#d8e7ef;font-size:10px;cursor:pointer}
+.status-led b{width:10px;height:10px;border-radius:50%;background:#65727a}.status-led.green b{background:var(--green);box-shadow:0 0 8px var(--green)}.status-led.yellow b{background:var(--yellow);box-shadow:0 0 8px var(--yellow)}.status-led.red b{background:var(--red);box-shadow:0 0 9px var(--red)}.status-led.gray b{background:#65727a}
+.test-live{grid-template-columns:88px minmax(360px,1fr) 225px 280px!important;min-height:104px!important;padding:7px 10px!important;gap:10px!important}
+.scan-ring{width:76px!important;height:76px!important;border-width:6px!important}.scan-ring:before{inset:-6px;border-width:6px}.scan-ring .hourglass{font-size:29px!important}
+.test-live .bigstate{font-size:19px!important}.test-live .phase{margin-top:2px!important}.progress-shell{height:20px!important;margin:6px 0!important}.last-cycle{line-height:1.25!important}
+.head-pulse{height:78px;position:relative;border:1px solid #294b5e;border-radius:5px;background:#06151e;overflow:hidden}
+.head-heart{position:absolute;left:9px;top:15px;font-size:31px;color:var(--green);text-shadow:0 0 12px var(--green);animation:heart 1.05s ease-in-out infinite;z-index:2}
+.head-ekg{position:absolute;left:43px;right:3px;top:5px;width:calc(100% - 46px);height:52px}
+.pulse-label{position:absolute;bottom:3px;left:8px;font-size:9px;color:#9db8c8;letter-spacing:.8px}
+.sensor-lamps{grid-template-columns:repeat(2,minmax(125px,1fr))!important;gap:3px!important}
+.sensor-lamp{min-height:27px!important;padding:3px 5px!important;font-size:10px!important}
+.control-center{grid-template-columns:220px minmax(520px,1fr) 300px!important;gap:8px!important;margin:6px 0!important}
+.lag-panel,.operation-monitor,.cause-panel{height:260px!important;min-height:260px!important;max-height:260px!important}
+.lag-panel{padding:10px!important}.lag-history{height:76px!important}.lag-value{font-size:34px!important;margin:5px 0!important}
+.operation-monitor{grid-template-rows:34px minmax(0,1fr)!important}.monitor-head{height:34px!important}.monitor-screen{padding:8px 12px 10px!important}.operation-line{margin:2px 0!important}.operation-line.primary{font-size:16px!important;min-height:22px!important}.queue-row{min-height:25px!important;padding:4px 7px!important;font-size:10px!important}
+.cause-panel{padding:10px;background:linear-gradient(145deg,#102d3e,#071923);border:2px solid #496f85;border-radius:9px;overflow:auto}
+.cause-head{font-size:11px;color:#b9cfdb;letter-spacing:.5px;margin-bottom:8px}.cause-body .hero{display:block!important}.cause-body h2{font-size:20px!important;margin:5px 0!important}.cause-body .score{width:72px!important;height:72px!important;position:static!important;margin:12px auto 0!important}
+.gauges{gap:8px!important}.gauge{padding:8px!important;min-height:190px!important}.gauge .arc{transform:scale(.82);transform-origin:center top}.gauge h3{margin-top:-18px!important}
+.field-tools{margin-left:auto;display:flex;gap:5px;align-items:center}.field-tools .mini-switch{display:block}
+.fold-head{min-height:30px!important;margin:-4px -4px 4px!important;padding:3px 4px!important}
+.foldable>.fold-body{transform-origin:top;transition:max-height .22s ease,opacity .16s ease}
+.foldable.collapsed>.fold-body{max-height:0!important;opacity:0!important;margin:0!important}
+.focus-problem{outline:3px solid var(--yellow)!important;box-shadow:0 0 22px var(--yellow)!important;animation:focusFlash .6s 3}
+@keyframes focusFlash{50%{outline-color:var(--red);box-shadow:0 0 28px var(--red)}}
+@media(max-width:1250px){.test-live{grid-template-columns:78px 1fr 210px!important}.sensor-lamps{grid-column:1/-1;grid-template-columns:repeat(3,1fr)!important}.control-center{grid-template-columns:210px 1fr!important}.cause-panel{grid-column:1/-1;height:auto!important;min-height:120px!important;max-height:190px!important}}
+@media(max-width:850px){.test-live{grid-template-columns:72px 1fr!important}.head-pulse{grid-column:1/-1}.sensor-lamps{grid-template-columns:1fr 1fr!important}.control-center{grid-template-columns:1fr!important}.lag-panel,.operation-monitor,.cause-panel{height:auto!important;max-height:none!important;min-height:220px!important}}
+
+/* V5.4.4 - isolierte Arbeitsflaechen-Demo fuer WindowFrameModule */
+.workspace-frame-panel{position:fixed;inset:74px 24px 24px calc(var(--nav) + 24px);z-index:72;background:linear-gradient(145deg,#102b3b,#061822);border:1px solid #527286;border-radius:8px;box-shadow:0 18px 50px #000b;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden}
+.shell.collapsed~.workspace-frame-panel{left:88px}.workspace-frame-panel[hidden]{display:none!important}.workspace-frame-panel>header{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:#14364a;border-bottom:1px solid #527286}.workspace-frame-panel h2{margin:0;font-size:17px}.workspace-frame-panel small{color:#9ec4d7;font-weight:800;letter-spacing:.8px}.workspace-frame-tools{display:flex;align-items:center;gap:8px}.workspace-frame-tools label{display:inline-flex;align-items:center;gap:6px;color:#cfe0e9;font-size:12px;font-weight:800}.workspace-frame-host{position:relative;overflow:hidden;background:radial-gradient(circle at 30% 20%,#183b4f,#071923 62%);background-size:100% 100%;padding-bottom:48px}.workspace-frame-status{padding:8px 12px;border-top:1px solid #29495c;color:#9eb7c5;font-size:12px}.wfm-taskbar{position:absolute;left:10px;right:10px;bottom:8px;min-height:34px;display:flex;align-items:center;gap:7px;padding:5px 7px;border:1px solid #31586d;border-radius:6px;background:#061923e6;box-shadow:0 -6px 18px #0007;z-index:20}.wfm-taskbar[hidden]{display:none!important}.wfm-taskbar strong{color:#8fb7ca;font-size:11px;text-transform:uppercase;letter-spacing:.8px;margin-right:4px}.wfm-task-btn{min-width:96px;max-width:170px;height:26px;padding:0 9px;border:1px solid #527286;border-radius:4px;background:#12364a;color:#e7f5fb;font-size:12px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}.wfm-task-btn:hover{background:#1f5974}.wfm-task-btn.required{border-color:#2cdb74;box-shadow:inset 3px 0 0 #2cdb74}.wfm-task-btn.stacked{margin-left:calc(var(--stack-index) * -58px);opacity:.96}.wfm-stack{color:#ffd02f;font-weight:900;font-size:12px}.wfm-required-badge{margin-right:7px;padding:2px 6px;border:1px solid #2cdb74;border-radius:999px;color:#2cdb74;font-size:10px;font-weight:900;text-transform:uppercase}.wfm-window{position:absolute;min-width:180px;min-height:120px;background:linear-gradient(145deg,#132e3f,#071923);border:1px solid #62a0bf;border-radius:7px;box-shadow:inset 0 0 16px #0008,0 8px 22px #0008;overflow:hidden}.wfm-head{height:34px;display:flex;align-items:center;gap:8px;background:#17425a;border-bottom:1px solid #5f859b;cursor:move;user-select:none}.wfm-head strong{flex:1;min-width:0;padding-left:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}.wfm-tools{display:flex;height:100%}.wfm-tools button{width:34px;border:0;background:transparent;color:#f2f8fb;font-weight:900;cursor:pointer}.wfm-tools button:hover{background:#28617f}.wfm-close-btn:hover{background:#a63731!important}.wfm-body{padding:12px;color:#dcecf4;font-size:13px;line-height:1.45}.wfm-demo-value{font-size:34px;color:#2cdb74;font-weight:900;text-shadow:0 0 14px #2cdb74}.wfm-min{height:34px!important;min-height:34px}.wfm-min .wfm-body,.wfm-min .wfm-handle,.wfm-min .wfm-corner-grip{display:none}.wfm-handle{position:absolute;z-index:3}.wfm-handle.n{left:16px;right:16px;top:-3px;height:8px;cursor:ns-resize}.wfm-handle.s{left:16px;right:16px;bottom:-3px;height:8px;cursor:ns-resize}.wfm-handle.e{top:16px;bottom:16px;right:-3px;width:8px;cursor:ew-resize}.wfm-handle.w{top:16px;bottom:16px;left:-3px;width:8px;cursor:ew-resize}.wfm-handle.ne,.wfm-handle.nw,.wfm-handle.se,.wfm-handle.sw{width:18px;height:18px;border:1px solid #9ed8f2;background:#123c53;border-radius:4px}.wfm-handle.ne{right:-5px;top:-5px;cursor:nesw-resize}.wfm-handle.nw{left:-5px;top:-5px;cursor:nwse-resize}.wfm-handle.se{right:-5px;bottom:-5px;cursor:nwse-resize}.wfm-handle.sw{left:-5px;bottom:-5px;cursor:nesw-resize}.wfm-corner-grip{position:absolute;right:5px;bottom:5px;width:18px;height:18px;cursor:nwse-resize;background:repeating-linear-gradient(135deg,transparent 0 4px,#9ed8f2 4px 6px);opacity:.9}.wfm-max .wfm-handle,.wfm-max .wfm-corner-grip{display:none}
+/* V5.4.8 - TestCatalogModule: gruppierter Katalog fuer 1000+ Tests */
+.test-catalog-panel{position:fixed;right:24px;top:74px;bottom:24px;width:min(760px,calc(100vw - var(--nav) - 54px));z-index:82;display:grid;grid-template-rows:auto auto auto 1fr auto;background:linear-gradient(145deg,#102b3b,#061822);border:1px solid #527286;border-radius:8px;box-shadow:0 18px 50px #000b;overflow:hidden}.test-catalog-panel[hidden]{display:none!important}.test-catalog-panel>header{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;background:#14364a;border-bottom:1px solid #527286}.test-catalog-panel h2{margin:0;font-size:18px}.test-catalog-panel small{color:#9ed8f2;font-weight:900;letter-spacing:.7px}.test-catalog-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 12px;border-bottom:1px solid #29495c}.test-catalog-summary article{padding:9px;border:1px solid #31586d;border-radius:6px;background:#071923}.test-catalog-summary b{display:block;color:#2cdb74;font-size:24px}.test-catalog-summary span{font-size:11px;color:#cfe0e9;font-weight:800;text-transform:uppercase}.test-catalog-tools{display:grid;grid-template-columns:1fr 170px 140px;gap:8px;padding:10px 12px;border-bottom:1px solid #29495c}.test-catalog-tools input,.test-catalog-tools select{height:34px;border:1px solid #527286;border-radius:5px;background:#061923;color:#e7f5fb;padding:0 9px;font-weight:800}.test-catalog-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:10px 12px;max-height:212px;overflow:auto;border-bottom:1px solid #29495c}.test-catalog-groups button{min-height:74px;padding:8px;border:1px solid #31586d;border-radius:6px;background:#071923;color:#e7f5fb;text-align:left;cursor:pointer}.test-catalog-groups button.active,.test-catalog-groups button:hover{border-color:#2cdb74;background:#0b2732}.test-catalog-groups b,.test-catalog-groups span,.test-catalog-groups small{display:block}.test-catalog-groups span{color:#ffd02f;font-size:11px;font-weight:900}.test-catalog-groups small{color:#9eb7c5;font-size:11px;line-height:1.35;letter-spacing:0;text-transform:none}.test-catalog-list{overflow:auto;padding:10px 12px}.test-catalog-list article{display:grid;grid-template-columns:1fr 116px;gap:10px;align-items:center;margin-bottom:8px;padding:10px;border:1px solid #31586d;border-radius:6px;background:#071923}.test-catalog-list article.active{box-shadow:inset 3px 0 0 #2cdb74}.test-catalog-list article.planned{box-shadow:inset 3px 0 0 #6f8fa3}.test-catalog-list h3{margin:2px 0 4px;font-size:14px}.test-catalog-list p{margin:0;color:#cfe0e9;font-size:12px;line-height:1.35}.test-catalog-list aside{text-align:right}.test-catalog-list aside b{display:block;color:#2cdb74;font-size:11px}.test-catalog-list article.planned aside b{color:#9eb7c5}.test-catalog-list aside span{font-size:11px;color:#9eb7c5}.test-catalog-note{padding:10px;border:1px dashed #527286;border-radius:6px;color:#ffd02f;font-weight:800}.test-catalog-panel footer{padding:9px 12px;border-top:1px solid #29495c;color:#9eb7c5;font-size:12px}
+.test-catalog-badges{display:flex;flex-wrap:wrap;gap:5px;margin-top:7px}.test-catalog-badges span{padding:2px 6px;border:1px solid #31586d;border-radius:999px;color:#9ed8f2;font-size:10px;font-weight:900;text-transform:uppercase}.test-catalog-tools{grid-template-columns:1fr 160px 130px 140px!important}
+.test-catalog-summary{grid-template-columns:repeat(4,1fr)!important}.test-scheduler-preview{padding:9px 12px;border-bottom:1px solid #29495c;background:#071923}.test-scheduler-preview>div:first-child{display:flex;justify-content:space-between;gap:8px;color:#e7f5fb;font-size:12px;font-weight:900}.test-scheduler-preview>div:first-child span{color:#9eb7c5}.test-scheduler-lanes{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}.test-scheduler-lanes span{padding:3px 7px;border:1px solid #527286;border-radius:999px;color:#9ed8f2;font-size:10px;font-weight:900;text-transform:uppercase}.test-scheduler-preview p{margin:7px 0 0;color:#ffd02f;font-size:11px;font-weight:800}
+.test-card-grid-note{display:none}.test-catalog-badges span:last-child{border-color:#2cdb74;color:#c8f8d9}
+.test-catalog-tools{grid-template-columns:1fr 140px 120px 130px 150px!important}.test-catalog-badges span:nth-last-child(-n+2){border-color:#ffd02f;color:#ffe895}
+/* V5.4.13 - ViewportScrollGuard: rechte Ueberlappung vermeiden und Hauptfenster scrollbar machen */
+:root{--right-guard:42px;--content-min:1180px}.main{min-width:0;overflow:hidden!important}.content{overflow:auto!important;overflow-x:auto!important;overflow-y:auto!important;scrollbar-gutter:stable both-edges;padding-right:calc(18px + var(--right-guard))!important}.content>.page{min-width:min(var(--content-min),calc(100vw - 48px))}.content>.page.active{display:block}.shell-smart-panel.collapsed{transform:translateX(calc(100% - 18px))}.shell-smart-panel.collapsed:hover,.shell-smart-panel.collapsed:focus-within{transform:translateX(calc(100% - 42px))}.shell-smart-panel:before{content:"";position:absolute;left:-10px;top:0;bottom:0;width:10px;background:linear-gradient(90deg,transparent,rgba(82,114,134,.35));pointer-events:none}.content::-webkit-scrollbar{width:14px;height:14px}.content::-webkit-scrollbar-corner{background:#07131d}.content::-webkit-scrollbar-thumb:horizontal{background:#527286;border:3px solid #07131d;border-radius:10px}.content::-webkit-scrollbar-thumb:horizontal:hover{background:#7f9aab}
+.wfm-edge-meter{position:absolute;z-index:6;pointer-events:none;border-radius:999px;opacity:0;transition:opacity .12s,background .12s,box-shadow .12s}.wfm-edge-meter.x{left:12px;right:12px;height:4px}.wfm-edge-meter.y{top:42px;bottom:42px;width:4px}.wfm-edge-meter.top{top:4px}.wfm-edge-meter.bottom{bottom:42px}.wfm-edge-meter.left{left:4px}.wfm-edge-meter.right{right:4px}.wfm-edge-meter.idle{opacity:.55;background:#527286}.wfm-edge-meter.hover{opacity:.95;background:#2cdb74;box-shadow:0 0 10px #2cdb74}.wfm-edge-meter.warn{opacity:.95;background:#ffd02f;box-shadow:0 0 10px #ffd02f}.wfm-edge-meter.hot{opacity:.95;background:#ff9d2f;box-shadow:0 0 10px #ff9d2f}.wfm-edge-meter.limit{opacity:1;background:#ff4c3e;box-shadow:0 0 12px #ff4c3e}.wfm-window.wfm-near-left .wfm-edge-meter.left,.wfm-window.wfm-near-right .wfm-edge-meter.right,.wfm-window.wfm-near-top .wfm-edge-meter.top,.wfm-window.wfm-near-bottom .wfm-edge-meter.bottom{opacity:1}
+/* V5.4.14 - PanelDiscipline: Smartpanel stoert nicht, Testkatalog sicher schliessbar */
+.shell-smart-panel.collapsed{transform:translateX(calc(100% - 10px))!important;pointer-events:none}.shell-smart-panel.collapsed>header,.shell-smart-panel.collapsed .smart-tabs,.shell-smart-panel.collapsed section{pointer-events:none}.shell-smart-panel:not(.collapsed){pointer-events:auto}.shell-smart-panel.collapsed:hover,.shell-smart-panel.collapsed:focus-within{transform:translateX(calc(100% - 10px))!important}.test-catalog-panel{z-index:140!important;right:max(18px,var(--right-guard))!important;width:min(760px,calc(100vw - var(--nav) - 96px))!important;max-width:calc(100vw - 112px)!important}.test-catalog-panel>header{position:relative;z-index:3;padding-right:58px!important}.test-catalog-panel #testCatalogClose{position:absolute;right:12px;top:12px;width:34px;height:34px;display:grid;place-items:center;border:1px solid #9ed8f2!important;border-radius:5px;background:#17384b!important;color:#fff!important;font-size:22px!important;line-height:1;font-weight:900;z-index:5;cursor:pointer}.test-catalog-panel #testCatalogClose:hover{background:#a63731!important;border-color:#ffafa8!important}
+/* V5.4.15 - ViewportEdgeControls: rechte/untere Schiebepfeile */
+.viewport-edge-controls{position:fixed;z-index:88;display:flex;align-items:center;justify-content:center;gap:8px;pointer-events:auto;transition:background .12s,border-color .12s,box-shadow .12s,opacity .12s}.viewport-edge-controls[hidden]{display:none!important}.viewport-edge-controls button{width:30px;height:30px;border:1px solid #527286;border-radius:5px;background:#102b3b;color:#e7f5fb;font-weight:900;cursor:pointer}.viewport-edge-controls button:hover{background:#173f2b;border-color:#2cdb74;box-shadow:0 0 10px #2cdb74}.viewport-edge-controls i{display:block;border-radius:999px;background:#527286}.vec-right{right:12px;top:82px;bottom:40px;width:38px;flex-direction:column;background:#061923cc;border-left:1px solid #29495c}.vec-right i{width:5px;flex:1}.vec-bottom{left:calc(var(--nav) + 12px);right:58px;bottom:34px;height:38px;background:#061923cc;border-top:1px solid #29495c}.vec-bottom i{height:5px;flex:1}.viewport-edge-controls.idle i{background:#527286}.viewport-edge-controls.warn i{background:#ffd02f;box-shadow:0 0 8px #ffd02f}.viewport-edge-controls.hot i{background:#ff9d2f;box-shadow:0 0 9px #ff9d2f}.viewport-edge-controls.limit i{background:#ff4c3e;box-shadow:0 0 10px #ff4c3e}.viewport-edge-controls.off{opacity:.35}.shell.collapsed~.vec-bottom{left:76px}@media(max-width:600px){.vec-right{right:6px;top:66px;bottom:96px}.vec-bottom{left:8px;right:8px;bottom:92px}}
+/* V5.4.16 - ViewportPanFrame: Mouse-over Schieberahmen */
+.viewport-pan-frame{position:fixed;z-index:130;opacity:0;pointer-events:none;transition:opacity .08s;display:flex;align-items:center;justify-content:center;gap:8px}.viewport-pan-frame.pan-show{opacity:1;pointer-events:auto}.viewport-pan-frame[hidden]{display:none!important}.viewport-pan-frame button{width:28px;height:28px;border:1px solid #527286;border-radius:5px;background:#102b3b;color:#e7f5fb;font-weight:900;cursor:pointer}.viewport-pan-frame button:hover{background:#173f2b;border-color:#2cdb74}.pan-line{position:absolute;border-radius:999px;background:#2cdb74;box-shadow:0 0 10px #2cdb74}.pan-grip{width:22px;height:44px;border:1px solid #9ed8f2;border-radius:6px;background:#123c53;box-shadow:0 0 10px #2cdb7455;cursor:grab}.pan-drag .pan-grip{cursor:grabbing}.viewport-pan-frame output{min-width:86px;padding:4px 7px;border:1px solid #527286;border-radius:5px;background:#061923;color:#e7f5fb;font-size:11px;font-weight:900;text-align:center}.pan-right{right:10px;top:82px;bottom:40px;width:42px;flex-direction:column}.pan-right .pan-line{right:1px;top:0;bottom:0;width:4px}.pan-bottom{left:calc(var(--nav) + 10px);right:54px;bottom:34px;height:42px}.pan-bottom .pan-line{left:0;right:0;bottom:1px;height:4px}.viewport-pan-frame[data-state="warn"] .pan-line{background:#ffd02f;box-shadow:0 0 10px #ffd02f}.viewport-pan-frame[data-state="hot"] .pan-line{background:#ff9d2f;box-shadow:0 0 10px #ff9d2f}.viewport-pan-frame[data-state="limit"] .pan-line{background:#ff4c3e;box-shadow:0 0 12px #ff4c3e}.viewport-pan-frame[data-state="off"]{display:none!important}.shell.collapsed~.pan-bottom{left:74px}@media(max-width:600px){.pan-right{right:4px;top:66px;bottom:96px}.pan-bottom{left:8px;right:8px;bottom:92px}}
+/* V5.4.7 - NavigationTabOrderModule: sortierbare Register mit Ueberlauf */
+.navtab-tools{display:flex;align-items:center;gap:6px;margin-left:auto;position:relative;flex:0 0 auto}.navtab-more,.navtab-reset{height:28px;padding:0 10px;border:1px solid #5f859b;border-radius:5px;background:#12364a;color:#e7f5fb;font-size:12px;font-weight:900;cursor:pointer}.navtab-more:hover,.navtab-reset:hover{background:#1f5974}.navtab-menu{position:absolute;right:0;top:34px;min-width:190px;max-height:280px;overflow:auto;padding:6px;border:1px solid #5f859b;border-radius:6px;background:#071923;box-shadow:0 14px 34px #000b;z-index:90}.navtab-menu[hidden]{display:none!important}.navtab-menu button{display:block;width:100%;margin:0 0 4px 0;padding:7px 9px;border:1px solid #29495c;border-radius:4px;background:#102b3b;color:#e7f5fb;text-align:left;font-size:12px;font-weight:800;cursor:pointer}.navtab-menu button:hover{background:#1f5974}.navtab-hidden-overflow{display:none!important}.diag-tab.navtab-core{box-shadow:inset 0 -2px 0 #2cdb74}.diag-tab.navtab-dragging{opacity:.45;outline:2px solid #8ae6ff}.diag-tab.navtab-drop-before{box-shadow:-4px 0 0 #ffd02f}.diag-tab.navtab-drop-after{box-shadow:4px 0 0 #ffd02f}
+/* V4.0.9 master-stop / state LEDs / realistic ECG */
+.op-time{font-size:10px;color:#9fb9c8;white-space:nowrap}.op-time b{color:#e7f5fb;margin-left:4px}
+.status-led.off b{background:#59636a;box-shadow:none}.status-led.testing b{background:var(--blue);box-shadow:0 0 9px var(--blue);animation:pulse .8s infinite alternate}
+.status-led .led-state{font-size:8px;color:#91a9b7;margin-left:2px}
+.master-stopped .head-heart,.master-stopped .head-ekg,.master-stopped .scan-ring:before,.master-stopped .scan-ring .hourglass{animation-play-state:paused!important}
+.master-stopped .head-heart{color:#65727a!important;text-shadow:none!important}
+.master-stopped .head-ekg{opacity:.42}
+
+/* Framework Shell V1.0 reference layer */
+body{padding-bottom:30px}.content{padding-bottom:72px}
+.shell-greeting{display:flex;align-items:center;gap:18px}.shell-greeting-line{display:flex;align-items:center;gap:10px;min-width:220px}.shell-greeting-line small{display:block}.shell-project-icon{display:grid;place-items:center;width:38px;height:38px;border:1px solid #5d7b8d;border-radius:8px;background:#102d3f;color:var(--yellow);font-size:22px;box-shadow:inset 0 0 12px #0008}
+.shell-nav-icon{width:24px;text-align:center;font-size:17px;flex:0 0 24px}.shell-nav-label{min-width:0;overflow:hidden;text-overflow:ellipsis}.nav-item{gap:10px}.nav-group.closed>.nav-item{display:none}.nav-parent{width:100%;height:34px;display:grid;grid-template-columns:22px 1fr 22px;align-items:center;border:0;background:#0b2230;color:#a9c2d1;text-align:left;padding:0 8px;cursor:pointer}.nav-parent:hover{background:#14384c}.nav-parent i{font-style:normal;text-align:right}.nav-group.closed .nav-parent i{visibility:hidden}.nav-group:not(.closed) .nav-parent span{visibility:hidden}
+.shell-smart-panel{position:fixed;right:0;top:68px;bottom:30px;width:330px;background:linear-gradient(145deg,#102b3b,#071923);border-left:2px solid #506f82;z-index:70;box-shadow:-8px 0 22px #0008;transition:transform .22s ease;display:flex;flex-direction:column}.shell-smart-panel.collapsed{transform:translateX(calc(100% - 34px))}.shell-smart-panel>header{display:flex;align-items:center;justify-content:space-between;padding:11px 10px 11px 42px;border-bottom:1px solid #35586e;background:#17384b}.shell-smart-panel>header small{display:block;color:var(--muted);font-weight:400}.shell-smart-panel>header button{width:30px;height:30px;border:0;background:#244f68;color:#fff;border-radius:4px}.smart-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:8px}.smart-tabs button{border:1px solid #35586e;background:#0a1d29;color:#bcd0dc;padding:8px 4px;border-radius:4px}.smart-tabs button.active{background:#1d506b;color:#fff}.shell-smart-panel section{display:none;padding:8px;overflow:auto}.shell-smart-panel section.active{display:block}.shell-smart-panel article{padding:12px;margin-bottom:8px;border:1px solid #35586e;border-radius:6px;background:#0a1d29}.shell-smart-panel article p{margin:6px 0 0;color:#a9bfcc;line-height:1.45}
+.shell-status-bar{position:fixed;left:var(--nav);right:0;bottom:0;height:30px;z-index:90;display:flex;align-items:center;gap:2px;padding:2px 6px;background:#081923;border-top:1px solid #48697c;box-shadow:0 -3px 12px #0007}.shell-status-bar>*{height:24px;display:flex;align-items:center;gap:5px;padding:0 8px;border:0;border-right:1px solid #29495c;background:transparent;color:#b9ccd7;font-size:11px;white-space:nowrap}.shell-status-bar button{cursor:pointer}.shell-status-bar b{color:#eef6fa}.shell-status-bar i{width:8px;height:8px;border-radius:50%;background:#687985}.shell-status-bar i.green{background:var(--green);box-shadow:0 0 6px var(--green)}.shell-status-bar i.yellow{background:var(--yellow);box-shadow:0 0 6px var(--yellow)}.shell-status-bar .version{margin-left:auto;color:var(--blue);font-weight:800}.shell.collapsed~.shell-status-bar{left:64px}
+@media(max-width:900px){.shell-smart-panel{width:min(86vw,330px)}.shell-status-bar{overflow-x:auto}.shell-greeting-line{min-width:0}.shell-greeting-line span:last-child{display:none}}
+@media(max-width:600px){body{padding-bottom:0}.shell-status-bar{left:0;bottom:62px;height:28px}.main{height:calc(100vh - 90px)}.content{padding-bottom:48px}.shell-smart-panel{top:58px;bottom:90px}.top-right .iconbtn:nth-of-type(n+4){display:none}}
+
+/* V4.3.5 PCAP/.eth analysis - konsolidiert */
+.pcap-drop{border:2px dashed #55798d;border-radius:8px;padding:24px;text-align:center;background:#081b27;transition:.18s}.pcap-drop.drag{border-color:#64d7ff;box-shadow:0 0 18px #36bce944}.pcap-summary{display:grid;grid-template-columns:repeat(6,minmax(120px,1fr));gap:8px;margin:12px 0}.pcap-kpi{background:#0b2230;border:1px solid #355a6d;border-radius:7px;padding:10px}.pcap-kpi b{display:block;font-size:20px;color:#e7f7ff}.pcap-kpi small{color:#9db9c8}.pcap-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pcap-chart{width:100%;height:220px;background:#06141d;border:1px solid #29495c;border-radius:6px}.pcap-note{padding:10px;border-left:4px solid #e6b94b;background:#2b2412;margin:8px 0}.pcap-ok{border-left-color:#42d98b;background:#10291e}.pcap-bad{border-left-color:#ff615b;background:#2d1718}.pcap-progress{height:18px;background:#06131c;border:1px solid #35586e;border-radius:10px;overflow:hidden}.pcap-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2d8fb8,#61d7ff);transition:width .12s}.pcap-private{font-size:12px;color:#d8bd74}.pcap-table td,.pcap-table th{white-space:nowrap}.pcap-table td:last-child,.pcap-table th:last-child{white-space:normal}.pcap-empty{padding:26px;text-align:center;color:#9db9c8}.pcap-filemeta{margin-top:8px;color:#a9c5d3}
+@media(max-width:1100px){.pcap-summary{grid-template-columns:repeat(3,1fr)}.pcap-grid{grid-template-columns:1fr}}@media(max-width:650px){.pcap-summary{grid-template-columns:repeat(2,1fr)}}
+
+/* V4.3.23 Randstabilisierung: volle Arbeitsflaeche ohne Browser-Seitenleiste */
+html,body,.shell{width:100%;max-width:none}
+.shell{position:fixed;inset:0;overflow:hidden}
+.main{width:auto;max-width:none;overflow:hidden}
+.content{width:100%;max-width:100%;scrollbar-gutter:auto}
+@supports(width:100dvw){.shell{width:100dvw;height:100dvh}.main{height:100dvh}}
+
+
+/* V4.3.23: wirksame Einstellungen und Protokollverwaltung */
+[data-expert-only]{display:none!important}body.expert-mode [data-expert-only]{display:inline-flex!important}
+body:not(.expert-mode) .expert-detail{display:none!important}
+.protocol-maintenance{grid-column:1/-1;margin-top:10px;padding:12px;border:1px solid #47677a;border-radius:7px;background:#071822;display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+.protocol-maintenance h4{margin:0 0 5px}.protocol-actions{display:flex;gap:8px;flex-wrap:wrap}.btn.danger{border-color:#b64848;background:#5b1d24;color:#fff}.btn.danger:hover{background:#782730}
+.settings-live-note{grid-column:1/-1;color:#2cdb74;font-weight:700;min-height:20px}
+html.no-scrollbars,html.no-scrollbars *{scrollbar-width:none!important}html.no-scrollbars *::-webkit-scrollbar{width:0!important;height:0!important}
+
+/* V4.3.23 - UI-21 Vollflaechennutzung und zentraler Animationsstopp */
+html,body,#shell,.shell,.app-shell{width:100%;max-width:none;right:0}
+.shell{min-width:0;overflow:hidden}
+.main{width:100%;max-width:none;min-width:0}
+.content{width:100%;max-width:none;scrollbar-gutter:auto!important;padding-right:16px!important}
+/* V5.4.14 final panel override */.shell-smart-panel.collapsed,.shell-smart-panel.collapsed:hover,.shell-smart-panel.collapsed:focus-within{transform:translateX(calc(100% - 10px))!important;pointer-events:none}.test-catalog-panel{z-index:140!important}.test-catalog-panel #testCatalogClose{display:grid!important;visibility:visible!important;opacity:1!important}
+/* V5.4.13 final override - ScrollGuard gewinnt gegen alte Viewport-Audits */.content{overflow:auto!important;overflow-x:auto!important;overflow-y:auto!important;padding-right:calc(18px + var(--right-guard))!important;scrollbar-gutter:stable both-edges!important}.shell-smart-panel.collapsed{transform:translateX(calc(100% - 18px))!important}.shell-smart-panel.collapsed:hover,.shell-smart-panel.collapsed:focus-within{transform:translateX(calc(100% - 42px))!important}.content>.page{min-width:min(var(--content-min),calc(100vw - 48px))}
+body.animations-off *,body.reduced-motion *{animation:none!important;animation-play-state:paused!important;transition:none!important;scroll-behavior:auto!important}
+body.animations-off .scan-ring:before,body.animations-off .scan-ring .hourglass,body.animations-off .sensor-lamp i,body.animations-off .monitor-screen:after,body.animations-off .cursor{animation:none!important}
+body.animations-off .head-heart{transform:scale(.92)!important;opacity:.62!important;filter:none!important}
+body.animations-off .head-ekg{opacity:.72!important}
+.score:focus,.score:hover{outline:2px solid var(--blue);outline-offset:3px}
+
+/* V5.4.2 Digital Organism monitor */
+.brain-monitor-feed{margin-top:7px;border:1px solid rgba(72,198,232,.32);border-radius:7px;background:rgba(2,15,25,.58);overflow:hidden}
+.brain-monitor-head{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:5px 8px;background:linear-gradient(90deg,rgba(28,88,111,.52),rgba(9,31,44,.35));font-size:10px;color:#9eeeff}
+.brain-monitor-head span{color:#91aebd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brain-activity-log{max-height:118px;overflow:auto;padding:4px 7px;scrollbar-gutter:stable}
+.brain-log-row{display:grid;grid-template-columns:58px 1fr;gap:7px;padding:4px 0;border-bottom:1px solid rgba(83,126,148,.16);font-size:10px;line-height:1.25}
+.brain-log-row time{font-variant-numeric:tabular-nums;color:#779aaa}.brain-log-row b{display:block;color:#d7eff9}.brain-log-row small{display:block;color:#8ca9b8;margin-top:1px}.brain-log-row.warn b{color:#ffe36d}.brain-log-row.err b{color:#ff776b}.brain-log-row.action b{color:#72d9ff}.brain-log-row.ok b{color:#72ef9f}
+.operation-queue-details{margin-top:5px}.operation-queue-details summary{cursor:pointer;color:#7899aa;font-size:10px}.operation-queue-details[open] .operation-queue{max-height:90px;overflow:auto}
+body.animations-off .brain-monitor-feed *{transition:none!important;animation:none!important}
+
+/* V5.4.16 - PanFrame final: hidden hover zones, no duplicate edge controls */
+.viewport-edge-controls{display:none!important}
+.viewport-pan-frame{pointer-events:auto}
+.viewport-pan-frame:not(.pan-show) button,
+.viewport-pan-frame:not(.pan-show) .pan-grip,
+.viewport-pan-frame:not(.pan-show) output,
+.viewport-pan-frame:not(.pan-show) .pan-line{visibility:hidden}
+
+/* V5.4.17 - Catalog close + PanFrame visibility repair */
+.test-catalog-panel{z-index:260!important;right:56px!important;max-width:calc(100vw - 120px)!important}
+.test-catalog-panel>header{position:relative!important;padding-right:62px!important;min-height:58px!important;overflow:visible!important}
+.test-catalog-panel #testCatalogClose{position:absolute!important;right:12px!important;top:12px!important;width:36px!important;height:36px!important;display:flex!important;align-items:center!important;justify-content:center!important;visibility:visible!important;opacity:1!important;z-index:999!important;border:1px solid #ffafa8!important;border-radius:5px!important;background:#17384b!important;color:#fff!important;font-size:24px!important;line-height:1!important;font-weight:900!important;cursor:pointer!important;pointer-events:auto!important}
+.test-catalog-panel #testCatalogClose:hover{background:#a63731!important;border-color:#ffd4d0!important}
+.viewport-edge-controls{display:none!important}
+.viewport-pan-frame{z-index:245!important;opacity:0!important;pointer-events:auto!important}
+.viewport-pan-frame.pan-show{opacity:1!important}
+.viewport-pan-frame:not(.pan-show) button,
+.viewport-pan-frame:not(.pan-show) .pan-grip,
+.viewport-pan-frame:not(.pan-show) output,
+.viewport-pan-frame:not(.pan-show) .pan-line{visibility:hidden!important}
+.pan-right{right:44px!important;top:82px!important;bottom:42px!important;width:46px!important}
+.pan-bottom{left:calc(var(--nav) + 10px)!important;right:96px!important;bottom:34px!important;height:46px!important}
+.shell.collapsed~.pan-bottom{left:74px!important}
+.viewport-pan-frame.pan-show .pan-line{visibility:visible!important}
+
+/* V5.4.18 - TestCatalog floating close fallback */
+.test-catalog-floating-close{position:absolute!important;right:10px!important;top:10px!important;width:38px!important;height:38px!important;display:flex!important;align-items:center!important;justify-content:center!important;z-index:2000!important;border:2px solid #ffafa8!important;border-radius:6px!important;background:#9f302c!important;color:#fff!important;font-size:28px!important;line-height:1!important;font-weight:900!important;cursor:pointer!important;pointer-events:auto!important;box-shadow:0 0 0 2px #061923,0 8px 18px #0009!important}
+.test-catalog-floating-close:hover{background:#c23d35!important;border-color:#fff!important}
+.test-catalog-panel[hidden] .test-catalog-floating-close{display:none!important}
+
+/* V5.4.19 - PanFrame fine visual handles */
+.viewport-pan-frame{z-index:320!important;background:transparent!important;gap:0!important}
+.viewport-pan-frame button{display:none!important}
+.viewport-pan-frame output{position:absolute!important;display:none!important;min-width:58px!important;padding:2px 5px!important;font-size:10px!important}
+.viewport-pan-frame.pan-show output{display:block!important}
+.viewport-pan-frame .pan-line{visibility:hidden!important;background:#2cdb74!important;box-shadow:0 0 8px #2cdb74!important}
+.viewport-pan-frame.pan-show .pan-line{visibility:visible!important}
+.viewport-pan-frame .pan-grip{visibility:hidden!important;position:absolute!important;width:18px!important;height:18px!important;display:flex!important;align-items:center!important;justify-content:center!important;border:1px solid #9ff7bf!important;border-radius:50%!important;background:#092a1d!important;color:#d8ffe5!important;font-size:14px!important;line-height:1!important;font-weight:900!important;box-shadow:0 0 9px #2cdb7470!important;cursor:grab!important}
+.viewport-pan-frame.pan-show .pan-grip{visibility:visible!important}
+.viewport-pan-frame .pan-grip:before{display:block!important;transform:translateY(-1px)}
+.pan-bottom{left:calc(var(--nav) + 8px)!important;right:18px!important;bottom:31px!important;height:28px!important;width:auto!important}
+.pan-bottom .pan-line{left:0!important;right:0!important;top:13px!important;bottom:auto!important;height:2px!important;width:auto!important}
+.pan-bottom .pan-grip{left:50%!important;top:5px!important;transform:translateX(-50%)!important;cursor:ns-resize!important}
+.pan-bottom .pan-grip:before{content:"↕"!important}
+.pan-bottom output{left:calc(50% + 18px)!important;top:3px!important}
+.pan-right{right:4px!important;top:74px!important;bottom:34px!important;width:28px!important;height:auto!important}
+.pan-right .pan-line{top:0!important;bottom:0!important;left:13px!important;right:auto!important;width:2px!important;height:auto!important}
+.pan-right .pan-grip{top:50%!important;left:5px!important;transform:translateY(-50%)!important;cursor:ew-resize!important}
+.pan-right .pan-grip:before{content:"↔"!important;font-size:13px!important}
+.pan-right output{right:28px!important;top:calc(50% + 14px)!important}
+.viewport-pan-frame[data-state="warn"] .pan-line{background:#ffd02f!important;box-shadow:0 0 8px #ffd02f!important}
+.viewport-pan-frame[data-state="hot"] .pan-line{background:#ff9d2f!important;box-shadow:0 0 8px #ff9d2f!important}
+.viewport-pan-frame[data-state="limit"] .pan-line{background:#ff4c3e!important;box-shadow:0 0 9px #ff4c3e!important}
+@media(max-width:600px){.pan-right{right:3px!important}.pan-bottom{left:6px!important;right:6px!important;bottom:88px!important}}
+
+/* V5.4.20 - Window header icons + PanFrame axis repair */
+.wfm-tools button{font-family:"Segoe UI Symbol","Segoe UI",Arial,sans-serif!important;font-size:17px!important;line-height:1!important;display:grid!important;place-items:center!important;color:#f4fbff!important}
+.wfm-tools .wfm-min-btn{padding-bottom:8px!important;font-weight:900!important}
+.wfm-tools .wfm-max-btn{font-size:16px!important}
+.wfm-tools .wfm-close-btn{font-size:22px!important;color:#fff!important}
+.pan-bottom .pan-grip{cursor:ns-resize!important}
+.pan-right .pan-grip{cursor:ew-resize!important}
+
+/* V5.4.21 - Workspace panel normal window controls */
+.workspace-frame-tools .iconbtn{font-family:"Segoe UI Symbol","Segoe UI",Arial,sans-serif!important;display:grid!important;place-items:center!important;font-weight:900!important;line-height:1!important}
+.workspace-frame-tools .wfp-min-btn{padding-bottom:8px!important;font-size:17px!important}
+.workspace-frame-tools .wfp-max-btn{font-size:16px!important}
+.workspace-frame-tools .wfp-close-btn{font-size:22px!important;color:#fff!important}
+.workspace-frame-tools .wfp-close-btn:hover{background:#a63731!important}
+.workspace-frame-panel.wfp-max{inset:68px 0 30px var(--nav)!important;border-radius:0!important}
+.shell.collapsed~.workspace-frame-panel.wfp-max{left:64px!important}
+
+/* V5.4.22 - PanFrame edge resize behavior */
+:root{--viewport-pan-bottom:0px;--viewport-pan-right:0px}
+.pan-bottom{bottom:calc(31px + var(--viewport-pan-bottom))!important}
+.pan-right{right:calc(4px + var(--viewport-pan-right))!important}
+.viewport-pan-frame[data-state="active"] .pan-line{background:#2cdb74!important;box-shadow:0 0 8px #2cdb74!important}
+.viewport-pan-frame[data-state="warn"] .pan-line{background:#ffd02f!important;box-shadow:0 0 8px #ffd02f!important}
+.viewport-pan-frame[data-state="hot"] .pan-line{background:#ff9d2f!important;box-shadow:0 0 9px #ff9d2f!important}
+.viewport-pan-frame[data-state="limit"] .pan-line{background:#ff4c3e!important;box-shadow:0 0 10px #ff4c3e!important}
+.viewport-pan-frame[data-state="warn"] .pan-grip{border-color:#ffe895!important}
+.viewport-pan-frame[data-state="hot"] .pan-grip{border-color:#ffc17a!important}
+.viewport-pan-frame[data-state="limit"] .pan-grip{border-color:#ffafa8!important}
+
+/* V5.4.23 - PanFrame edge resize wins against content CSS */
+.viewport-pan-frame,.viewport-pan-frame *{touch-action:none!important;user-select:none!important}
+.viewport-pan-frame.pan-drag,.viewport-pan-frame.pan-drag *{cursor:grabbing!important}
+.content[data-pan-frame="ready"]{box-sizing:border-box!important;min-height:86px!important;overflow:auto!important}
+.pan-right{min-height:86px!important}
+.pan-bottom{min-width:320px!important}
+
+/* V5.4.26 - TestCatalog visible matrix preview */
+.test-catalog-panel{grid-template-rows:auto auto auto auto 1fr auto auto!important}
+.test-matrix-preview{padding:10px 12px;border-bottom:1px solid #29495c;background:#061923}
+.test-matrix-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.test-matrix-head b{display:block;color:#e7f5fb;font-size:13px;text-transform:uppercase;letter-spacing:.5px}.test-matrix-head span{display:block;color:#9eb7c5;font-size:11px;font-weight:800}.test-matrix-status{padding:4px 8px;border:1px solid #2cdb74;border-radius:999px;color:#c8f8d9;font-size:11px;font-weight:900;white-space:nowrap}.test-matrix-status.warn{border-color:#ffd02f;color:#ffe895}.test-matrix-pages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:260px;overflow:auto}.test-matrix-page{border:1px solid #31586d;border-radius:6px;background:#071923;overflow:hidden}.test-matrix-page>header{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:8px 9px;border-bottom:1px solid #29495c;background:#0d2938}.test-matrix-page header small{display:block;color:#9ed8f2;font-size:10px;font-weight:900;text-transform:uppercase}.test-matrix-page header b{display:block;color:#e7f5fb;font-size:12px}.test-matrix-page header span{color:#ffd02f;font-size:10px;font-weight:900;white-space:nowrap}.test-matrix-row{display:grid;gap:5px;padding:6px 7px;border-bottom:1px solid rgba(41,73,92,.45)}.test-matrix-row:last-child{border-bottom:0}.test-matrix-card{min-height:36px;padding:5px 6px;border:1px solid #527286;border-radius:5px;background:#102b3b;color:#e7f5fb;text-align:left;cursor:pointer;overflow:hidden}.test-matrix-card:hover{border-color:#2cdb74;background:#123f32}.test-matrix-card b{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.test-matrix-card span{display:block;margin-top:2px;color:#9ed8f2;font-size:10px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.test-matrix-card.size-S{box-shadow:inset 3px 0 0 #2cdb74}.test-matrix-card.size-M{box-shadow:inset 3px 0 0 #8ae6ff}.test-matrix-card.size-L{box-shadow:inset 3px 0 0 #ffd02f}.test-matrix-card.size-XL{box-shadow:inset 3px 0 0 #ff9d2f}.test-matrix-empty,.test-matrix-note{padding:10px;color:#9eb7c5;font-size:12px;font-weight:800}@media(max-width:900px){.test-matrix-pages{grid-template-columns:1fr}}
+
+/* V5.4.27 - PanFrame right edge controls main surface */
+.main[data-pan-frame-surface="ready"]{box-sizing:border-box!important;overflow:hidden!important;justify-self:start!important}
+.content[data-pan-frame="ready"]{width:100%!important;max-width:100%!important}
+
+/* V5.4.28 - Standard reset button clarity */
+#layoutReset{border-color:#ffd02f!important;color:#ffe895!important;min-width:156px!important}
+#layoutReset:hover{background:#4a3c12!important;color:#fff6c8!important}
+
+/* V5.4.29 - Layout editor matrix preview */
+.layout-matrix-editor{margin:10px 12px 0;padding:10px;border:1px solid #31586d;border-radius:6px;background:#061923;max-height:360px;overflow:auto}.layout-matrix-header{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:8px}.layout-matrix-header b{display:block;color:#e7f5fb;font-size:13px;text-transform:uppercase}.layout-matrix-header span{display:block;color:#9eb7c5;font-size:11px;font-weight:800}.layout-matrix-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}.layout-matrix-tabs button{padding:5px 8px;border:1px solid #527286;border-radius:5px;background:#102b3b;color:#e7f5fb;font-size:11px;font-weight:900;cursor:pointer}.layout-matrix-tabs button.active,.layout-matrix-tabs button:hover{border-color:#2cdb74;background:#123f32}.layout-matrix-page{border:1px solid #29495c;border-radius:6px;overflow:hidden;background:#071923}.layout-matrix-page>header{display:flex;justify-content:space-between;gap:8px;padding:8px 9px;background:#0d2938;border-bottom:1px solid #29495c}.layout-matrix-page header b{font-size:12px;color:#e7f5fb}.layout-matrix-page header span{font-size:10px;color:#ffd02f;font-weight:900}.layout-matrix-row{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;padding:6px 7px;border-bottom:1px solid rgba(41,73,92,.45)}.layout-matrix-row:last-child{border-bottom:0}.layout-matrix-card{min-height:38px;padding:5px 6px;border:1px solid #527286;border-radius:5px;background:#102b3b;color:#e7f5fb;text-align:left;cursor:pointer;overflow:hidden}.layout-matrix-card:hover{border-color:#2cdb74;background:#123f32}.layout-matrix-card b{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.layout-matrix-card span{display:block;margin-top:2px;color:#9ed8f2;font-size:10px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.layout-matrix-card.size-S{box-shadow:inset 3px 0 0 #2cdb74}.layout-matrix-card.size-M{box-shadow:inset 3px 0 0 #8ae6ff}.layout-matrix-card.size-L{box-shadow:inset 3px 0 0 #ffd02f}.layout-matrix-card.size-XL{box-shadow:inset 3px 0 0 #ff9d2f}.layout-matrix-empty{padding:10px;color:#9eb7c5;font-size:12px;font-weight:800}
+.audio-inline-control{position:absolute;right:8px;bottom:7px;display:flex;align-items:center;gap:5px;padding:3px 5px;border:1px solid rgba(64,173,255,.35);border-radius:6px;background:rgba(4,18,28,.82);backdrop-filter:blur(3px);z-index:4}.audio-inline-control .audio-toggle{position:static}.audio-volume-mini{width:74px;height:14px;accent-color:var(--green);cursor:pointer}.audio-inline-control small,.audio-channel-row small[data-audio-volume-value]{font-size:9px;color:#9ed8f2;font-weight:900;min-width:32px}.audio-channel-row{display:grid;grid-template-columns:34px minmax(120px,1fr) 110px 42px 44px;align-items:center;gap:8px}.audio-channel-row .audio-volume-mini{width:100%;min-width:80px}
+</style><link rel="stylesheet" href="assets/css/navigationcore-master.css"><link rel="stylesheet" href="assets/css/commandcenter-consolidated-v4.3.5.css"></head><body>
+<section class="office-overlay" id="officeOverlay" hidden aria-label="Interaktiver Bueromodus">
+  <header class="office-toolbar">
+    <button class="office-chair-exit" id="officeChairExit" title="Bueromodus verlassen" aria-label="Bueromodus verlassen">♿̸</button>
+    <strong>NETZWERK-LEITSTAND · BÜROMODUS</strong>
+    <span class="office-status">Gegenstände sind direkt bedienbar · Mouseover zeigt die Funktion</span>
+  </header>
+  <div class="office-stage">
+    <div class="office-scene">
+      <img src="assets/images/office/leitstand-buero-v1.png" alt="Netzwerk-Leitstand aus Sitzperspektive">
+      <button class="office-hotspot" style="left:0%;top:52%;width:14%;height:24%" data-office-command="devices" data-label="Telefon · Geräte" aria-label="Telefon: Geräteverwaltung öffnen"></button>
+      <button class="office-hotspot" style="left:3%;top:73%;width:30%;height:24%" data-office-command="address" data-label="Adressregister · Stammdaten" aria-label="Adressregister: Stammdaten öffnen"></button>
+      <button class="office-hotspot" style="left:14%;top:52%;width:74%;height:22%" data-office-command="console" data-label="Schaltpult · Tests steuern" aria-label="Schaltpult: Teststeuerung öffnen"></button>
+      <div class="office-console-actions" aria-label="Direktsteuerung am Schaltpult">
+        <button type="button" data-office-action="start-all" title="Alle Messungen starten">START</button>
+        <button type="button" data-office-action="stop-all" title="Alle Messungen stoppen und Anzeigen nullstellen">STOPP</button>
+        <button type="button" data-office-action="deep" title="Tiefenanalyse starten">TIEFENTEST</button>
+        <button type="button" data-office-action="report" title="Bericht erzeugen">BERICHT</button>
+      </div>
+      <button class="office-hotspot" style="left:35%;top:73%;width:25%;height:24%" data-office-command="protocol" data-label="Tagesprotokoll · Messwerte" aria-label="Tagesprotokoll öffnen"></button>
+      <button class="office-hotspot" style="left:54%;top:73%;width:14%;height:22%" data-office-command="search" data-label="Lupe · Live-Diagnose" aria-label="Lupe: Live-Diagnose öffnen"></button>
+      <button class="office-hotspot" style="left:62%;top:70%;width:12%;height:18%" data-office-command="clock" data-label="Uhr · Verlauf" aria-label="Uhr: Messverlauf öffnen"></button>
+      <button class="office-hotspot" style="left:82%;top:33%;width:16%;height:42%" data-office-command="lamp" data-label="Lampe · Anzeige" aria-label="Lampe: Anzeigeeinstellungen öffnen"></button>
+      <button class="office-hotspot" style="left:79%;top:73%;width:17%;height:24%" data-office-command="reports" data-label="Tasse · Berichte" aria-label="Tasse: Berichte öffnen"></button>
+      <button class="office-hotspot" style="left:89%;top:8%;width:10%;height:48%" data-office-command="exit" data-action="danger" data-label="Ausgang · Programm verlassen" aria-label="Ausgang: Programm verlassen"></button>
+      <button class="office-hotspot" style="left:8%;top:1%;width:78%;height:51%" data-office-command="dashboard" data-label="Leitstandwand · Dashboard" aria-label="Leitstandwand: Dashboard öffnen"></button>
+      <div class="office-live-note" id="officeLiveNote">Bereit</div>
+    </div>
+  </div>
+</section>
+<div class="shell app-shell" id="shell">
+<aside class="navigation-core" id="navigationCore" aria-label="NavigationCore" data-core-version="master-prototype-v0.15.8">
+<div class="nav-action-menu" id="navActionMenu" aria-label="Hamburger-Kontextmenue">
+<button type="button" data-action="print">Drucken</button>
+<button type="button" data-action="filter-reset">Filter zuruecksetzen</button>
+<button type="button" data-action="nav-reset">Navigation zuruecksetzen</button>
+<button type="button" data-action="help">Hilfe zur aktuellen Seite</button>
+</div>
+<div class="nav-controls side-controls">
+<button id="hamburger" class="tool-btn" type="button" title="Kontextmenue">M</button>
+<button id="pinBtn" class="tool-btn active" type="button" aria-pressed="true" title="Sidebar loesen">P</button>
+<button id="restBtn" class="tool-btn" type="button" title="Ruhemodus">R</button>
+<button id="recentBtn" class="tool-btn" type="button" title="Zuletzt verwendet">Z</button>
+<button id="toggleMenus" class="tool-btn" type="button" title="Menuegruppen oeffnen/schliessen">G</button>
+</div>
+<div class="user-info">
+<div class="user-top"><span class="user-avatar">A</span><span class="user-main"><strong class="user-name">Admin</strong><span class="user-role">Netzwerk-Rolle</span></span><span class="role-icons"><span class="role-badge">R</span><span class="role-badge">Q</span></span></div>
+<div class="user-actions"><button type="button" id="autoModeBtn" title="Automatikmodus ein- oder ausschalten">Auto: aus</button><button type="button" id="officeModeBtn" title="Bueromodus ein- oder ausschalten">Buero</button></div>
+</div>
+<div class="quick-icons" aria-label="15 Schnellzugriffe">
+<button data-page="dashboard" title="Dashboard">&#8962;</button><button data-page="current" title="Live-Diagnose">!</button><button data-page="incidents" title="Stoerungen">&#9888;</button><button data-page="tests" title="Pruefkreise">&#10003;</button><button data-page="devices" title="Geraete">&#9638;</button>
+<button data-page="wifi" title="Mesh">W</button><button data-page="fritz" title="FRITZ">&#9635;</button><button data-page="docsis" title="DOCSIS">D</button><button data-page="reports" title="Berichte">&#8681;</button><button data-page="measurements" title="Protokoll">&#9776;</button>
+<button data-page="settings" title="Einstellungen">&#9881;</button><button data-page="help" title="Hilfe">?</button><button data-page="dashboard" title="Cockpit">&#9711;</button><button data-page="tests" title="Analyse">&#9651;</button><button data-page="reports" title="Export">X</button>
+</div>
+<div class="recent-panel" id="recentPanel" aria-label="Zuletzt verwendet"><strong>Zuletzt verwendet</strong><div id="recentList"></div><div id="recentEmpty">Noch keine Eintraege.</div></div>
+<nav class="nav-menu menu-scroll" id="menuScroll">
+<section class="nav-group"><button class="nav-parent nav-group-toggle" type="button"><span>+</span><b>Leitstand</b><i>-</i></button><button class="nav-item active" data-icon="&#8962;" data-page="dashboard">Dashboard</button><button class="nav-item" data-icon="!" data-page="current">Live-Diagnose</button><button class="nav-item" data-icon="&#9888;" data-page="incidents">Stoerungen</button></section>
+<section class="nav-group"><button class="nav-parent nav-group-toggle" type="button"><span>+</span><b>Pruefung</b><i>-</i></button><button class="nav-item" data-icon="&#10003;" data-page="tests">Pruefkreise</button><button class="nav-item" data-icon="&#9638;" data-page="devices">Geraete</button><button class="nav-item" data-icon="W" data-page="wifi">Mesh/WLAN</button><button class="nav-item" data-icon="&#9635;" data-page="fritz">FRITZ!Box</button><button class="nav-item" data-icon="D" data-page="docsis">DOCSIS</button></section>
+<section class="nav-group nav-group-stammdaten" id="stammdatenGroup"><button class="nav-parent nav-group-toggle" id="stammdatenToggle" type="button"><span>+</span><b>Stammdaten</b><i>-</i></button><div class="nav-subitems"><button class="nav-item nav-sub" data-icon="&#9881;" data-page="settings">Einstellungen</button><button class="nav-item nav-sub" data-icon="&#9638;" data-page="devices">Geraete</button><button class="nav-item nav-sub" data-icon="&#9635;" data-page="settings" data-settings-tab="routerProfiles">Routerprofile</button></div></section>
+<section class="nav-group"><button class="nav-parent nav-group-toggle" type="button"><span>+</span><b>Auswertung</b><i>-</i></button><button class="nav-item" data-icon="&#8681;" data-page="reports">Berichte</button><button class="nav-item" data-icon="&#9776;" data-page="measurements">Messprotokoll</button><button class="nav-item" data-icon="P" data-page="pcap">Paketmitschnitt</button><button class="nav-item" data-icon="?" data-page="help">Hilfe</button></section>
+</nav>
+<section class="context-panel" id="contextPanel" aria-label="Kontextnavigation"><strong>Kontext</strong><div id="contextList"></div><span id="contextEmpty">Kein Kontext gewaehlt.</span></section>
+<div class="bottom-dock" aria-label="Bottom Dock"><button data-page="dashboard" title="Dashboard">D</button><button data-page="tests" title="Pruefung">P</button><button data-page="incidents" title="Stoerung">S</button><button data-page="measurements" title="Protokoll">E</button><button data-page="help" title="Hilfe">H</button></div>
+<div class="resize-rail" id="resizeRail" aria-label="Navigation Breite aendern"></div><button class="rail-toggle" id="railToggle" type="button" title="Navigation ein-/ausklappen">&lt;</button><button class="rail-lock is-open" id="railLock" type="button" title="Breite arretieren"><span class="lock-glyph">U</span></button><div class="drag-arrow" id="dragArrow"><></div><div class="resize-status" id="resizeStatus">270 px</div>
+</aside>
+<main class="main"><header class="top"><div><h1 id="pageTitle">NETZWERK-LEITSTAND</h1><small>Netzwerk-Leitstand V4.3.5 - Tiefenkonsolidiert</small><span id="lastOperation" hidden></span></div><div class="top-right"><button class="btn office-return" id="backToOffice" hidden>Zurueck ins Buero</button><button class="iconbtn top-toggle" id="toggleAllSections" title="Alle Karten ein-/ausklappen">V</button><span id="clock"></span><div id="plant" class="plant yellow">MESSUNG STARTET</div></div></header>
+<div class="content" id="mainContent"><section class="rest-empty" id="restEmpty" aria-label="Ruhemodus"><div>Ruhemodus aktiv. Arbeitsflaeche ist aufgeraeumt.</div></section><section class="office-view" id="officeView" hidden><img src="assets/images/office/leitstand-buero-v1.png" alt="Bueromodus Leitstand"><div class="office-caption"><b>Bueromodus</b><span>Hotspots werden spaeter auf diesem Bild aktiviert.</span></div></section><section id="dashboard" class="page active"><section class="card diagnostic-tabs cockpit-tabs" title="Jede Registerkarte zeigt nur die eigenen Testinstrumente der Kategorie."><div class="dashboard-inline-controls"><label class="switch master-home-switch" title="Alle Tests ein- oder ausschalten"><input id="masterHomeSwitch" type="checkbox"><span></span></label><button class="btn" id="detectRouterHome" data-info="Erkennt den Router aus Profil, erreichbarer Adresse und importierten Router-/FRITZ!Box-Dateien.">Router erkennen</button><button class="btn" id="assistantStartTop" data-info="Startet den gefuehrten Stoerungsassistenten mit Schritt-fuer-Schritt-Pruefung.">Assistent starten</button><div class="section-global-tools inline-section-tools" aria-label="Bereichssteuerung"><button id="expandAll" title="Alle Bereiche ausklappen">+</button><button id="collapseAll" title="Alle Bereiche einklappen">-</button><button id="lockSections" title="Bereiche sperren">LOCK</button></div></div><div class="tab-strip register-tabs" id="diagTabs" aria-label="Fachregister"><button class="diag-tab active" data-diag-tab="internet">Internet</button><button class="diag-tab" data-diag-tab="router">FRITZ!Box</button><button class="diag-tab" data-diag-tab="wifi">WLAN</button><button class="diag-tab" data-diag-tab="pc">PC</button><button class="diag-tab" data-diag-tab="printer">Drucker</button><button class="diag-tab" data-diag-tab="multimedia">Multimedia</button><button class="diag-tab" data-diag-tab="nas">NAS</button><button class="diag-tab" data-diag-tab="devices">Weitere Geraete</button><button class="diag-tab" data-diag-tab="protocol">Protokoll</button></div><div class="diag-brain-row"><div id="diagTabPanels"></div><article class="card brain-card brain-inline-card" data-layout-id="brain">
+    <div class="brain-section-head"><div><small>BEWERTEN UND KOORDINIEREN</small><h2>DENKZENTRUM</h2></div><div class="brain-head-actions"><button class="btn secondary brain-sim-open" id="brainSimulationOpen" type="button">Testmodus</button><button class="btn secondary layout-edit-open" id="layoutEditOpen" type="button">Layout</button><button class="btn secondary" id="workspaceFrameOpen" type="button">Arbeitsflaeche</button><span id="brainStateLabel" class="pill blue">TEST</span></div></div>
+        <div class="brain-reactor-telemetry" id="brainReactorTelemetry" aria-label="Reaktor-Telemetrie des Denkzentrums">
+          <button class="brain-reactor-metric" id="brainMetricEnergy" type="button" data-metric="energy"><span>ENERGIE</span><b id="brainEnergyValue">18 %</b></button>
+          <button class="brain-reactor-metric" id="brainMetricRotation" type="button" data-metric="rotation"><span>ROTATION</span><b id="brainRotationValue">20 %</b></button>
+          <button class="brain-reactor-metric" id="brainMetricTemperature" type="button" data-metric="temperature"><span>TEMP</span><b id="brainTemperatureValue">35 °C</b></button>
+          <button class="brain-reactor-metric" id="brainMetricLoad" type="button" data-metric="load"><span>LAST</span><b id="brainLoadValue">18 %</b></button>
+          <button class="brain-reactor-metric" id="brainMetricStability" type="button" data-metric="stability"><span>STABIL</span><b id="brainStabilityValue">-- %</b></button>
+          <button class="brain-reactor-metric" id="brainMetricPulse" type="button" data-metric="pulse"><span>TAKT</span><b id="brainPulseValue">-- %</b></button>
+        </div>
+    <div class="brain-metric-popover" id="brainMetricPopover" hidden role="dialog" aria-label="Temperaturdetails"><button type="button" id="brainMetricClose" aria-label="Details schliessen">x</button><div id="brainMetricDetails"></div></div>
+    <statuscore-3d id="leitstandBrain" aria-label="Zentrales 3D-Denkzentrum"></statuscore-3d>
+    <div class="brain-caption" id="brainCaption">Das Denkzentrum bewertet acht Hauptbereiche und koordiniert die Reaktionen.</div>
+  </article></div></section>
+<div class="router-detect-panel" id="routerDetectPanel" hidden><div class="router-detect-box"><header><b>Router-Erkennung</b><button class="iconbtn" id="routerDetectClose" title="Fenster schliessen">x</button></header><div id="routerDetectMsg">Router-Erkennung wird vorbereitet ...</div><div class="router-detect-bar"><i id="routerDetectFill"></i></div><div id="routerDetectResult"></div></div></div>
+
+<section class="brain-router-row" id="brainRouterRow" aria-label="Router-Erkennung und Gehirn des Leitstands">
+  <article class="card router-brain-source">
+    <div class="brain-section-head"><div><small>ERKENNEN</small><h2>ROUTER-STATUS</h2></div><button class="btn" id="brainDetectRouter" type="button">Router erkennen</button></div>
+    <div id="brainRouterSummary" class="brain-router-summary">Router-Erkennung noch nicht ausgefuehrt.</div>
+    <button class="btn secondary" id="brainManualRouter" type="button" hidden>Details selbst eingeben</button>
+  </article>
+</section>
+<div class="status-led-rail" id="statusLedRail" aria-label="Teststatus" hidden></div>
+<div class="test-live" id="testLive"><div class="live-progress-card" data-layout-id="timer"><div class="scan-ring" id="scanRing" data-info="Der Scanring zeigt, ob Messungen laufen. Im Normalbetrieb dreht er langsam. Bei Tiefenanalyse oder Fehlern wird er schneller und farbiger. Bei Hauptschalter aus oder Animationen aus steht er still."><div class="hourglass" aria-label="Sanduhr">&#8987;</div></div><div class="live-progress-content"><div class="bigstate green" id="autoState">AUTOMATISCHE TESTS LAUFEN</div><div class="phase" id="testPhase">Messzyklus wird vorbereitet</div><div class="progress-shell"><div class="progress-fill" id="cycleFill"></div><div class="progress-text" id="cycleText">Naechste Messung in 15 s</div></div><div class="last-cycle" id="cycleInfo">Letzte Messung: - - Zyklus: -</div></div></div><div class="alert-history-card" id="alertHistoryCard" data-layout-id="warnings"><div class="alert-history-head"><b>WARNUNGEN</b><div class="alert-range" id="alertRange"><button type="button" data-alert-range="15">15m</button><button type="button" data-alert-range="60" class="active">1h</button><button type="button" data-alert-range="1440">24h</button><button type="button" data-alert-range="10080">7T</button></div></div><canvas id="alertHistoryCanvas" width="230" height="56"></canvas><div class="alert-history-counts"><span class="yellow">Gelb <b id="alertYellowCount">0</b></span><span class="red">Rot <b id="alertRedCount">0</b></span></div><div class="alert-history-tip" id="alertHistoryTip" hidden></div></div><div class="head-pulse" data-layout-id="heart" data-info="Der System-Herzschlag zeigt den Betriebszustand als technische Metapher: Gruen normal, Gelb erhoehte Last, Rot kritischer chaotischer Rhythmus, helle Flatline bei vollstaendigem Systemausfall. Signalverlust wird getrennt gekennzeichnet."><div class="head-heart" title="System-Herzschlag"></div><canvas id="ekgCanvas" class="head-ekg" width="210" height="52"></canvas><div class="pulse-label">SYSTEM-HERZSCHLAG <small id="pulseBpm">Puls --/min</small></div></div><div class="sensor-lamps scroll-safe" id="sensorLamps" data-layout-id="leds"></div></div><div class="control-center">
+  <section class="lag-panel">
+    <div class="lag-title">PERMANENTER LAG-TEST</div>
+    <div class="lag-value green" id="lagValue">0 ms</div>
+    <div class="lag-scale"><div class="lag-fill" id="lagFill"></div></div>
+    <canvas id="lagHistory" class="lag-history" width="220" height="66"></canvas>
+    <div class="lag-note" id="lagExplain">Der Leitstand reagiert normal.</div>
+  </section>
+
+  <section class="operation-monitor">
+    <div class="monitor-head"><span class="lamp" id="monitorLamp"></span><b>LAUFENDE OPERATION</b><span class="op-time" title="Uhrzeit des letzten abgeschlossenen Pruefschritts">LETZTER SCHRITT <b id="monitorClock">00:00:00</b></span></div>
+    <div class="monitor-screen scroll-safe">
+      <div class="operation-line primary" id="opTitle">SYSTEMBEREITSCHAFT<span class="cursor"></span></div>
+      <div class="operation-line" id="opDetail">Warte auf ersten Messzyklus ...</div>
+      <div class="operation-line ok" id="opResult">Noch kein Ergebnis</div>
+      <div class="operation-line" id="opNext">Naechster Schritt: FRITZ!Box pruefen</div>
+      <section class="brain-monitor-feed" aria-label="Aktivitaeten und Entscheidungen des Gehirns"><div class="brain-monitor-head"><b id="brainModeText">RUHIG BESCHAEFTIGT</b><span id="brainAttention">Aufmerksamkeit gleichmaessig verteilt</span></div><div id="brainActivityLog" class="brain-activity-log"></div></section>
+      <details class="operation-queue-details"><summary>Technische Pruefschritte</summary><div class="operation-queue" id="opQueue"></div></details>
+    </div>
+  </section>
+
+  <section class="cause-panel foldable" id="causePanel"><div class="cause-head"></div><div class="cause-body"><div><small>AKTUELLE URSACHENBEWERTUNG</small><h2 id="diagTitle">Messwerte werden aufgebaut</h2><p id="diagText">Die leichten Sensoren sammeln Vergleichswerte.</p></div><div class="score" id="score">-</div></div></section>
+</div>
+<div class="gauges command-gauges"><div class="gauge" data-instrument="router"><canvas id="gRouter" width="220" height="145"></canvas><b>FRITZ!BOX</b><span id="vRouter">-</span></div><div class="gauge" data-instrument="multiPing"><canvas id="gInternet" width="220" height="145"></canvas><b>INTERNET</b><span id="vInternet">-</span></div><div class="gauge" data-instrument="system"><canvas id="gPcHealth" width="220" height="145"></canvas><b>PC</b><span id="vPcHealth">-</span></div><div class="gauge" data-instrument="system"><canvas id="gStorage" width="220" height="145"></canvas><b>SPEICHER</b><span id="vStorage">-</span></div><div class="gauge" data-instrument="loss"><canvas id="gLoss" width="220" height="145"></canvas><b>QUALITAET</b><span id="vLoss">-</span></div></div>
+<article class="card ai-assistant" title="Der Assistent fasst erkannte Probleme in verstaendliche Schritte zusammen."><div><h2>KI-ASSISTENT - KURZBEWERTUNG</h2><p class="sub" id="assistantSummary">Noch kein Problem erkannt. Der Assistent wartet auf Messwerte.</p></div><div class="assistant-actions"><button class="btn" id="assistantStart">Assistent starten</button><button class="btn" id="assistantPrev">Zurueck</button><button class="btn" id="assistantNext">Weiter</button></div><div id="assistantWalk" class="assistant-walk"></div><ol id="assistantSteps"></ol></article>
+
+<div class="grid2"><article class="card"><h2>VERBINDUNGSVERLAUF MIT FEHLERSPITZEN</h2><div class="chart-wrap"><canvas id="timeline" class="chart"></canvas><div id="timelineTip" class="chart-tooltip" hidden></div></div><div class="timeline-range-row"><span>Zeitraum</span><input id="timelineRange" type="range" min="0" max="0" value="0" step="1"><output id="timelineRangeLabel">letzte Messungen</output></div><div class="timeline-legend"><span class="ok"><b></b>Verlauf</span><span class="warn"><b></b>Warnspitze</span><span class="err"><b></b>Fehlerspitze</span></div></article><article class="card"><h2>STOERUNGEN NACH URSACHE <span id="barsTotalPct" class="cause-total-pct">0 %</span></h2><div class="chart-wrap"><canvas id="bars" class="chart"></canvas><div id="barsTip" class="chart-tooltip" hidden></div></div></article></div>
+<article class="card"><h2>ANLAGENZUSTAND - EINFACH ERKLAERT</h2><div class="table-wrap"><table><thead><tr><th>Pruefkreis</th><th>Status</th><th>Messwert</th><th>Was bedeutet das?</th><th>Zeit</th></tr></thead><tbody id="statusRows"></tbody></table></div></article></section>
+<section id="current" class="page"><article class="card"><h2>AKTUELLE STOERUNG</h2><div id="incidentNow"></div><div class="toolbar"><button class="btn" id="markIncident" data-info="Markiert den aktuellen Zeitpunkt als Stoerung. Dadurch kann man spaeter sehen, welche Messwerte genau in diesem Moment auffaellig waren.">Stoerung jetzt markieren</button><button class="btn" id="deepNow" data-info="Startet fuer die eingestellte Dauer eine dichtere Messung. Danach geht der Leitstand automatisch in den normalen Schonbetrieb zurueck.">Tiefenanalyse starten</button></div><div class="deep-progress" id="deepProgress"><div><span id="deepLabel">Tiefenanalyse bereit</span><b id="deepRemain">-- s</b></div><div class="deep-bar"><i id="deepFill"></i></div></div></article><div class="instrument-row" id="deepMetrics"></div></section>
+<section id="internet" class="page"><div class="instrument-row" id="internetMetrics"></div><article class="card"><h2>MULTI-ZIEL-VERGLEICH</h2><div id="targets"></div></article></section>
+<section id="fritz" class="page"><article class="card"><h2>ROUTER / FRITZ!BOX / IMPORT</h2><div id="fritzState"></div><div class="toolbar"><button class="btn" id="detectRouter" data-info="Erkennt den Router aus erreichbarer Adresse, eingestelltem Profil, Live-Messung und importierten Routerdateien. Ohne lokalen Zugriff wird nichts erfunden.">Router erkennen</button><button class="btn" id="openFritz">Router oeffnen</button><button class="btn" id="importDiag">FRITZ!Box-Diagnose importieren</button><button class="btn" id="importRouterFile">Routerdatei importieren</button><input type="file" id="diagFile" accept=".csv,.txt,.json,.html,.htm" hidden><input type="file" id="routerFile" accept=".csv,.txt,.json,.html,.htm,.xml" hidden></div><div id="routerDetectState" class="import-summary"></div><div id="routerImportState" class="import-summary"></div></article><article class="card"><h2>So kommst du an FRITZ!Box-Daten</h2><div class="hint-grid"><div><b>Funktionsdiagnose</b><p>fritz.box -> System -> Diagnose -> Funktion. Ergebnis speichern oder als Text/PDF/Screenshot sichern und hier importieren.</p></div><div><b>Kabel / DOCSIS</b><p>fritz.box -> Internet -> Kabel-Informationen -> Kanaele/Statistik. Wichtig: Pegel, SNR/MSE, korrigierbare und nicht korrigierbare Fehler.</p></div><div><b>Anderer Router</b><p>Bei Speedport, Vodafone Station, TP-Link usw. wird ein allgemeines Routerprofil genutzt. FRITZ!/DOCSIS-Felder werden dann als nicht anwendbar markiert.</p></div></div></article></section><section id="docsis" class="page"><article class="card"><h2>DOCSIS-VERLAUF</h2><p class="sub">Mehrere Schnappschuesse werden gegeneinander verglichen. Entscheidend ist nicht nur der Zaehlerstand, sondern wie schnell Fehler hinzukommen.</p><div class="toolbar"><input id="uncorr" type="number" placeholder="nicht korrigierbare Fehler"><input id="corr" type="number" placeholder="korrigierbare Fehler"><input id="down" type="number" step=".1" placeholder="Downstream dBmV"><input id="up" type="number" step=".1" placeholder="Upstream dBmV"><button class="btn" id="saveDocsis">Schnappschuss</button></div><div id="docsisView"></div></article></section>
+<section id="wifi" class="page"><article class="card"><h2>WLAN UND MESH</h2><div id="wifiState"></div></article><article class="card"><h2>Wie funktioniert der WLAN-Test?</h2><div class="hint-grid"><div><b>Browser alleine</b><p>Die GitHub-Web-App darf keine WLAN-Kanaele, Signalstaerke oder Nachbarnetze direkt auslesen.</p></div><div><b>Mit lokalem Pruefdienst</b><p>Windows kann WLAN-Informationen liefern: SSID, Signalstaerke, Funkband, Linkrate, BSSID und teils Kanal. Diese Daten sollen in der naechsten Probe-Version automatisch in den Leitstand kommen.</p></div><div><b>Praxis-Test</b><p>Teste am gleichen Platz per WLAN und danach per LAN. Wenn LAN stabil ist und WLAN nicht, liegt es eher an Funk, Repeater, Kanalbelegung oder Entfernung.</p></div></div></article></section><section id="dns" class="page"><article class="card"><h2>DNS-VERGLEICH</h2><div id="dnsState"></div></article></section>
+<section id="devices" class="page"><article class="card"><h2>GERAETE-MATRIX</h2><p class="sub">Markiere Geraeteprobleme. Mehrere gleichzeitige Stoerungen erhoehen den Verdacht auf eine zentrale Netzursache.</p><div id="deviceMatrix"></div></article></section>
+<section id="pc" class="page"><div class="instrument-row" id="systemMetrics"></div><article class="card"><h2>PC-/CHAT-KORRELATION</h2><div id="pcExplain"></div></article><article class="card"><h2>Festplatten / SMART / Windows-Gesundheit</h2><div id="smartState"></div><div class="toolbar"><button class="btn" id="importSmartFile">SMART-/PC-Bericht importieren</button><input type="file" id="smartFile" accept=".txt,.json,.csv,.xml" hidden></div><p class="sub">SMART-Werte koennen nur ueber den lokalen Windows-Pruefdienst oder einen importierten Bericht ausgewertet werden. Die Webseite selbst darf Festplattenhardware nicht direkt auslesen.</p></article></section><section id="measurements" class="page"><article class="card"><div class="toolbar"><h2>MESSWERTE</h2><span class="spacer"></span><input id="measureFilter" placeholder="Filter..."><select id="measureType"><option value="">Alle Pruefkreise</option></select></div><div class="table-wrap"><table><thead><tr><th>Zeit</th><th>Pruefkreis</th><th>Status</th><th>Messwert</th><th>Details</th></tr></thead><tbody id="measurementRows"></tbody></table></div></article></section>
+<section id="incidents" class="page"><article class="card"><div class="toolbar"><h2>STOERPROTOKOLL</h2><span class="spacer"></span><input id="eventFilter" placeholder="Filter..."><button class="btn" id="exportBtn">Bericht exportieren</button></div><div class="table-wrap"><table><thead><tr><th>Zeit</th><th>Ampel</th><th>Meldung</th><th>Quelle</th></tr></thead><tbody id="eventRows"></tbody></table></div></article></section>
+<section id="tests" class="page"><div class="master card"><div><h2>HAUPTSCHALTER</h2><p class="sub">Schaltet alle automatischen Messkreise gemeinsam.</p></div><label class="switch"><input id="masterSwitch" type="checkbox"><span></span></label></div><div class="switch-grid" id="switchGrid"></div><article class="card"><h2>MESSLASTSCHUTZ</h2><div class="loadbar"><div id="loadFill"></div></div><p id="loadText">Schonende Dauerueberwachung. Tiefentests nur bei Auffaelligkeit.</p></article></section>
+
+<section id="pcap" class="page"><article class="card"><h2>FRITZ!BOX-PAKETMITSCHNITT (.ETH / .PCAP)</h2><p class="sub">Liest klassische Wireshark-PCAP-Dateien direkt im Browser aus. Die Datei wird nicht hochgeladen. Es werden nur Metadaten, Protokolle, Endpunkte, Verbindungen und Auffaelligkeiten ausgewertet; Nutzdaten und Kennwoerter werden nicht angezeigt.</p><div id="pcapDrop" class="pcap-drop" tabindex="0"><b>Datei hier ablegen oder auswaehlen</b><p>.eth und .pcap bis 100 MB</p><button class="btn" id="pcapChoose" type="button">Paketmitschnitt auswaehlen</button><input id="pcapFile" type="file" accept=".eth,.pcap,application/vnd.tcpdump.pcap" hidden></div><div class="pcap-filemeta" id="pcapFileMeta">Noch keine Datei geladen.</div><div class="pcap-progress" id="pcapProgress" hidden><i></i></div><div class="tshark-provider"><div class="provider-line"><b>Professionelle Analyse-Engine:</b><span id="tsharkState" class="provider-state warn">Pruefdienst wird geprueft ...</span><button class="btn" id="tsharkCheck" type="button">Erneut pruefen</button><button class="btn" id="tsharkAnalyze" type="button" disabled>Mit TShark tief analysieren</button><a class="btn" id="tsharkInstall" href="https://www.wireshark.org/download.html" target="_blank" rel="noopener">Wireshark/TShark installieren</a></div><p class="sub">TShark ist optional. Ohne TShark bleibt die vorhandene lokale Browser-Auswertung voll funktionsfaehig. Bei der Tiefenanalyse wird die Datei ausschliesslich an den lokalen Pruefdienst auf diesem PC uebergeben und danach aus dem Temp-Ordner geloescht.</p></div><div class="toolbar" style="margin-top:10px"><button class="btn" id="pcapExport" type="button" disabled>Auswertung als JSON exportieren</button><button class="btn danger" id="pcapClear" type="button" disabled>Auswertung loeschen</button></div><p class="pcap-private"><b>Datenschutz:</b> Paketmitschnitte koennen sensible Verbindungsdaten enthalten. Die Auswertung erfolgt lokal im Browser. Teile die Originaldatei nur, wenn es notwendig ist.</p></article><div id="pcapResults"><article class="card pcap-empty">Noch keine Paketmitschnitt-Auswertung vorhanden.</article></div></section>
+<section id="reports" class="page"><article class="card"><h2>BERICHTE</h2><p>Der Export enthaelt Messwerte, Stoerungsmarken und Ursachenbewertung. Kennwoerter werden nicht gespeichert.</p><button class="btn" id="reportExport">JSON-Diagnosebericht erstellen</button></article></section>
+<section id="settings" class="page"><article class="card"><h2>EINSTELLUNGEN</h2><p class="sub">Grundkonfiguration fuer Bedienung, Messung und Routerprofile. AEnderungen werden lokal gespeichert.</p><div class="settings-tabs"><button class="settings-tab active" data-settings-panel="general">Allgemein</button><button class="settings-tab" data-settings-panel="routerProfiles">Routerprofile</button><button class="settings-tab" data-settings-panel="audio">Audio</button><button class="settings-tab" data-settings-panel="switchAudit" data-expert-only>Schalter-Audit</button></div></article>
+<div class="settings-panel active" id="settingsPanelGeneral"><div class="settings-grid">
+<article class="setting-group"><h3>FRITZ!Box und Anschluss</h3>
+<div class="setting-row"><div><label>FRITZ!Box-Modell</label><small>Das Profil bestimmt verfuegbare Diagnosebereiche.</small></div><select id="setModel"></select></div>
+<div class="setting-row"><div><label>Eigenes Routermodell</label><small>Nur nutzen, wenn das Modell nicht in der Liste steht.</small></div><input id="setCustomModel" placeholder="z. B. Speedport Smart 4"></div>
+<div class="setting-row"><div><label>Profil-Vorschlag</label><small>Internetdaten werden spaeter ueber einen freigegebenen Profilimport ergaenzt; aktuell lokale Vorlage.</small></div><button class="btn" id="suggestRouterProfile" type="button">Profil ableiten</button></div>
+<div class="setting-row"><div><label>Router-Adresse</label><small>Normalerweise fritz.box.</small></div><input id="setHost" value="fritz.box"></div>
+<div class="setting-row"><div><label>Anschlussart</label><small>Wird aus dem Modellprofil uebernommen.</small></div><input id="setAccess" disabled></div>
+<div id="profileInfo" class="profile-info"></div>
+</article>
+<article class="setting-group"><h3>Messbetrieb</h3>
+<div class="setting-row"><div><label>Messintervall</label><small>Zeit zwischen automatischen Zyklen.</small></div><select id="setInterval"><option value="10">10 Sekunden</option><option value="15">15 Sekunden</option><option value="30">30 Sekunden</option><option value="60">60 Sekunden</option></select></div>
+<div class="setting-row"><div><label>Tiefenanalyse</label><small>Dauer eines detaillierten Stoerungstests.</small></div><select id="setDeep"><option value="30">30 Sekunden</option><option value="60">60 Sekunden</option><option value="120">120 Sekunden</option></select></div>
+<div class="setting-row"><div><label>Automatisch bei Rot</label><small>Tiefenanalyse bei erkannter Stoerung starten.</small></div><label class="switch"><input id="setAutoDeep" type="checkbox"><span></span></label></div>
+<div class="setting-row"><div><label>Verlauf speichern</label><small>Messwerte nach Neustart behalten.</small></div><label class="switch"><input id="setPersist" type="checkbox"><span></span></label></div>
+</article>
+<article class="setting-group"><h3>Bedienung und Darstellung</h3>
+<div class="setting-row"><div><label>Darstellungsdichte</label><small>Normal oder platzsparend.</small></div><select id="setDensity"><option value="normal">Normal</option><option value="compact">Kompakt</option></select></div>
+<div class="setting-row"><div><label>Animationen</label><small>Sanduhr, Scanring, Herzschlag und Übergänge.</small></div><label class="switch"><input id="setAnimations" type="checkbox"><span></span></label></div>
+<div class="setting-row"><div><label>Gehirn</label><small>StatusCore 3D separat ein- oder ausschalten. Bei Aus wird der Platz fuer den Routerbereich freigegeben.</small></div><label class="switch"><input id="setBrainEnabled" type="checkbox"><span></span></label></div>
+<div class="setting-row"><div><label>Expertenmodus</label><small>Zeigt technische Detailansichten, Schalter-Audit und Rohdaten.</small></div><label class="switch"><input id="setExpertMode" type="checkbox"><span></span></label></div>
+<div class="setting-row"><div><label>Infofenster</label><small>Wenn aus, bleiben nur die einfachen Tooltips sichtbar.</small></div><label class="switch"><input id="setInfoCards" type="checkbox"><span></span></label></div>
+<div class="setting-row"><div><label>Bereiche beim Start</label><small>Zuletzt verwendet, offen oder geschlossen.</small></div><select id="setSectionDefault"><option value="remember">Letzten Zustand merken</option><option value="open">Alle offen</option><option value="closed">Alle geschlossen</option></select></div>
+<div class="setting-row"><div><label>Hinweise fuer Laien</label><small>Erklaertexte zu Fachwerten anzeigen.</small></div><label class="switch"><input id="setHints" type="checkbox"><span></span></label></div>
+</article>
+
+<article class="setting-group"><h3>Tabellen und Protokolle</h3>
+<div class="setting-row"><div><label>Maximale Tabellenzeilen</label><small>Begrenzt die Anzeige, nicht den Export.</small></div><select id="setRows"><option value="250">250</option><option value="500">500</option><option value="1000">1.000</option><option value="2000">2.000</option></select></div>
+<div class="setting-row"><div><label>Scrollbalken immer sichtbar</label><small>Empfohlen fuer grosse Ansichten.</small></div><label class="switch"><input id="setScrollbars" type="checkbox"><span></span></label></div>
+<div class="setting-row"><div><label>Stoerungsmarke startet Tiefentest</label><small>Direkt nach manueller Markierung.</small></div><label class="switch"><input id="setMarkDeep" type="checkbox"><span></span></label></div>
+<div class="setting-row"><div><label>Protokoll-Aufbewahrung</label><small>Ältere Messwerte und Ereignisse werden automatisch entfernt.</small></div><select id="setRetentionDays"><option value="1">1 Tag</option><option value="7">7 Tage</option><option value="30">30 Tage</option><option value="90">90 Tage</option></select></div>
+<div class="setting-row"><div><label>Maximale Messdatensätze</label><small>Begrenzt die gespeicherte Datenmenge unabhängig von der Tabellenanzeige.</small></div><select id="setHistoryLimit"><option value="1000">1.000</option><option value="5000">5.000</option><option value="12000">12.000</option><option value="25000">25.000</option></select></div>
+<div class="protocol-maintenance">
+  <div><h4>Protokollverwaltung</h4><p id="protocolStorageInfo" class="sub">Speichergröße wird ermittelt …</p></div>
+  <div class="protocol-actions"><button class="btn" id="clearMeasurements" type="button">Messverlauf leeren</button><button class="btn" id="clearEvents" type="button">Störprotokoll leeren</button><button class="btn danger" id="clearAllProtocols" type="button">Alle Protokolle leeren</button></div>
+</div>
+<div class="settings-actions"><button class="btn" id="resetSettings">Standard</button><button class="btn" id="saveSettings">Einstellungen speichern</button></div>
+</article></div></div><div class="settings-panel" id="settingsPanelAudio"><article class="card"><h2>AUDIO</h2><p class="sub">Alle Toene liegen hier gesammelt. Es kann immer nur ein Audiokanal aktiv sein; ein Klick auf den Lautsprecher testet und aktiviert den Kanal.</p><div class="settings-grid"><article class="setting-group"><h3>AudioCore</h3><div class="setting-row"><div><label>Audio aktiv</label><small>Hauptschalter fuer alle Leitstand-Toene.</small></div><label class="switch"><input id="setAudioEnabled" type="checkbox"><span></span></label></div><div class="setting-row"><div><label>Gesamtlautstaerke</label><small>Gilt fuer Klack, EKG, Warnungen und spaetere Tonsignale.</small></div><input id="setAudioVolume" type="range" min="0" max="100" step="5"><output id="audioVolumeValue">55 %</output></div><div class="setting-row"><div><label>Aktiver Ton</label><small>Nur dieser Kanal darf automatisch Ton ausgeben.</small></div><select id="setAudioChannel"><option value="">Kein Sound</option><option value="latencyBall">Kugel-Klack</option><option value="healthRing">HealthRing</option><option value="heart">EKG / Herz</option><option value="brain">Gehirn / Mystik</option><option value="warnings">Warnungen</option><option value="alarms">Alarme</option><option value="training">Schulung/Demo</option></select></div><div class="setting-row"><div><label>Audiogeraet pruefen</label><small>Prueft Browserfreigabe und erkannte Ausgabegeraete.</small></div><button class="btn" id="checkAudioDevice" type="button">Pruefen</button></div><div class="setting-row"><div><label>Direkter Lautsprechertest</label><small>Umgeht den aktiven Kanal und testet WebAudio plus HTMLAudio-Fallback.</small></div><button class="btn" id="directAudioTest" type="button">Lautsprecher testen</button></div><div class="audio-device-status" id="audioDeviceStatus">Noch nicht geprueft.</div></article><article class="setting-group"><h3>Sound testen</h3><div class="audio-channel-list" id="audioChannelList"></div></article><article class="setting-group"><h3>Akustischer Warnton</h3><div class="setting-row"><div><label>Warnton aktiv</label><small>Gibt kritische Warnungen ueber das Windows-Standard-Audiogeraet aus.</small></div><label class="switch"><input id="setAlertSound" type="checkbox"><span></span></label></div><div class="setting-row"><div><label>Ausloesestufe</label><small>Nur Rot oder bereits Gelb und Rot.</small></div><select id="setAlertLevel"><option value="red">Nur kritisch (Rot)</option><option value="yellow">Warnung und kritisch (Gelb + Rot)</option></select></div><div class="setting-row"><div><label>Warntonlautstaerke</label><small>Zusatzlautstaerke fuer automatische Alarmfolgen.</small></div><input id="setAlertVolume" type="range" min="10" max="100" step="5"><output id="alertVolumeValue">60 %</output></div><div class="setting-row"><div><label>Toene pro Alarm</label><small>Anzahl kurzer Signale je Ausloesung.</small></div><select id="setAlertBeeps"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option></select></div><div class="setting-row"><div><label>Wiederholung</label><small>Erneut warnen, solange der Fehler weiter besteht.</small></div><select id="setAlertRepeat"><option value="0">Keine Wiederholung</option><option value="30">Nach 30 Sekunden</option><option value="60" selected>Nach 1 Minute</option><option value="300">Nach 5 Minuten</option></select></div><div class="setting-row"><div><label>Maximale Wiederholungen</label><small>Verhindert eine endlose Alarmfolge.</small></div><select id="setAlertMaxRepeats"><option>1</option><option>2</option><option selected>3</option><option>5</option></select></div><div class="setting-row"><div><label>Warnton pruefen</label><small>Spielt den echten Alarmkanal ueber AudioCore.</small></div><button class="btn" id="testAlertSound" type="button">Alarm testen</button></div></article></div><p class="settings-live-note" id="audioLiveNote">Bereit.</p></article></div><div class="settings-panel" id="settingsPanelRouterProfiles"><article class="card"><h2>ERKANNTE ROUTER UND PROFILE</h2><p class="sub">Hier werden eingestellte, erkannte und importierte Routerdaten gesammelt. Kein eigener Menuepunkt.</p><div id="routerProfileRegistry" class="router-profile-registry"></div></article></div><div class="settings-panel" id="settingsPanelSwitchAudit"><article class="card"><h2>SCHALTER-AUDIT</h2><p class="sub">Prueft, ob die sichtbaren Schalter an eine Funktion gebunden sind.</p><div id="switchAuditView"></div></article></div></section><section id="help" class="page"><div class="help-grid"><article class="card"><h2>WENN ETWAS HAENGT</h2><ol><li>Sofort <b>Stoerung markieren</b>.</li><li>Betroffenes Geraet auswaehlen.</li><li>FRITZ!Box zunaechst nicht neu starten.</li><li>60 Sekunden Tiefenanalyse abwarten.</li></ol></article><article class="card"><h2>AMPELFARBEN</h2><p><span class="pill green">GRUEN</span> normal</p><p><span class="pill yellow">GELB</span> auffaellig</p><p><span class="pill red">ROT</span> Stoerung erkannt</p></article><article class="card"><h2>LAIENUEBERSETZUNG</h2><p><b>Jitter:</b> Wie stark die Laufzeit schwankt. Hohe Schwankungen koennen Streaming stoeren.</p><p><b>Paketverlust:</b> Datenpakete gehen unterwegs verloren.</p><p><b>P95/P99:</b> Zeigt seltene starke Verzoegerungen, die ein Durchschnitt verstecken kann.</p></article><article class="card"><h2>MESSSTUFEN</h2><p><b>Stufe 1:</b> sehr leichte Dauerpruefung.</p><p><b>Stufe 2:</b> Auffaelligkeitspruefung.</p><p><b>Stufe 3:</b> 60 Sekunden Tiefenanalyse.</p></article></div></section>
+</div></main></div><div class="window-layer" id="windowLayer"></div>
+
+
+<div class="layout-editor-panel" id="layoutEditorPanel" hidden role="dialog" aria-modal="false" aria-labelledby="layoutEditorTitle">
+  <header><div><small>TESTFELDER ANORDNEN</small><h2 id="layoutEditorTitle">Layout bearbeiten</h2></div><button class="iconbtn" id="layoutEditorClose" type="button" aria-label="Layout-Editor schliessen">×</button></header>
+  <div class="layout-editor-mode" role="group" aria-label="Ausrichtungsmodus"><button class="btn active" id="layoutGridMode" type="button">Am Raster</button><button class="btn secondary" id="layoutFreeMode" type="button">Frei</button></div>
+  <div class="layout-editor-actions"><button class="btn" id="layoutAutoArrange" type="button">Sinnvoll anordnen</button><button class="btn secondary" id="layoutUndo" type="button">Rueckgaengig</button><button class="btn secondary" id="layoutSave" type="button">Speichern</button><button class="btn secondary" id="layoutReset" type="button" title="Layout, Fensterpositionen und Matrixansicht auf Standard setzen">Standard wiederherstellen</button></div><section class="layout-matrix-editor" id="layoutMatrixEditor" aria-label="Testkarten-Matrix im Arbeitsflaechen-Editor"></section>
+  <label class="layout-lock-all"><input id="layoutLockAll" type="checkbox"> Alle Testfelder sperren</label>
+  <section><b>Felder ein-/ausblenden</b><div id="layoutVisibilityList" class="layout-visibility-list"></div></section>
+  <p class="layout-editor-help">Am Kreuz verschieben. An Kanten und Ecken vergroessern oder verkleinern. Im Rastermodus rasten Felder sauber ein.</p>
+  <div class="layout-editor-status" id="layoutEditorStatus">Bereit.</div>
+</div>
+<div class="workspace-frame-panel" id="workspaceFramePanel" hidden role="dialog" aria-modal="false" aria-labelledby="workspaceFrameTitle">
+  <header><div><small>ARBEITSFLAECHE CANDIDATE</small><h2 id="workspaceFrameTitle">Fensterrahmen testen</h2></div><div class="workspace-frame-tools"><label><input id="workspaceFrameSnap" type="checkbox" checked> Raster</label><button class="btn secondary" id="workspaceFrameReset" type="button">Standard</button><button class="iconbtn wfp-min-btn" id="workspaceFrameMin" type="button" aria-label="Arbeitsflaeche minimieren" title="Minimieren">_</button><button class="iconbtn wfp-max-btn" id="workspaceFrameMax" type="button" aria-label="Arbeitsflaeche maximieren" title="Maximieren">□</button><button class="iconbtn wfp-close-btn" id="workspaceFrameClose" type="button" aria-label="Arbeitsflaeche schliessen" title="Schliessen">×</button></div></header>
+  <div class="workspace-frame-host" id="workspaceFrameHost" aria-label="Arbeitsflaeche fuer Fensterrahmen"></div>
+  <div class="workspace-frame-status">Fenster mit X werden unten abgelegt. Pflichtfenster bleiben erreichbar; unten in der Taskleiste wieder aufrufen.</div>
+</div><div class="brain-sim-modal" id="brainSimulationModal" hidden role="dialog" aria-modal="true" aria-labelledby="brainSimulationTitle">
+  <div class="brain-sim-dialog">
+    <header><div><small>SCHULUNG UND FUNKTIONSTEST</small><h2 id="brainSimulationTitle">Organismus-Simulation</h2></div><button class="iconbtn" id="brainSimulationClose" type="button" aria-label="Simulation schliessen">×</button></header>
+    <p>Die Simulation verändert keine Messwerte und wird nach dem Beenden vollständig zurückgesetzt.</p>
+    <div class="brain-sim-grid">
+      <label>Komponente<select id="simulationComponent"><option value="all">Alle Komponenten</option><option value="brain">Denkzentrum</option><option value="heart">Herz und EKG</option><option value="timer">Sanduhr und Messzyklus</option></select></label>
+      <label>Zustand<select id="simulationState"><option value="normal">Normal</option><option value="notice">Warnung</option><option value="alarm">Alarm</option><option value="critical">Vollalarm</option></select></label>
+    </div>
+    <div class="brain-sim-actions"><button class="btn" id="brainSimulationStart" type="button">Simulation starten</button><button class="btn secondary" id="brainSimulationStop" type="button">Zurücksetzen</button></div>
+    <div class="brain-sim-status" id="brainSimulationStatus">Bereit.</div>
+  </div>
+</div>
+<script src="framework/core/coreruntime.js"></script><script src="framework/core/audiocore.js"></script><script src="framework/core/frameworkcore.js"></script><script src="framework/core/capabilitycore.js"></script><script src="framework/core/interactioncore.js"></script><script src="framework/core/tablecore.js"></script><script src="framework/core/navigationcore.js"></script><script src="framework/core/windowcore.js"></script><script src="framework/core/designcore.js"></script><script src="framework/core/mobilecore.js"></script><script src="framework/core/network-framework-runtime.js"></script><script src="config/navigation.config.js"></script><script src="config/shell.config.js"></script><script src="config/sensor-registry.config.js"></script><script src="framework/shell/framework-shell-runtime.js"></script><script src="assets/js/navigationcore-master.js"></script><script src="pcap-analyzer.js"></script><script src="framework/shared/transition-service/transition-service.js"></script><script src="framework/shared/window-frame-module/window-frame-module.js"></script><script src="framework/shared/viewport-edge-controls-module/viewport-edge-controls-module.js"></script><script src="framework/shared/viewport-pan-frame-module/viewport-pan-frame-module.js"></script><script src="framework/shared/navigation-tab-order-module/navigation-tab-order-module.js"></script><script src="framework/shared/test-definition-store-module/test-definition-store-module.js"></script><script src="framework/shared/test-ownership-matrix-module/test-ownership-matrix-module.js"></script><script src="framework/shared/workspace-pages-module/workspace-pages-module.js"></script><script src="framework/shared/test-scheduler-model-module/test-scheduler-model-module.js"></script><script src="framework/shared/test-card-layout-spec-module/test-card-layout-spec-module.js"></script><script src="framework/shared/test-catalog-module/test-catalog-module.js"></script><script src="assets/js/statuscore-3d/statuscore-3d.js?v=557"></script><script src="assets/js/statuscore-3d/system-assessment-core.js"></script><script src="app.js"></script><script src="assets/js/statuscore-3d/leitstand-brain-integration.js"></script><script src="assets/js/statuscore-3d/organ-sensor-registry.js"></script><script src="assets/js/statuscore-3d/brain-coordinator.js"></script><script src="assets/js/statuscore-3d/brain-simulation.js"></script><script src="assets/js/dashboard-layout-editor.js"></script></body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

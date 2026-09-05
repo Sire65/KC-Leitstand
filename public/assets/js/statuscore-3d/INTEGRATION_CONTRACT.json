@@ -1,0 +1,40 @@
+{
+  "coreId": "statuscore.3d-indicator",
+  "version": "0.4.1",
+  "renderer": "single-canvas-depth-controlled",
+  "renderOrder": [
+    "rays",
+    "embeddedBrainWithSphereFallback",
+    "rods",
+    "sensorNodes"
+  ],
+  "states": [
+    "ok",
+    "notice",
+    "alarm",
+    "critical",
+    "test",
+    "offline"
+  ],
+  "publicApi": [
+    "setStatus(payload)",
+    "setSensors(sensors)",
+    "getStatus()",
+    "setSettings(settings)",
+    "getSettings()",
+    "setEnabled(enabled)",
+    "setBrainActivity(value)",
+    "getBrainActivity()",
+    "freezeFrame()",
+    "unfreezeFrame()",
+    "isFrozen()",
+    "pause()",
+    "resume()"
+  ],
+  "nonInterference": [
+    "shadow DOM",
+    "no external dependencies",
+    "no storage writes",
+    "no network access"
+  ]
+}

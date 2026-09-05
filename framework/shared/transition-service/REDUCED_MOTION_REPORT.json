@@ -1,0 +1,6 @@
+{
+  "status": "IMPLEMENTED_STATIC",
+  "colorAndValue": "short fade or immediate",
+  "scalePulseRotation": "immediate/static",
+  "strobe": "disabled by StatusCore reduced-motion path"
+}

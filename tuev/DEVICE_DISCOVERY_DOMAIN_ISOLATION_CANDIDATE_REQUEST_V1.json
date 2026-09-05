@@ -1,0 +1,1 @@
+{"requestId":"NL-DEVICE-DISCOVERY-ISOLATION-V1","status":"REQUESTED_INTERNAL_CANDIDATE_REVIEW","scope":["nonblocking startup discovery","manual discovery","per-detector timeout","domain isolation","package proposals"],"automaticActivation":false,"globalFailurePropagation":false,"externalApprovalClaimed":false}

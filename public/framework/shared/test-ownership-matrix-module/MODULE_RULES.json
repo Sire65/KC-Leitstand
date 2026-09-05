@@ -1,0 +1,14 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "id":  "shared.test-ownership-matrix.rules",
+    "version":  "0.2.0",
+    "singleOwnerPerTest":  true,
+    "crossAreaDetails":  false,
+    "unknownTestsGoTo":  "protocol",
+    "forbidden":  [
+                      "measurement-start",
+                      "sensor-mutation",
+                      "probe-execution",
+                      "app-js-dependency"
+                  ]
+}

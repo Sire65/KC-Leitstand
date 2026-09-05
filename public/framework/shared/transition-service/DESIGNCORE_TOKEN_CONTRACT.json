@@ -1,0 +1,11 @@
+{
+  "optionalTokens": [
+    "transition.duration.normal",
+    "transition.duration.warning",
+    "transition.duration.alarm",
+    "transition.easing.standard",
+    "motion.reduced",
+    "motion.enabled"
+  ],
+  "serviceDoesNotDefineDesignTokens": true
+}

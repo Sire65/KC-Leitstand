@@ -1,0 +1,1 @@
+{"id":"shared.supabase-sync","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","release":"BLOCKED","mode":"DISABLED_BY_DEFAULT","requires":["shared.secure-storage","Supabase Auth","RLS"],"forbidden":["service role key","plaintext payload","anonymous write","automatic enable","cross-device claim without key recovery"],"standardized":true}

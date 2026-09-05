@@ -1,0 +1,29 @@
+name: Validate Candidate
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: JavaScript syntax
+        run: node --check app/app.js
+      - name: Migration preflight
+        run: python tools/migration-preflight.py
+      - name: Release readiness
+        run: python tools/release-check.py
+      - name: Framework TÜV Pflichtprüfung
+        run: python tools/framework-tuev.py release --level CANDIDATE
+      - name: TÜV-Zertifikat verifizieren
+        run: python tools/framework-tuev.py verify

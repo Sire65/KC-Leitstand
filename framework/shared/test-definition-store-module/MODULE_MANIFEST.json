@@ -1,0 +1,22 @@
+﻿{
+  "id": "shared.test-definition-store",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "description": "Lesender Definitionsspeicher fuer Testgruppen, Testdefinitionen, Prioritaeten und Ausfuehrungsklassen.",
+  "requires": [],
+  "optional": ["SettingsCore", "CapabilityCore", "SchedulerCore"],
+  "forbidden": [
+    "probe execution",
+    "poll timer changes",
+    "sensor mutation",
+    "network access",
+    "persistent measurement state"
+  ],
+  "scalePolicy": {
+    "plannedTests": "1000+",
+    "definitionMode": "data first",
+    "executionClasses": ["permanent", "cyclic", "event", "manual", "deep"],
+    "uiRule": "catalog reads definitions; dashboard shows only major groups and alerts"
+  }
+}

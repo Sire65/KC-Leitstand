@@ -1,0 +1,20 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "id":  "shared.test-card-layout-spec.rules",
+    "version":  "0.2.0",
+    "gridColumns":  6,
+    "sizes":  [
+                  "S",
+                  "M",
+                  "L",
+                  "XL"
+              ],
+    "rowPolicy":  "first-fit-stable",
+    "note":  "Kleine Karten koennen neben L/XL Karten liegen, solange 6 Rasterspalten nicht ueberschritten werden.",
+    "forbidden":  [
+                      "cross-area-detail-duplication",
+                      "measurement-start",
+                      "sensor-mutation",
+                      "app-js-dependency"
+                  ]
+}

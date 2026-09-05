@@ -1,0 +1,30 @@
+{
+  "contract": "CORE_LIVE_OVERVIEW_MIGRATION_V1",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "targetPage": "overview",
+  "strategy": "move existing DOM components; never clone runtime components",
+  "migrated": [
+    "SystemBrain",
+    "LiveStatus",
+    "EKG",
+    "ScanRing",
+    "LagPanel",
+    "OperationMonitor"
+  ],
+  "newVisualModules": [
+    "LatencyBall",
+    "HealthRing"
+  ],
+  "lifecycle": {
+    "beforeWorkspaceRender": "park live nodes",
+    "overviewRendered": "mount live nodes and visual modules",
+    "legacyFallbackOpened": "restore live nodes to original anchors",
+    "hiddenAnimation": "stop latency ball"
+  },
+  "safety": {
+    "measurementRuntimeDuplicated": false,
+    "existingMeasurementLogicChanged": false,
+    "legacyNodesDeleted": false,
+    "reducedMotionObserved": true
+  }
+}

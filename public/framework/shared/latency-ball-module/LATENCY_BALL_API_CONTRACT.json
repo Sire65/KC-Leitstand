@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0",
+  "global": "FrameworkLatencyBallModule",
+  "customElement": "latency-ball-module",
+  "api": [
+    "createEngine(options)",
+    "engine.addSample(latencyMs, details)",
+    "engine.setLatency(latencyMs, details)",
+    "engine.exportStatistics()",
+    "engine.start()",
+    "engine.stop()",
+    "engine.reset()",
+    "engine.setAnimation(enabled)",
+    "engine.setSize(value)",
+    "draw(canvas, engine)"
+  ],
+  "events": ["latency-ball.sample", "latency-ball.statistics", "latency-ball.bounce", "latency-ball.frame", "latency-ball.cycle", "latency-ball.reset", "latency-ball.settings"]
+}

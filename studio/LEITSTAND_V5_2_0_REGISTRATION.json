@@ -1,0 +1,10 @@
+{
+  "projectId": "NL",
+  "version": "5.4.0",
+  "candidate": "ORGAN_SENSOR_NEURAL_INTEGRATION",
+  "studioStatus": "YELLOW_CANDIDATE",
+  "components": ["BrainCoordinator", "OrganSensorRegistry", "StatusCore3D", "AlertSoundService"],
+  "sensorCapacity": 1000,
+  "runtimeMigration": true,
+  "releaseGate": "TUEV_AND_DEVICE_TEST"
+}

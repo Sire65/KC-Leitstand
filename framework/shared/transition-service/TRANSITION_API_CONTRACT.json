@@ -1,0 +1,19 @@
+{
+  "version": "0.1.0",
+  "defaultInterruption": "continue-from-current",
+  "api": [
+    "transitionValue",
+    "transitionColor",
+    "transitionState",
+    "transitionIntensity",
+    "transitionRotation",
+    "transitionPulse",
+    "cancelTransition",
+    "finishTransition",
+    "finishAllTransitions",
+    "setMotionEnabled",
+    "setReducedMotion",
+    "getTransitionState",
+    "dispose"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "stage": 1,
+  "consumer": "statuscore.3d-indicator",
+  "sequence": [
+    "baseline",
+    "service integration",
+    "motion off",
+    "reduced motion",
+    "rapid retarget",
+    "resource comparison",
+    "rollback"
+  ],
+  "otherConsumersMigrated": false
+}

@@ -1,0 +1,12 @@
+{
+  "version": "4.3.3",
+  "status": "YELLOW_CANDIDATE",
+  "checks": {
+    "pcapClassicEthernet": true,
+    "ethExtension": true,
+    "localOnly": true,
+    "payloadNotDisplayed": true,
+    "appPublicSync": true,
+    "probeUnchanged": true
+  }
+}

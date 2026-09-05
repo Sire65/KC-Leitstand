@@ -1,0 +1,16 @@
+{
+  "moduleId": "shared.health-ring",
+  "version": "0.1.0",
+  "result": "CANDIDATE",
+  "checks": [
+    { "id": "HR-BOUNDARY-01", "result": "PASS", "text": "Module contains no network probe or Leitstand business logic." },
+    { "id": "HR-API-01", "result": "PASS", "text": "Public API is documented in HEALTH_RING_API_CONTRACT.json." },
+    { "id": "HR-MOTION-01", "result": "PASS", "text": "Animation can be disabled through setAnimation(false)." },
+    { "id": "HR-REUSE-01", "result": "PASS", "text": "Runtime exposes global factory and custom element for arbitrary host programs." }
+  ],
+  "openGates": [
+    "Browser smoke test in target host",
+    "DesignCore token mapping",
+    "EventBus adapter binding"
+  ]
+}

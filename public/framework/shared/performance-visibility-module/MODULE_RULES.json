@@ -1,0 +1,1 @@
+{"schemaVersion":"1.0.0","id":"shared.performance-visibility.rules","version":"0.1.0","mode":"EVENT_DRIVEN","polling":false,"independentCardTimers":0,"backgroundAnimationFps":0,"hiddenDetailRender":false,"inventedMeasurementCorrection":false}

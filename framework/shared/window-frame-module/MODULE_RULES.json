@@ -1,0 +1,29 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "id":  "shared.window-frame.rules",
+    "module":  "shared.window-frame",
+    "version":  "0.2.2",
+    "purpose":  "Freie Leitstand-Fenster fuer Baukasten, Schulung und spaetere echte Arbeitsflaechen.",
+    "controls":  {
+                     "minimize":  "Fenster in Taskleiste ablegen oder Panel minimieren.",
+                     "maximize":  "Fenster maximieren; danach Vorige Groesse anbieten.",
+                     "close":  "Schliessen bedeutet bei Arbeitsfenstern Ablegen, nicht Datenverlust."
+                 },
+    "protection":  {
+                       "minimumReachableWindows":  1,
+                       "requiredWindows":  "Pflichtfenster duerfen nicht als letzte Kernansicht verschwinden.",
+                       "taskbar":  "Ausgeblendete/minimierte Fenster bleiben unten erreichbar."
+                   },
+    "layout":  {
+                   "gridSizePx":  12,
+                   "minWidthPx":  180,
+                   "minHeightPx":  120,
+                   "snapDefault":  true
+               },
+    "forbidden":  [
+                      "Messung starten",
+                      "Sensorwerte aendern",
+                      "Testzuordnung veraendern",
+                      "app.js-Abhaengigkeit"
+                  ]
+}

@@ -1,0 +1,69 @@
+{
+  "project": "Netzwerk-Leitstand",
+  "version": "4.3.11",
+  "status": "PASS",
+  "level": "CANDIDATE",
+  "usage": "TEST_ONLY",
+  "scope": "TÜV-Härtung Versionskonsistenz und Abschluss-Regression",
+  "checks": [
+    {
+      "id": "REL-01",
+      "result": "PASS",
+      "name": "Release-Check"
+    },
+    {
+      "id": "MIG-01",
+      "result": "PASS",
+      "name": "Migrations-Preflight"
+    },
+    {
+      "id": "TUEV-01",
+      "result": "PASS",
+      "name": "Framework-TÜV Candidate, 0 Blocker, 0 Warnungen"
+    },
+    {
+      "id": "UNI-01",
+      "result": "PASS_WITH_ENV_WARNING",
+      "name": "Universeller TÜV Ordner und ZIP",
+      "note": "PowerShell/Windows-Prüfung unter Linux nicht ausführbar"
+    },
+    {
+      "id": "EXT-01",
+      "result": "PASS",
+      "name": "Node.js Syntaxprüfung aller Framework-, App- und Public-JavaScript-Dateien"
+    },
+    {
+      "id": "EXT-02",
+      "result": "PASS",
+      "name": "JSON-Parserprüfung aller 77 JSON-Dateien"
+    },
+    {
+      "id": "NEG-01",
+      "result": "PASS",
+      "name": "Negativtest fehlender Core wird blockiert"
+    },
+    {
+      "id": "NEG-02",
+      "result": "PASS",
+      "name": "Negativtest Versionsdrift wird blockiert"
+    },
+    {
+      "id": "NEG-03",
+      "result": "PASS",
+      "name": "Negativtest Zertifikatsmanipulation wird blockiert"
+    },
+    {
+      "id": "NEG-04",
+      "result": "PASS",
+      "name": "Negativtest JavaScript-Syntaxfehler wird blockiert"
+    },
+    {
+      "id": "BROWSER-01",
+      "result": "NOT_EXECUTABLE_IN_ENV",
+      "name": "Chromium Runtime-Smoke-Test",
+      "note": "Container verweigert erforderliche Linux-Systemressourcen; Ziel-PC-Test bleibt Stable-Gate"
+    }
+  ],
+  "publishApproved": false,
+  "stableApproved": false
+}

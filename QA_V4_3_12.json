@@ -1,0 +1,12 @@
+{
+  "version": "4.3.18",
+  "status": "PASS",
+  "scope": "Archiv-Startschutz",
+  "checks": [
+    {"id":"ZIP-01","result":"PASS","text":"Fehlende Pflichtdateien blockieren vor PowerShell-Aufruf"},
+    {"id":"ZIP-02","result":"PASS","text":"WinRAR-Temp-Pfad wird erkannt"},
+    {"id":"ZIP-03","result":"PASS","text":"7-Zip-Temp-Pfad wird erkannt"},
+    {"id":"ZIP-04","result":"PASS","text":"Normaler entpackter Projektpfad bleibt zulässig"},
+    {"id":"ZIP-05","result":"PASS","text":"Klare deutschsprachige Entpack-Hinweise vorhanden"}
+  ]
+}

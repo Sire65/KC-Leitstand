@@ -1,0 +1,49 @@
+/* Netzwerk-Leitstand V4.2.2 - Framework Shell Stabilisierung */
+:root{--shell-header-h:68px;--shell-status-h:32px;--shell-panel-w:360px}
+body{padding-bottom:var(--shell-status-h)}
+.main{height:calc(100vh - var(--shell-status-h))}
+.shell-greeting{display:flex;align-items:center;gap:18px;min-width:0}
+.shell-greeting>h1,.shell-greeting>small{display:none}
+.shell-greeting-line{display:flex;align-items:center;gap:10px;min-width:220px}
+.shell-greeting-line>span:last-child{display:grid;gap:2px}
+.shell-greeting-line b{font-size:15px;letter-spacing:.02em;color:#f5fbff}
+.shell-greeting-line small{display:block!important;font-size:11px;color:#9db4c2}
+.shell-project-icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid #55778a;border-radius:10px;background:linear-gradient(#24485e,#102936);box-shadow:inset 0 1px #ffffff24,0 3px 10px #0007;color:#8ed8ff;font-size:22px}
+.top-right{gap:7px}.shell-header-tool{min-width:38px;height:38px;padding:0 9px;font-weight:900}.shell-header-tool:focus-visible{outline:3px solid #79d9ff;outline-offset:2px}
+.shell-digital-clock{min-width:122px;display:grid!important;justify-items:end;line-height:1.05;padding:2px 9px;border-left:1px solid #456475}
+.shell-digital-clock b{font-size:16px;letter-spacing:.08em;color:#f5fbff}.shell-digital-clock small{display:block!important;font-size:10px;color:#9db4c2}
+.user-actions{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)}
+.user-actions button{padding:5px 7px;white-space:normal;line-height:1.05}
+.nav-parent{display:grid!important;grid-template-columns:22px minmax(0,1fr) 20px;align-items:center;width:100%;text-align:left}
+.nav-parent .group-plus{font-size:17px;font-weight:900}.nav-parent i{text-align:right;font-style:normal;color:#9fc0d2}
+.nav-group.closed .nav-item{display:none}.nav-group:not(.closed) .nav-parent{background:rgba(64,142,184,.13);border-color:#4a7d98}
+.nav-item.active{border-left-color:#4bd2ff!important;background:linear-gradient(90deg,rgba(34,170,225,.24),rgba(34,170,225,.06))!important;box-shadow:inset 0 0 0 1px rgba(96,204,248,.18)}
+.shell-nav-icon{display:inline-grid;place-items:center;width:26px;margin-right:5px}.shell-nav-label{vertical-align:middle}
+.shell-smart-panel{width:var(--shell-panel-w);z-index:110}.shell-smart-panel header{min-height:54px}.smart-tabs{grid-template-columns:repeat(4,1fr)!important}.smart-tabs button{min-width:0;padding:8px 4px;font-size:11px}.shell-smart-panel article{border-left:3px solid #3d91b9}
+.shell-status-bar{height:var(--shell-status-h)}.shell-status-bar>*{height:26px}.shell-status-bar button:hover{background:#153344}.shell-status-bar button:focus-visible{outline:2px solid #79d9ff;outline-offset:-2px}
+html[data-device-mode="tablet"]{--shell-panel-w:min(42vw,360px)}
+html[data-device-mode="tablet"] .shell-smart-panel{box-shadow:-8px 0 24px #000a}
+html[data-device-mode="tablet"] .top-right .plant{display:none}
+html[data-device-mode="smartphone"]{--shell-status-h:30px;--shell-panel-w:min(92vw,360px)}
+html[data-device-mode="smartphone"] .shell-greeting-line>span:last-child{display:none}
+html[data-device-mode="smartphone"] .shell-project-icon{width:36px;height:36px}
+html[data-device-mode="smartphone"] .shell-header-tool{min-width:34px;height:34px;padding:0 6px}
+html[data-device-mode="smartphone"] #shellNotifications,html[data-device-mode="smartphone"] #shellSearch{display:none}
+html[data-device-mode="smartphone"] .shell-digital-clock{min-width:62px;border-left:0;padding:0 2px}
+html[data-device-mode="smartphone"] .shell-digital-clock small{display:none!important}
+html[data-device-mode="smartphone"] .shell-status-bar{left:0;bottom:62px;overflow-x:auto;scrollbar-width:thin}
+html[data-device-mode="smartphone"] .shell-smart-panel{top:58px;bottom:92px}
+@media(max-width:900px){.shell-status-bar span:nth-of-type(2),.shell-status-bar span:nth-of-type(3){display:none}}
+
+/* V4.2.2: ruhige Uhr, Nullstellung, Navi-Breitenanzeige und direkte Bürosteuerung */
+.shell-digital-clock{width:132px;min-width:132px;max-width:132px;font-variant-numeric:tabular-nums;contain:layout paint;overflow:hidden}
+.shell-digital-clock b{width:100%;text-align:right;white-space:nowrap}
+.shell-digital-clock small{width:100%;text-align:right;white-space:nowrap}
+.resize-status{right:-104px!important;top:50%!important;transform:translateY(-50%);min-width:68px;text-align:center;background:#07141deb!important;border:1px solid #76d7ff;color:#fff;box-shadow:0 5px 16px #0008}
+.office-console-actions{position:absolute;left:31%;top:57%;width:44%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;z-index:30;opacity:0;transform:translateY(7px);pointer-events:none;transition:opacity .16s,transform .16s}
+.office-hotspot[data-office-command="console"]:hover + .office-console-actions,.office-hotspot[data-office-command="console"]:focus-visible + .office-console-actions,.office-console-actions:hover,.office-console-actions:focus-within{opacity:1;transform:translateY(0);pointer-events:auto}
+.office-console-actions button{min-height:34px;border:1px solid #75c8ee;border-radius:6px;background:linear-gradient(#17384a,#091a24);color:#eefaff;font:800 11px/1 system-ui;letter-spacing:.04em;box-shadow:0 5px 15px #0009;cursor:pointer}
+.office-console-actions button:hover,.office-console-actions button:focus-visible{background:#1d617f;outline:2px solid #fff;outline-offset:2px}
+.office-console-actions button[data-office-action="start-all"]{border-color:#43d681}.office-console-actions button[data-office-action="stop-all"]{border-color:#ff6464}
+.master-stopped canvas{filter:saturate(.2);}
+@media(max-width:800px){.office-console-actions{left:18%;top:54%;width:66%;grid-template-columns:repeat(2,1fr)}.shell-digital-clock{width:76px;min-width:76px;max-width:76px}}

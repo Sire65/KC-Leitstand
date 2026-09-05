@@ -1,0 +1,24 @@
+{
+  "version": "4.0.11",
+  "status": "MASTER_NAVIGATION_MIGRATION_CANDIDATE",
+  "baseVersion": "4.0.10",
+  "gate": "YELLOW_STATIC_CHECK_PASSED_BROWSER_RUNTIME_OPEN",
+  "tests": {
+    "MASTER_NAVIGATION_ADAPTER_PRESENT": true,
+    "OLD_NAV_DOM_REMOVED": true,
+    "NETWORK_MENU_ADAPTER_PRESENT": true,
+    "FULL_COMPACT_QUICK_STATES_PRESENT": true,
+    "PIN_RECENT_REST_WIDTH_LOCK_PRESENT": true,
+    "ADMIN_AUTO_OFFICE_BUTTONS_PRESENT": true,
+    "REST_MODE_CLOSES_FLOATING_UI": true,
+    "PROJECT_REGISTER_VERSION_CONSISTENT": true,
+    "JSON_PARSE": true,
+    "PROBE_UNCHANGED": true,
+    "BROWSER_RUNTIME_TEST": false
+  },
+  "notes": [
+    "The previous local network sidebar was replaced by a reusable NavigationCore migration adapter.",
+    "Network-specific menu entries are provided as adapter data only.",
+    "The PowerShell probe service and measurement algorithms were intentionally left unchanged."
+  ]
+}

@@ -1,0 +1,1 @@
+{"id":"shared.safety-stop","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","release":"BLOCKED","startup":"PAUSED","modes":["NORMAL","STARTUP_PAUSED","SELF_LOAD_ONLY","EMERGENCY_STOP"],"requires":["shared.secure-storage"],"resume":"explicit confirmation"}

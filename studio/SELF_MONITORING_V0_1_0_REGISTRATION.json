@@ -1,0 +1,1 @@
+{"moduleId":"shared.self-monitoring","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","cores":["DesignCore","PerformanceCore","TableCore"],"visuals":["gauges","lights","lines","bars","donut"],"hiddenRendering":false,"stableRelease":false}

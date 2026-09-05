@@ -1,0 +1,10 @@
+﻿{
+  "id": "shared.viewport-edge-controls",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "description": "Rechte und untere Schiebe-/Pfeilbedienung fuer scrollbare Hauptflaechen ohne Messlogik-Eingriff.",
+  "requires": ["InteractionCore"],
+  "optional": ["WindowCore", "DesignCore", "SettingsCore"],
+  "forbidden": ["measurement start", "probe execution", "sensor mutation", "app.js dependency"]
+}

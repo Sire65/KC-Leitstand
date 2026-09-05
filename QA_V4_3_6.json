@@ -1,0 +1,13 @@
+{
+  "version": "4.3.6",
+  "status": "YELLOW_CANDIDATE",
+  "gate": "FRAMEWORK_TUEV_CANDIDATE_REQUIRED",
+  "checks": [
+    {"id":"FT-01","result":"PASS","text":"Automatischer Schnell-TÜV vorhanden"},
+    {"id":"FT-02","result":"PASS","text":"Release-TÜV und Zertifikatsgenerator vorhanden"},
+    {"id":"FT-03","result":"PASS","text":"Start und Installation ohne gültiges Zertifikat gesperrt"},
+    {"id":"FT-04","result":"PASS","text":"GitHub-Push und Pull Request durch TÜV-Workflow geprüft"},
+    {"id":"FT-05","result":"PASS","text":"Candidate-Zertifikat nur für Testbetrieb"},
+    {"id":"FT-06","result":"PENDING_TARGET_PC","text":"Stable-Zertifikat benötigt Ziel-PC-, Prüfdienst- und FRITZ!Box-Livenachweise"}
+  ]
+}

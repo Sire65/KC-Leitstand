@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "nl.test-workspace-layout",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "mode": "PREVIEW_ONLY",
+  "storage": {
+    "key": "leitstand.testworkspace.layout.v1",
+    "version": 1,
+    "coordinates": ["column", "row", "widthUnits", "heightUnits"],
+    "pixelsForbidden": true,
+    "invalidDataFallback": "DEFAULT_LAYOUT"
+  },
+  "grid": {
+    "columns": 6,
+    "rowUnitPx": 42,
+    "gapPx": 10,
+    "collisionPolicy": "REJECT_AND_KEEP_LAST_VALID",
+    "outsidePlacementForbidden": true
+  },
+  "interaction": {
+    "pointer": true,
+    "keyboard": true,
+    "lock": true,
+    "hide": true,
+    "undo": true,
+    "pageReset": true,
+    "allReset": true
+  },
+  "migration": {
+    "existingRuntimeChanged": false,
+    "legacyLayoutRead": false,
+    "automaticActivation": false
+  },
+  "forbidden": [
+    "measurement-start",
+    "probe-execution",
+    "sensor-mutation",
+    "scheduler-execution",
+    "pixel-coordinate-persistence",
+    "cross-page-drag",
+    "existing-view-removal"
+  ]
+}

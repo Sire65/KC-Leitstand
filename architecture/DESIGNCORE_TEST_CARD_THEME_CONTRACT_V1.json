@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "nl.designcore-test-card-theme",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "designCoreApi": "1",
+  "themeId": "nl.test-card.semantic.v1",
+  "statusTokens": ["normal", "warning", "elevated", "critical", "information", "unknown", "disabled"],
+  "focusTokens": ["none", "watch", "important", "pinned"],
+  "effects": ["none", "border", "status-strip", "soft-halo"],
+  "priority": ["critical", "elevated", "warning", "information", "normal", "unknown", "disabled"],
+  "rules": {
+    "directHexPersistenceForbidden": true,
+    "redDecorationForbidden": true,
+    "colorOnlyCommunicationForbidden": true,
+    "focusMustNotOverwriteMeasurementState": true,
+    "hiddenAnimationFps": 0,
+    "normalContinuousAnimationForbidden": true,
+    "reducedMotionRequired": true
+  }
+}

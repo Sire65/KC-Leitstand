@@ -1,0 +1,14 @@
+{
+  "version": "4.2.3",
+  "status": "YELLOW_CANDIDATE",
+  "gate": "OFFICE_HOTSPOTS_REPAIRED_TARGET_PC_TEST_REQUIRED",
+  "checks": [
+    {"id":"OFFICE-CSS-01","status":"PASS","result":"Alle referenzierten CSS-Dateien vorhanden"},
+    {"id":"OFFICE-HOTSPOT-02","status":"PASS","result":"10 Objekt-Hotspots vorhanden"},
+    {"id":"OFFICE-CONTROL-03","status":"PASS","result":"4 Schaltpult-Direktaktionen verdrahtet"},
+    {"id":"OFFICE-HOVER-04","status":"PASS","result":"Hover und Tastaturfokus über CSS und JavaScript abgesichert"},
+    {"id":"OFFICE-TOUCH-05","status":"PASS","result":"Touch-Fallback für Direktaktionen vorhanden"},
+    {"id":"JS-SYNTAX-06","status":"PASS","result":"app.js besteht node --check"},
+    {"id":"TARGET-PC-07","status":"OPEN","result":"Sicht- und Klicktest auf Windows-PC erforderlich"}
+  ]
+}

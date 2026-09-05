@@ -1,0 +1,12 @@
+{
+  "id": "shared.transition-service",
+  "class": "SHARED_MODULE",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "leading": false,
+  "release": "BLOCKED",
+  "catalogPath": "Darstellung & Interaktion/TransitionService",
+  "referenceConsumer": "statuscore.3d-indicator",
+  "migrationStage": 1,
+  "secondApplicationRequired": true
+}

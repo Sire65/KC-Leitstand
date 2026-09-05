@@ -1,0 +1,35 @@
+﻿{
+    "id":  "shared.test-catalog",
+    "version":  "0.6.0",
+    "status":  "ARCHITECTURE_CANDIDATE",
+    "release":  "CANDIDATE",
+    "description":  "Gruppierter Testkatalog. V0.5.1 macht den Schliessen-Button robust sichtbar.",
+    "requires":  [
+                     "NavigationCore",
+                     "InteractionCore",
+                     "shared.test-definition-store",
+                     "shared.test-ownership-matrix",
+                     "shared.workspace-pages",
+                     "shared.test-scheduler-model",
+                     "shared.test-card-layout-spec"
+                 ],
+    "optional":  [
+                     "SettingsCore",
+                     "CapabilityCore",
+                     "SearchCore"
+                 ],
+    "forbidden":  [
+                      "measurement start",
+                      "sensor mutation",
+                      "probe execution",
+                      "poll timer changes",
+                      "app.js dependency"
+                  ],
+    "scalePolicy":  {
+                        "plannedTests":  "1000+",
+                        "strategy":  "definition store plus ownership matrix plus workspace pages plus scheduler preview plus card layout spec",
+                        "renderLimit":  80,
+                        "topLevelNavigation":  "major categories only"
+                    },
+    "matrixPreview":  true
+}

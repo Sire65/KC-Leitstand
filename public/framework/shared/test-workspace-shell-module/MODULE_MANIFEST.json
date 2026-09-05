@@ -1,0 +1,31 @@
+{
+  "id": "shared.test-workspace-shell",
+  "version": "0.3.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "mode": "CORE_FIRST_MIGRATION_CANDIDATE",
+  "description": "Primaere Core-First-Fachseiten; alte Laufzeit nur noch ueber befristete Mess- und Sicherheitsadapter.",
+  "requires": [
+    "shared.test-definition-store",
+    "shared.test-ownership-matrix",
+    "shared.workspace-pages",
+    "shared.test-card-layout-spec",
+    "DesignCore",
+    "WindowCore",
+    "TableCore",
+    "InteractionCore"
+  ],
+  "forbidden": [
+    "measurement start",
+    "probe execution",
+    "sensor mutation",
+    "scheduler execution",
+    "automatic layout migration",
+    "existing view removal",
+    "new measurement implementation",
+    "new legacy UI component",
+    "direct new window state",
+    "direct new table state"
+  ],
+  "standardized": true
+}

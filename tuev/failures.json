@@ -1,0 +1,13 @@
+{
+  "blockers": [],
+  "warnings": [
+    {
+      "suite": "syntax",
+      "id": "NODE_AVAILABLE",
+      "result": "FAIL",
+      "severity": "WARNING",
+      "text": "Node.js nicht gefunden; Syntaxprüfung nicht ausgeführt",
+      "evidence": ""
+    }
+  ]
+}

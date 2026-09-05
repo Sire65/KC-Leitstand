@@ -1,0 +1,1 @@
+{"contract":"SENSOR_PACKAGE_REVIEW_LOAD_GATE_V1","status":"ARCHITECTURE_CANDIDATE","weights":{"none":0,"low":1,"medium":3,"high":7},"budget":30,"selection":"per sensor","overBudget":"BLOCK_SAVE","savedObject":"activation intent only","intentStatus":"PENDING_CAPABILITY_SCHEDULER_TUEV","activation":false,"measurementExecution":false,"plainLocalStorage":false}

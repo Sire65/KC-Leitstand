@@ -1,0 +1,1 @@
+{"schemaVersion":"1.0.0","id":"shared.test-card-design.rules","version":"0.1.0","themeId":"nl.test-card.semantic.v1","statusTokens":["normal","warning","elevated","critical","information","unknown","disabled"],"focusTokens":["none","watch","important","pinned"],"contrastRatio":4.5,"storage":"encrypted IndexedDB tokens only"}

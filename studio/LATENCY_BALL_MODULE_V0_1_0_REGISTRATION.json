@@ -1,0 +1,15 @@
+{
+  "id": "shared.latency-ball",
+  "displayName": "Latency Ball Module",
+  "version": "0.1.0",
+  "category": "Darstellung & Interaktion/Visualisierung",
+  "kind": "shared-module",
+  "source": "framework/shared/latency-ball-module/latency-ball-module.js",
+  "manifest": "framework/shared/latency-ball-module/MODULE_MANIFEST.json",
+  "contract": "framework/shared/latency-ball-module/LATENCY_BALL_API_CONTRACT.json",
+  "hostPolicy": {
+    "standalone": true,
+    "requiresLeitstand": false,
+    "requiresNetworkProbe": false
+  }
+}

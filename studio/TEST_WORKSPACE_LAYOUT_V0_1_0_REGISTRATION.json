@@ -1,0 +1,21 @@
+{
+  "id": "shared.test-workspace-layout",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "mode": "PREVIEW_ONLY",
+  "source": "framework/shared/test-workspace-layout-module/test-workspace-layout-module.js",
+  "manifest": "framework/shared/test-workspace-layout-module/MODULE_MANIFEST.json",
+  "contract": "architecture/TEST_WORKSPACE_LAYOUT_CONTRACT_V1.json",
+  "consumer": "Netzwerk-Leitstand",
+  "runtimeMutationAllowed": false,
+  "storageSchema": 1,
+  "requiredGates": [
+    "ARCHITECTURE_TUEV",
+    "DASHBOARD_TUEV",
+    "BEDIENUNGS_TUEV",
+    "FRAMEWORK_TUEV",
+    "APP_PUBLIC_SYNC",
+    "LAYOUT_BROWSER_SMOKE"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "version": "4.2.0",
+  "status": "YELLOW_CANDIDATE",
+  "checks": {
+    "shell_runtime_present": "PASS",
+    "navigation_config_runtime": "PASS",
+    "header_runtime": "PASS",
+    "smartpanel_runtime": "PASS",
+    "statusbar_runtime": "PASS",
+    "probe_unchanged_required": "PASS",
+    "javascript_syntax": "PASS",
+    "target_pc_live": "PENDING",
+    "fritzbox_6690_live": "PENDING",
+    "tablet_live": "PENDING",
+    "navigation_page_targets": "PASS",
+    "probe_byte_identity": "PASS"
+  }
+}

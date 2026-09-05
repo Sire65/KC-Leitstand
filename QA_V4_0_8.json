@@ -1,0 +1,16 @@
+{
+  "version": "4.0.8",
+  "gate": "GREEN",
+  "tests": {
+    "JS_SYNTAX": true,
+    "PROBE_UNCHANGED": true,
+    "LED_RAIL": true,
+    "LED_FOCUS": true,
+    "EKG_TOP": true,
+    "CAUSE_RIGHT": true,
+    "FIELD_SWITCHES": true,
+    "SWITCH_SYNC": true,
+    "VERTICAL_FOLD": true,
+    "COMPACT": true
+  }
+}

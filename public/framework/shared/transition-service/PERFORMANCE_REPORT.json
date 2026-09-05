@@ -1,0 +1,8 @@
+{
+  "status": "STATIC_PASS_RUNTIME_PENDING",
+  "scheduler": "single requestAnimationFrame",
+  "timerPerIndicator": false,
+  "maxRegistered": 250,
+  "maxActivePerFrame": 100,
+  "leakTest": "PENDING_TARGET_BROWSER"
+}

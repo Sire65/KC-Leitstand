@@ -1,0 +1,11 @@
+{
+  "project": "network-leitstand",
+  "version": "5.4.0",
+  "module": "statuscore.3d-indicator",
+  "moduleVersion": "0.4.1",
+  "role": "brain",
+  "status": "YELLOW_CANDIDATE",
+  "location": "dashboard/router-detection-right",
+  "secondProgramMigrationRequired": true,
+  "projectVersion": "5.4.0"
+}

@@ -1,0 +1,16 @@
+{
+  "contract": "BRAIN_CONTROL_KNOWLEDGE_ACTION_V1",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "assessmentAuthority": "SystemAssessmentCore",
+  "coordinator": "LeitstandBrainCoordinator",
+  "pipeline": ["observe", "classify", "match-known-problem", "plan-runbook", "policy-gate", "log", "verify"],
+  "actionPolicies": {
+    "AUTO_SAFE_PLAN": "May create a non-mutating verification plan.",
+    "CONFIRM_REQUIRED": "Requires explicit user approval before any external change.",
+    "ACTUATOR_BLOCKED": "Cannot execute in this candidate."
+  },
+  "actuatorPrerequisites": ["CapabilityCore adapter", "device allowlist", "min/max bounds", "manual approval policy", "rollback", "post-action verification", "TUEV approval"],
+  "storage": {"engine": "IndexedDB", "encryption": "AES-GCM-256", "plainLocalStorage": false},
+  "performance": {"eventDriven": true, "polling": false, "maxMonitorEntries": 500},
+  "aiBoundary": "AI suggestions are advisory and must pass deterministic policy gates."
+}

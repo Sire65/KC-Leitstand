@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectId": "NL",
+  "requiredFiles": [
+    "README.md",
+    "app/index.html",
+    "app/app.js",
+    "public/index.html",
+    "public/app.js",
+    "probe/Netzwerk_Pruefdienst_V4.ps1",
+    "PROJECT_REGISTER.json"
+  ],
+  "protectedTokens": [
+    "officeOverlay",
+    "officeChairExit",
+    "office-hotspot",
+    "backToOffice",
+    "ekgCanvas",
+    "heart",
+    "data-diag-tab=\"internet\"",
+    "data-diag-tab=\"pc\""
+  ]
+}

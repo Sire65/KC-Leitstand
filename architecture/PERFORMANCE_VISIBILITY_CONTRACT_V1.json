@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "nl.performance-visibility",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "scope": "new-test-workspaces",
+  "budgets": {
+    "backgroundAnimationFps": 0,
+    "hiddenCardAnimationFps": 0,
+    "minimizedCardDetailRenderFps": 0,
+    "visiblePassiveCardMaxFps": 1,
+    "visibleAnimatedCardMaxFps": 30,
+    "managementMaxRenderedRows": 100,
+    "independentCardTimers": 0,
+    "longTaskWarningMs": 50
+  },
+  "requiredSignals": [
+    "document-visibility",
+    "workspace-open",
+    "card-visible",
+    "card-collapsed",
+    "card-minimized",
+    "audio-active"
+  ],
+  "measurementProtection": {
+    "selfLoadMustBeMarked": true,
+    "rawValuesMustRemainAvailable": true,
+    "inventedCorrectionForbidden": true,
+    "repeatWhenSelfLoadElevated": true,
+    "heavyAnalysisMustBeDeclared": true
+  },
+  "forbidden": [
+    "per-card-interval",
+    "hidden-canvas-loop",
+    "background-audio-preload",
+    "unbounded-history",
+    "unbounded-table-render",
+    "silent-measurement-correction"
+  ]
+}

@@ -1,0 +1,1 @@
+{"schemaVersion":"1.0.0","startupDiscovery":true,"manualDiscovery":true,"detectorTimeoutMs":4000,"settlement":"Promise.allSettled","domainIsolation":true,"automaticActivation":false,"failureRule":"one detector failure must not block another detector or existing tests","proposalStatus":"CONFIRM_REQUIRED"}

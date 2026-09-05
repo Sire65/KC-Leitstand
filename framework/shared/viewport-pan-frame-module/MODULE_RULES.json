@@ -1,0 +1,30 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "id":  "shared.viewport-pan-frame.rules",
+    "module":  "shared.viewport-pan-frame",
+    "version":  "0.1.6",
+    "purpose":  "Kantenverstellung fuer echte Leitstand-Arbeitsflaechen und spaetere Programmfenster.",
+    "interaction":  {
+                        "visibility":  "Normal unsichtbar; bei Mouse-over auf rechter oder unterer Kante sichtbar.",
+                        "bottomEdge":  "Zieht die untere Arbeitsflaechenkante hoch/runter.",
+                        "rightEdge":  "Zieht die rechte Arbeitsflaechenkante links/rechts.",
+                        "release":  "Nach Loslassen sofort ausblenden."
+                    },
+    "limits":  {
+                   "minHeightPx":  86,
+                   "minWidthPx":  320,
+                   "statusBarReservePx":  30
+               },
+    "trafficLight":  {
+                         "green":  "Normalbereich",
+                         "yellow":  "ab 72 Prozent Kantenweg",
+                         "orange":  "ab 86 Prozent Kantenweg",
+                         "red":  "ab 96 Prozent Kantenweg oder Anschlag"
+                     },
+    "forbidden":  [
+                      "Messung starten",
+                      "Sensorwerte aendern",
+                      "app.js-Abhaengigkeit",
+                      "Probe-Ausfuehrung"
+                  ]
+}

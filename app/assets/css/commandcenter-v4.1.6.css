@@ -1,0 +1,70 @@
+/* Netzwerk-Leitstand V4.1.7 - Registertrennung, Instrumente und Navigation */
+.command-gauges{display:grid!important}
+.dashboard-inline-controls{position:absolute;right:8px;top:8px;z-index:3;margin:0!important;max-width:430px}
+.cockpit-tabs{position:relative!important;padding-top:8px!important}
+.cockpit-tabs .tab-strip{padding-right:445px;min-height:36px}
+.nav-parent{width:100%;display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:center;margin:3px 0 5px;padding:9px;border:0;border-left:3px solid #22c55e;border-radius:6px;color:#eef7ef;background:#172d44;text-align:left;cursor:pointer}
+.nav-parent b{font-size:13px;letter-spacing:.03em}.nav-parent i,.nav-parent span{font-style:normal;color:#bfd1c4;font-weight:900}
+.nav-group.closed .nav-parent i{display:none}
+.nav-group:not(.closed) .nav-parent span{display:none}
+.nav-group.closed .nav-parent span{display:inline-grid;place-items:center}
+.nav-group:not(.closed) .nav-parent i{display:inline-grid;place-items:center}
+.nav-group-stammdaten.closed .nav-subitems{display:none}
+.nav-subitems{padding-left:15px;border-left:1px solid rgba(255,255,255,.16);margin-left:11px}
+.nav-item[data-icon]::before{content:attr(data-icon);display:inline-grid;place-items:center;width:24px;height:24px;margin-right:8px;border-radius:6px;color:#06131c;background:linear-gradient(145deg,#7be7ff,#2c9be2);box-shadow:inset 0 0 0 1px #ffffff55,0 0 8px #40adff55;font-weight:900}
+.nav-group:nth-of-type(1) .nav-item[data-icon]::before{background:linear-gradient(145deg,#8ee8ff,#40adff)}
+.nav-group:nth-of-type(2) .nav-item[data-icon]::before{background:linear-gradient(145deg,#fff17a,#ffb02f)}
+.nav-group:nth-of-type(3) .nav-item[data-icon]::before{background:linear-gradient(145deg,#8ff0a8,#2cdb74)}
+.nav-group:nth-of-type(4) .nav-item[data-icon]::before{background:linear-gradient(145deg,#ffb199,#ff6b5d)}
+.quick-icons button:nth-child(4n+1){color:#40adff;border-color:#347ca2}
+.quick-icons button:nth-child(4n+2){color:#ffd02f;border-color:#9c7b20}
+.quick-icons button:nth-child(4n+3){color:#2cdb74;border-color:#277747}
+.quick-icons button:nth-child(4n){color:#ff7b68;border-color:#9a4038}
+.nav-sub{padding-left:10px!important;font-size:13px}
+.cockpit-tabs .tab-panel.register-cockpit{display:none!important}
+.cockpit-tabs .tab-panel.register-cockpit.active{display:grid!important}
+.cockpit-tabs .tab-panel.register-cockpit:not(.active){visibility:hidden!important;height:0!important;min-height:0!important;overflow:hidden!important;padding:0!important;margin:0!important}
+.status-led-rail{display:flex!important;gap:4px!important;align-items:center!important;overflow-x:auto!important;padding:4px 6px!important;margin:0 0 7px!important;background:#06131c!important;border:1px solid #365d72!important;border-radius:6px!important;scrollbar-width:thin!important}
+.status-led{height:23px!important;padding:2px 6px!important;font-size:10px!important;line-height:1!important}
+.status-led span:not(.led-state){max-width:86px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sensor-lamps{display:none!important}
+.test-live{grid-template-columns:92px minmax(0,1fr) 260px!important;min-height:104px!important}
+.scan-ring{width:76px!important;height:76px!important}
+.scan-ring .hourglass{font-size:28px!important}
+.head-pulse{min-height:78px!important}
+.command-gauges{grid-template-columns:repeat(5,minmax(150px,1fr))!important}
+.gauge{min-height:156px!important;padding:7px!important;overflow:hidden!important}
+.gauge canvas{height:112px!important}
+.gauge span{font-size:14px!important}
+.settings-tabs{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.settings-tab{border:1px solid #587487;border-radius:6px;background:#17394d;color:#fff;padding:8px 11px;font-weight:800;cursor:pointer}
+.settings-tab.active{background:#28617f;box-shadow:inset 0 -3px 0 #2cdb74}
+.settings-panel{display:none}.settings-panel.active{display:block}
+.router-profile-registry{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:10px}
+.router-profile-card{border:1px solid #31576d;border-radius:8px;background:#071a25;padding:10px;display:grid;gap:5px}
+.router-profile-card h3{margin:0;font-size:15px}.router-profile-card small{color:#8fa9b9}
+.switch-audit-table td.ok{color:#2cdb74;font-weight:900}.switch-audit-table td.warn{color:#ffd02f;font-weight:900}
+.office-view{position:relative;min-height:calc(100vh - 116px);border:1px solid #35586e;border-radius:8px;overflow:hidden;background:#03070b;display:grid;place-items:center}
+.office-view[hidden]{display:none!important}
+.office-view img{width:100%;height:100%;max-height:calc(100vh - 116px);object-fit:contain;display:block}
+.office-caption{position:absolute;left:16px;bottom:16px;display:flex;gap:10px;align-items:center;padding:8px 10px;border:1px solid #5a8298;border-radius:7px;background:#06131ccc}
+.office-return[hidden]{display:none!important}
+.office-return{padding:7px 10px!important}
+.office-mode #officeView{display:none!important}
+.office-window-image{display:block;width:100%;height:min(68vh,620px);object-fit:contain;background:#03070b;border:1px solid #284b5f;border-radius:6px}
+.office-window-caption{display:flex;gap:10px;align-items:center;margin-top:8px;color:#b8cfdd}
+.ai-assistant.assistant-running{border-color:#40adff;box-shadow:0 0 0 1px #40adff55,0 0 18px #40adff33}
+.timeline-legend{display:flex;gap:10px;flex-wrap:wrap;color:#8fa9b9;font-size:12px;margin-top:6px}
+.timeline-legend b{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px}
+.timeline-legend .ok b{background:#40adff}.timeline-legend .warn b{background:#ffd02f}.timeline-legend .err b{background:#ff4c3e}
+@media(max-width:1200px){
+ .dashboard-inline-controls{position:static;max-width:none;margin-bottom:7px!important}
+ .cockpit-tabs .tab-strip{padding-right:0}
+ .router-profile-registry{grid-template-columns:1fr}
+ .command-gauges{grid-template-columns:repeat(2,minmax(150px,1fr))!important}
+}
+@media(max-width:700px){
+ .test-live{grid-template-columns:68px minmax(0,1fr)!important}
+ .head-pulse{grid-column:1/-1}
+ .command-gauges{grid-template-columns:1fr!important}
+}

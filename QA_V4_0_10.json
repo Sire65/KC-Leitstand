@@ -1,0 +1,22 @@
+{
+  "version": "4.0.10",
+  "status": "RUNTIME_FIX_CANDIDATE",
+  "baseVersion": "4.0.9",
+  "gate": "YELLOW_STATIC_CHECK_PASSED_BROWSER_RUNTIME_OPEN",
+  "tests": {
+    "JS_STATIC_SCAN": true,
+    "JSON_PARSE": true,
+    "LED_SOURCE_FIXED_TO_LATEST_SNAPSHOT": true,
+    "POLL_INTERVAL_USES_SETTINGS": true,
+    "POLL_TIMER_RESTARTS_AFTER_SETTINGS_SAVE": true,
+    "PROJECT_REGISTER_VERSION_CONSISTENT": true,
+    "PROBE_UNCHANGED": true,
+    "ID_REFERENCE_SCAN": true,
+    "BROWSER_RUNTIME_TEST": false
+  },
+  "notes": [
+    "V4.0.9 had a runtime mismatch: LED state calculation read S.data while polling stores snapshots under S.latest.snapshot.",
+    "The polling timer was hard-coded to 15 seconds although the UI exposes a configurable interval.",
+    "The PowerShell probe service was intentionally left unchanged."
+  ]
+}

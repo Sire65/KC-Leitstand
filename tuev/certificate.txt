@@ -1,0 +1,7 @@
+﻿FRAMEWORK TUEV
+BESTANDEN
+Zertifikat: FT-20260729-055BC1D9649F
+Projekt: Netzwerk-Leitstand V5.4.2
+Stufe: CANDIDATE
+Nutzung: TEST_ONLY
+Pruefsumme: 055bc1d9649f4e478141645cde821a207ba56f5a0b1c9b8fb1b5146b21ea07f5

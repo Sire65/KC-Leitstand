@@ -1,0 +1,6 @@
+{
+  "status": "PASS_STATIC",
+  "scope": "StatusCore 3D only",
+  "businessLogicChanged": false,
+  "fallback": "direct target application"
+}

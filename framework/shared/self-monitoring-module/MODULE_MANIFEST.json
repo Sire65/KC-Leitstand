@@ -1,0 +1,1 @@
+{"id":"shared.self-monitoring","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","release":"BLOCKED","mode":"BROWSER_METRICS_CANDIDATE","requires":["PerformanceObserver","shared.secure-storage","DesignCore"],"forbidden":["continuous hidden rendering","claimed exact process CPU","claimed exact process RAM"]}

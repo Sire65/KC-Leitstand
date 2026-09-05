@@ -1,0 +1,19 @@
+{
+  "id": "5590-fiber",
+  "name": "FRITZ!Box 5590 Fiber",
+  "access": "fiber",
+  "docsis": null,
+  "wifi": "Wi-Fi 6",
+  "tr064": true,
+  "defaultHost": "fritz.box",
+  "features": [
+    "Fiber",
+    "WAN",
+    "Mesh",
+    "DECT"
+  ],
+  "recommended": {
+    "interval": 15,
+    "deep": 60
+  }
+}

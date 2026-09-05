@@ -1,0 +1,40 @@
+﻿{
+    "id":  "shared.test-card-layout-spec",
+    "version":  "0.2.0",
+    "status":  "ARCHITECTURE_CANDIDATE",
+    "release":  "CANDIDATE",
+    "description":  "Raster-Spezifikation fuer Testkartenbreiten und -hoehen ohne Eingriff in aktive Messkarten.",
+    "requires":  [
+                     "shared.test-definition-store"
+                 ],
+    "optional":  [
+                     "WindowCore",
+                     "LayoutEditor",
+                     "SettingsCore",
+                     "CapabilityCore"
+                 ],
+    "forbidden":  [
+                      "measurement start",
+                      "sensor mutation",
+                      "probe execution",
+                      "free pixel positioning",
+                      "app.js dependency"
+                  ],
+    "grid":  {
+                 "columns":  6,
+                 "widths":  {
+                                "S":  1,
+                                "M":  2,
+                                "L":  3,
+                                "XL":  4
+                            },
+                 "heights":  {
+                                 "S":  2,
+                                 "M":  3,
+                                 "L":  4,
+                                 "XL":  6
+                             }
+             },
+    "rules":  "MODULE_RULES.json",
+    "standardized":  true
+}

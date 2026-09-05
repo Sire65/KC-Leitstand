@@ -1,0 +1,1 @@
+{"id":"shared.sensor-catalog","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","release":"BLOCKED","mode":"CATALOG_ONLY_DISABLED","definitionCount":1200,"enabledCount":0,"requires":["TableCore","shared.secure-storage"],"forbidden":["measurement execution","automatic activation","runtime registry mutation"]}

@@ -1,0 +1,9 @@
+{
+  "moduleId": "shared.brain-control-center",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "designCore": true,
+  "tableCorePlannedForKnowledgeEditor": true,
+  "runtimeMode": "CANDIDATE_SIMULATION_ONLY",
+  "stableRelease": false
+}

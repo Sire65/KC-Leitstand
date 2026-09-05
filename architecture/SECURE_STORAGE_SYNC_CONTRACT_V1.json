@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "nl.secure-storage-sync",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "local": {
+    "engine": "IndexedDB",
+    "database": "leitstand-secure-v1",
+    "encryption": "AES-GCM-256",
+    "ivBytes": 12,
+    "keyMode": "non-extractable-device-key",
+    "plaintextLocalStorageForbiddenForNewModules": true
+  },
+  "migration": {
+    "policy": "read-encrypt-verify-delete",
+    "bulkLegacyDeletionForbidden": true,
+    "rollbackRequired": true
+  },
+  "supabase": {
+    "optional": true,
+    "mode": "OFFLINE_FIRST_ENCRYPTED_PAYLOAD",
+    "authRequired": true,
+    "rlsRequired": true,
+    "publishableKeyAllowed": true,
+    "serviceRoleInBrowserForbidden": true,
+    "plaintextPayloadForbidden": true,
+    "conflictPolicy": "newest-valid-version-with-audit"
+  },
+  "limitations": [
+    "device-key mode does not provide cross-device decryption",
+    "passphrase or wrapped-key recovery is required before cross-device sync activation",
+    "encryption at rest does not protect against compromised active page code"
+  ]
+}

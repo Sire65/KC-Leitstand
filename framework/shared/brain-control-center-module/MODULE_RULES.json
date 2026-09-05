@@ -1,0 +1,12 @@
+{
+  "authority": "SystemAssessmentCore",
+  "pollingAllowed": false,
+  "actuatorExecutionAllowed": false,
+  "requirements": [
+    "Every finding links to a versioned problem and runbook.",
+    "Every proposed action states its policy and execution state.",
+    "Hardware actions remain ACTUATOR_BLOCKED without CapabilityCore approval, bounds, rollback and verification.",
+    "AI may propose but never bypass the deterministic action policy.",
+    "Monitor and outcome records use encrypted IndexedDB storage."
+  ]
+}

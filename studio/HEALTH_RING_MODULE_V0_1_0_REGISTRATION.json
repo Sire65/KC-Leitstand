@@ -1,0 +1,15 @@
+{
+  "id": "shared.health-ring",
+  "displayName": "Health Ring Module",
+  "version": "0.1.0",
+  "category": "Darstellung & Interaktion/Visualisierung",
+  "kind": "shared-module",
+  "source": "framework/shared/health-ring-module/health-ring-module.js",
+  "manifest": "framework/shared/health-ring-module/MODULE_MANIFEST.json",
+  "contract": "framework/shared/health-ring-module/HEALTH_RING_API_CONTRACT.json",
+  "hostPolicy": {
+    "standalone": true,
+    "requiresLeitstand": false,
+    "requiresNetworkProbe": false
+  }
+}

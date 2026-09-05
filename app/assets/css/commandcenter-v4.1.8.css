@@ -1,0 +1,18 @@
+/* Netzwerk-Leitstand V4.1.8 - interaktiver Bueromodus */
+.office-overlay{position:fixed;inset:0;z-index:9000;background:#02060a;display:grid;grid-template-rows:auto 1fr;color:#e9f7ff}
+.office-overlay[hidden]{display:none!important}
+.office-toolbar{min-height:54px;display:flex;align-items:center;gap:12px;padding:8px 16px;border-bottom:1px solid #31596d;background:linear-gradient(180deg,#101c25,#071018);box-shadow:0 8px 24px #0008}
+.office-toolbar strong{font-size:16px;letter-spacing:.06em}
+.office-toolbar .office-status{margin-left:auto;color:#9fc3d5;font-size:13px}
+.office-chair-exit{width:48px;height:38px;border:1px solid #d44b4b;border-radius:7px;background:#261015;color:#fff;font-size:23px;cursor:pointer}
+.office-chair-exit:hover,.office-chair-exit:focus-visible{background:#7d1d25;outline:2px solid #fff;outline-offset:2px}
+.office-stage{position:relative;min-height:0;overflow:hidden;display:grid;place-items:center;background:#02060a}
+.office-scene{position:relative;width:min(100vw,calc((100vh - 55px)*1.5));aspect-ratio:3/2;max-height:calc(100vh - 55px)}
+.office-scene>img{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.office-hotspot{position:absolute;border:1px solid transparent;background:transparent;border-radius:12px;cursor:pointer;color:transparent;padding:0}
+.office-hotspot::after{content:attr(data-label);position:absolute;left:50%;bottom:calc(100% + 7px);transform:translateX(-50%) translateY(5px);padding:5px 8px;border:1px solid #70b9df;border-radius:5px;background:#061722eF;color:#fff;font:600 12px/1.2 system-ui;white-space:nowrap;opacity:0;pointer-events:none;transition:.16s}
+.office-hotspot:hover,.office-hotspot:focus-visible{border-color:#7bd8ff;box-shadow:0 0 0 2px #0a95c855,0 0 25px #41c8ff88;background:#49c7ff12;outline:none}
+.office-hotspot:hover::after,.office-hotspot:focus-visible::after{opacity:1;transform:translateX(-50%) translateY(0)}
+.office-hotspot[data-action="danger"]:hover,.office-hotspot[data-action="danger"]:focus-visible{border-color:#ff7777;box-shadow:0 0 0 2px #c82c2c55,0 0 25px #ff414188}
+.office-live-note{position:absolute;left:1.5%;bottom:1.5%;padding:6px 9px;border:1px solid #446a7d;border-radius:6px;background:#06131ddd;color:#c8e1ee;font-size:12px;pointer-events:none}
+@media(max-width:800px){.office-toolbar{padding:6px 8px}.office-toolbar strong{font-size:13px}.office-toolbar .office-status{display:none}.office-hotspot::after{font-size:11px}.office-chair-exit{width:44px}}

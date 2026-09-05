@@ -1,0 +1,1 @@
+{"schemaVersion":"1.0.0","loadWeights":{"none":0,"low":1,"medium":3,"high":7},"loadBudget":30,"maxPackageSensors":30,"individualSelection":true,"intentStatus":"PENDING_CAPABILITY_SCHEDULER_TUEV","intentEnabled":false,"storage":"FrameworkSecureStorage"}

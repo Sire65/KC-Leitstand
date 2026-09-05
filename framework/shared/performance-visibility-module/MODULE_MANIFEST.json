@@ -1,0 +1,1 @@
+{"id":"shared.performance-visibility","version":"0.1.0","status":"ARCHITECTURE_CANDIDATE","release":"BLOCKED","description":"Ereignisgesteuerter Eigenlast- und Sichtbarkeitsvertrag ohne Polling.","requires":[],"forbidden":["polling loop","per-card timer","sensor mutation","measurement correction","app.js dependency"],"standardized":true}

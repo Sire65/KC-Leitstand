@@ -1,0 +1,31 @@
+{
+  "version": "4.3.4",
+  "status": "YELLOW_CANDIDATE",
+  "checks": [
+    {
+      "id": "TSH-01",
+      "status": "PASS",
+      "text": "TShark Status-Endpunkt vorhanden"
+    },
+    {
+      "id": "TSH-02",
+      "status": "PASS",
+      "text": "TShark Analyse-Endpunkt mit 100-MB-Limit"
+    },
+    {
+      "id": "TSH-03",
+      "status": "PASS",
+      "text": "Browser-Fallback bleibt vorhanden"
+    },
+    {
+      "id": "TSH-04",
+      "status": "PASS",
+      "text": "Temp-Datei wird geloescht"
+    },
+    {
+      "id": "TSH-05",
+      "status": "OPEN_TARGET_PC",
+      "text": "Echter Lauf mit lokal installiertem TShark ausstehend"
+    }
+  ]
+}

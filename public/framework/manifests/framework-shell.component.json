@@ -1,0 +1,62 @@
+{
+  "componentId": "FrameworkShell",
+  "componentType": "shell",
+  "version": "1.0.0",
+  "apiVersion": "1.0.0",
+  "owner": "Framework",
+  "entrypoints": [
+    "app/index.html"
+  ],
+  "dependencies": {
+    "NavigationCore": ">=1.1.0",
+    "WindowCore": ">=1.1.0",
+    "InteractionCore": ">=1.1.0",
+    "DesignCore": ">=1.1.0",
+    "MobileCore": ">=1.1.0"
+  },
+  "capabilities": [
+    "greeting-bar",
+    "workspace",
+    "right-smart-panel",
+    "status-bar",
+    "pinboard-slot",
+    "digital-clock-slot"
+  ],
+  "supportedDevices": [
+    "desktop",
+    "tablet",
+    "mobile"
+  ],
+  "configurationSchema": "app/config/shell.json",
+  "migration": {
+    "strategy": "adapter",
+    "preserveProjectConfig": true,
+    "rollbackRequired": true,
+    "preflight": [
+      "component-contract",
+      "shell-slot-compatibility",
+      "baseline-regression"
+    ],
+    "postflight": [
+      "shell-layout",
+      "window-layer",
+      "status-line",
+      "right-panel",
+      "device-layout",
+      "rollback-package"
+    ]
+  },
+  "qa": {
+    "staticChecks": [
+      "manifest-schema",
+      "entrypoints-exist",
+      "required-shell-slots"
+    ],
+    "regressionGates": [
+      "existing-pages-visible",
+      "window-layer-usable",
+      "office-overlay-usable",
+      "status-visible"
+    ]
+  }
+}

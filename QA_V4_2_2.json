@@ -1,0 +1,31 @@
+{
+  "version": "4.2.2",
+  "status": "CANDIDATE",
+  "checks": [
+    {
+      "id": "UI-CLOCK-01",
+      "result": "PASS",
+      "detail": "Nur eine Clock-Runtime; feste Breite und tabular-nums"
+    },
+    {
+      "id": "UI-ZERO-01",
+      "result": "PASS",
+      "detail": "Master AUS nullt Instrumente und Diagramme"
+    },
+    {
+      "id": "NAV-WIDTH-01",
+      "result": "PASS",
+      "detail": "Pixelanzeige rechts neben Resize-Rail auf Pfeilhöhe"
+    },
+    {
+      "id": "OFFICE-CONTROL-01",
+      "result": "PASS",
+      "detail": "Start/Stopp/Tiefentest/Bericht direkt am Schaltpult"
+    },
+    {
+      "id": "PROBE-REGRESSION",
+      "result": "PASS",
+      "detail": "Prüfdienst nicht geändert"
+    }
+  ]
+}

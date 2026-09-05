@@ -1,0 +1,20 @@
+/* V4.2.3: Reparatur der Büro-Hotspots und Direktsteuerung */
+.office-scene{isolation:isolate}
+.office-scene>img{position:relative;z-index:1;pointer-events:none}
+.office-hotspot{z-index:10;pointer-events:auto!important}
+.office-hotspot::after{z-index:50}
+.office-hotspot:hover,.office-hotspot:focus-visible,.office-hotspot.office-active{
+  border:2px solid #7bd8ff!important;
+  box-shadow:0 0 0 3px #0a95c866,0 0 28px #41c8ffaa!important;
+  background:#49c7ff20!important;
+}
+.office-hotspot:hover::after,.office-hotspot:focus-visible::after,.office-hotspot.office-active::after{
+  opacity:1!important;transform:translateX(-50%) translateY(0)!important;
+}
+.office-console-actions{z-index:40!important}
+.office-console-actions.office-visible{opacity:1!important;transform:translateY(0)!important;pointer-events:auto!important}
+.office-live-note{z-index:60}
+@media (hover:none){
+ .office-hotspot:focus-visible{border-width:3px!important}
+ .office-console-actions{opacity:1;transform:none;pointer-events:auto;left:19%;top:55%;width:64%;grid-template-columns:repeat(2,1fr)}
+}

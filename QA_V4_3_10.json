@@ -1,0 +1,11 @@
+{
+  "version": "4.3.11",
+  "status": "CANDIDATE",
+  "change": "Windows runtime certificate verification without Python",
+  "checks": {
+    "powershell_verifier_present": "PASS",
+    "start_has_no_python_dependency": "PASS",
+    "installer_has_no_python_dependency": "PASS",
+    "certificate_negative_test": "PENDING_REISSUE"
+  }
+}

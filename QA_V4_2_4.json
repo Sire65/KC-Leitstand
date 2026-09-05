@@ -1,0 +1,41 @@
+{
+  "version": "4.2.4",
+  "status": "YELLOW_CANDIDATE",
+  "checks": [
+    {
+      "id": "UI-BACK-OFFICE",
+      "status": "PASS",
+      "detail": "Rückkehrschaltfläche wird nach Büroauswahl aktiviert."
+    },
+    {
+      "id": "UI-SINGLE-SWITCH",
+      "status": "PASS",
+      "detail": "Deduplizierung pro Anzeige implementiert."
+    },
+    {
+      "id": "UI-HEART-SHAPE",
+      "status": "PASS",
+      "detail": "Symmetrische, konfliktfreie Herzform."
+    },
+    {
+      "id": "EKG-BPM-SYNC",
+      "status": "PASS",
+      "detail": "Ausschlagfrequenz wird direkt aus BPM berechnet."
+    },
+    {
+      "id": "EKG-OFF-ZERO",
+      "status": "PASS",
+      "detail": "Bei Messungen AUS wird eine Nulllinie gezeichnet."
+    },
+    {
+      "id": "GITHUB-READY",
+      "status": "PASS",
+      "detail": "Workflow, Checkliste und Release-Prüfung vorhanden."
+    },
+    {
+      "id": "TARGET-PC-LIVE",
+      "status": "OPEN",
+      "detail": "Browser-/Prüfdienst-/FRITZ!Box-Test auf Ziel-PC erforderlich."
+    }
+  ]
+}

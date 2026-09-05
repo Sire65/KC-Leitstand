@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "global": "FrameworkHealthRingModule",
+  "customElement": "health-ring-module",
+  "api": [
+    "createEngine(options)",
+    "engine.addResult(status, details)",
+    "engine.resetCycle()",
+    "engine.startCycle()",
+    "engine.stopCycle()",
+    "engine.exportStatistics()",
+    "engine.setRingSize(value)",
+    "engine.setPixelSize(value)",
+    "engine.setAnimation(enabled)",
+    "engine.setGroupFilter(group)",
+    "engine.showStatistics()",
+    "engine.hideStatistics()",
+    "draw(canvas, engine)"
+  ],
+  "events": ["health-ring.result", "health-ring.statistics", "health-ring.reset", "health-ring.cycle", "health-ring.settings"]
+}

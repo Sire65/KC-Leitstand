@@ -1,0 +1,11 @@
+{
+  "version": "4.2.5",
+  "status": "CANDIDATE",
+  "checks": {
+    "heart_ekg_shared_clock": "PASS",
+    "heart_visible_pulse": "PASS_STATIC",
+    "public_folder_complete": "PASS",
+    "pages_workflow_public": "PASS",
+    "measurement_service_unchanged": "PASS"
+  }
+}

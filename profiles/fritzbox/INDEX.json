@@ -1,0 +1,45 @@
+{
+  "schema": "FRITZBOX_PROFILE_V1",
+  "models": [
+    {
+      "id": "6690-cable",
+      "name": "FRITZ!Box 6690 Cable"
+    },
+    {
+      "id": "6670-cable",
+      "name": "FRITZ!Box 6670 Cable"
+    },
+    {
+      "id": "6660-cable",
+      "name": "FRITZ!Box 6660 Cable"
+    },
+    {
+      "id": "6591-cable",
+      "name": "FRITZ!Box 6591 Cable"
+    },
+    {
+      "id": "7690-dsl",
+      "name": "FRITZ!Box 7690"
+    },
+    {
+      "id": "7590ax-dsl",
+      "name": "FRITZ!Box 7590 AX"
+    },
+    {
+      "id": "5690pro-fiber",
+      "name": "FRITZ!Box 5690 Pro"
+    },
+    {
+      "id": "5590-fiber",
+      "name": "FRITZ!Box 5590 Fiber"
+    },
+    {
+      "id": "5530-fiber",
+      "name": "FRITZ!Box 5530 Fiber"
+    },
+    {
+      "id": "4060-wan",
+      "name": "FRITZ!Box 4060"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "version": "4.3.7",
+  "status": "CANDIDATE",
+  "gate": "YELLOW",
+  "scope": "Universal Framework-TUEV",
+  "checks": [
+    {"id":"TUEV-U-01","result":"PASS","text":"Projektordner wird erkannt"},
+    {"id":"TUEV-U-02","result":"PASS","text":"ZIP wird temporaer entpackt und geprueft"},
+    {"id":"TUEV-U-03","result":"PASS","text":"Projektname, Version und Typ werden erkannt"},
+    {"id":"TUEV-U-04","result":"PASS","text":"Zertifikat ist projekt- und pruefsummengebunden"},
+    {"id":"TUEV-U-05","result":"PASS","text":"Leitstand-Laufzeit bleibt unveraendert"}
+  ],
+  "open": ["Praktischer Test mit aktueller Pflanzen-ZIP", "Ziel-PC-Test unter Windows"]
+}

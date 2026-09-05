@@ -1,0 +1,434 @@
+﻿{
+    "projectId":  "NL",
+    "name":  "Netzwerk-Leitstand",
+    "version":  "5.4.2",
+    "status":  "CANDIDATE",
+    "frameworkBasis":  "Framework Studio V1.38.22 Stable Foundation Candidate",
+    "generalCores":  [
+                         "NavigationCore",
+                         "WindowCore",
+                         "TableCore",
+                         "DesignCore",
+                         "InteractionCore",
+                         "CapabilityCore",
+                         "MobileCore"
+                     ],
+    "domainCores":  [
+                        "NetworkMonitorCore",
+                        "FritzBoxCore",
+                        "DocsisDiagnosticCore",
+                        "WifiMeshCore",
+                        "InternetProbeCore",
+                        "DnsDiagnosticCore",
+                        "DeviceObserverCore",
+                        "SystemPerformanceCore",
+                        "IncidentCorrelationCore",
+                        "ReportCore"
+                    ],
+    "measurementStages":  {
+                              "1":  "low-load continuous",
+                              "2":  "anomaly verification",
+                              "3":  "60-second deep analysis"
+                          },
+    "migrationFoundation":  {
+                                "contract":  "1.0.0",
+                                "components":  [
+                                                   "NavigationCore",
+                                                   "FrameworkShell"
+                                               ],
+                                "projectConfigExternalized":  true,
+                                "rollbackRequired":  true,
+                                "automaticMigrationEnabled":  false
+                            },
+    "releasePreparation":  {
+                               "githubReady":  true,
+                               "publishApproved":  false,
+                               "requiredChecks":  [
+                                                      "static-check",
+                                                      "migration-preflight",
+                                                      "release-check",
+                                                      "target-pc-browser",
+                                                      "probe-live",
+                                                      "fritzbox-6690-live"
+                                                  ]
+                           },
+    "frameworkTUEV":  {
+                          "required":  true,
+                          "policy":  "tuev/policy.json",
+                          "candidateCertificateRequired":  true,
+                          "stableCertificateRequired":  true,
+                          "automaticTriggers":  [
+                                                    "development-save-via-watcher",
+                                                    "candidate-build",
+                                                    "migration",
+                                                    "github-push-pr"
+                                                ],
+                          "releaseBlockedWithoutValidCertificate":  true,
+                          "publishStillRequiresUserApproval":  true,
+                          "universalProjectInspection":  true,
+                          "universalRunner":  "tools/framework-tuev-universal.py"
+                      },
+    "frameworkBuildCore":  {
+                               "version":  "1.0.0",
+                               "candidateBuild":  "BUILD_CANDIDATE.cmd",
+                               "installerBuild":  "INSTALLATIONSVERSION_ERZEUGEN.cmd",
+                               "postPackageVerification":  true,
+                               "publishOnlyAfterRecheck":  true,
+                               "pythonRequiredForEndUser":  false
+                           },
+    "v5Preparation":  {
+                          "goldenMaster":  "4.3.28",
+                          "status":  "ARCHITECTURE_CANDIDATE",
+                          "runtimeChanged":  false,
+                          "studioRegistration":  "studio/LEITSTAND_V5_STUDIO_REGISTRATION.json",
+                          "masterplan":  "docs/v5/LEITSTAND_V5_MASTERPLAN.md"
+                      },
+    "sharedModules":  [
+                          {
+                              "id":  "shared.transition-service",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "statuscore.3d-indicator"
+                                                ]
+                          },
+                          {
+                              "id":  "shared.health-ring",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "framework-toolbox",
+                                                    "Netzwerk-Leitstand accessory",
+                                                    "future programs"
+                                                ]
+                          },
+                          {
+                              "id":  "shared.latency-ball",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "framework-toolbox",
+                                                    "Netzwerk-Leitstand accessory",
+                                                    "future programs"
+                                                ]
+                          },
+                          {
+                              "id":  "shared.window-frame",
+                              "version":  "0.3.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand workspace demo",
+                                                    "framework-toolbox",
+                                                    "future programs"
+                                                ],
+                              "edgeFeedback":  "candidate edge meters idle/warn/hot/limit"
+                          },
+                          {
+                              "id":  "shared.navigation-tab-order",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand dashboard registers",
+                                                    "framework-toolbox",
+                                                    "future programs"
+                                                ],
+                              "scalePolicy":  {
+                                                  "topLevelTabs":  "only major categories",
+                                                  "largeTestCount":  "grouped panels with search/filter, not one tab per test",
+                                                  "overflow":  "more-menu",
+                                                  "testedFor":  "1000+ planned tests by grouping architecture"
+                                              }
+                          },
+                          {
+                              "id":  "shared.test-catalog",
+                              "version":  "0.5.1",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand test planning",
+                                                    "framework-toolbox",
+                                                    "future programs"
+                                                ],
+                              "scalePolicy":  {
+                                                  "plannedTests":  "1000+",
+                                                  "strategy":  "definition store plus ownership matrix plus workspace pages plus scheduler preview plus card layout spec",
+                                                  "topLevelTabs":  "major categories only"
+                                              }
+                          },
+                          {
+                              "id":  "shared.test-definition-store",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand test catalog",
+                                                    "future scheduler",
+                                                    "framework-toolbox",
+                                                    "future programs"
+                                                ],
+                              "scalePolicy":  {
+                                                  "plannedTests":  "1000+",
+                                                  "executionClasses":  [
+                                                                           "permanent",
+                                                                           "cyclic",
+                                                                           "event",
+                                                                           "manual",
+                                                                           "deep"
+                                                                       ],
+                                                  "strategy":  "data definitions before execution"
+                                              }
+                          },
+                          {
+                              "id":  "shared.test-scheduler-model",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand test catalog preview",
+                                                    "future scheduler",
+                                                    "framework-toolbox",
+                                                    "future programs"
+                                                ],
+                              "policy":  {
+                                             "mode":  "PLAN_ONLY_NO_EXECUTION",
+                                             "maxConcurrent":  {
+                                                                   "permanent":  4,
+                                                                   "cyclic":  6,
+                                                                   "event":  3,
+                                                                   "manual":  2,
+                                                                   "deep":  1
+                                                               }
+                                         }
+                          },
+                          {
+                              "id":  "shared.test-card-layout-spec",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand test catalog",
+                                                    "future layout editor",
+                                                    "framework-toolbox",
+                                                    "future programs"
+                                                ],
+                              "grid":  {
+                                           "columns":  6,
+                                           "widths":  {
+                                                          "S":  1,
+                                                          "M":  2,
+                                                          "L":  3,
+                                                          "XL":  4
+                                                      },
+                                           "heights":  {
+                                                           "S":  2,
+                                                           "M":  3,
+                                                           "L":  4,
+                                                           "XL":  6
+                                                       }
+                                       }
+                          },
+                          {
+                              "id":  "shared.test-ownership-matrix",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand test catalog",
+                                                    "future layout editor",
+                                                    "framework-toolbox"
+                                                ],
+                              "rule":  "one detail owner per test; global header summaries only"
+                          },
+                          {
+                              "id":  "shared.workspace-pages",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand workspace pages",
+                                                    "future layout editor",
+                                                    "framework-toolbox"
+                                                ],
+                              "pages":  [
+                                            "overview",
+                                            "internet",
+                                            "router",
+                                            "wifi",
+                                            "pc",
+                                            "devices",
+                                            "protocol"
+                                        ]
+                          },
+                          {
+                              "id":  "shared.test-workspace-shell",
+                              "version":  "0.3.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "mode":  "CORE_FIRST_MIGRATION_CANDIDATE",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand primary migration workspace",
+                                                    "future layout editor",
+                                                    "framework-toolbox"
+                                                ],
+                              "safetyPolicy":  {
+                                                   "measurementStart":  false,
+                                                   "sensorMutation":  false,
+                                                   "schedulerExecution":  false,
+                                                   "existingRuntimeFallback":  true,
+                                                   "existingTestControlBridge":  true,
+                                                   "newMeasurementImplementation":  false
+                                               }
+                          },
+                          {
+                              "id":  "shared.test-workspace-layout",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "mode":  "PREVIEW_ONLY",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand new workspace preview",
+                                                    "future card migration",
+                                                    "framework-toolbox"
+                                                ],
+                              "grid":  {
+                                           "columns":  6,
+                                           "rowUnitPx":  42,
+                                           "gapPx":  10,
+                                           "coordinateStorage":  "logical units only",
+                                           "collisionPolicy":  "reject and keep last valid"
+                                       }
+                          },
+                          {
+                              "id":  "shared.test-card-design",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "theme":  "nl.test-card.semantic.v1",
+                              "policy":  "semantic DesignCore tokens; measurement status separated from user focus"
+                          },
+                          {
+                              "id":  "shared.secure-storage",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "policy":  "IndexedDB AES-GCM-256; verify-before-delete migration"
+                          },
+                          {
+                              "id":  "shared.supabase-sync",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "mode":  "DISABLED_BY_DEFAULT",
+                              "policy":  "encrypted payload only; Auth and RLS required; no service role in browser"
+                          },
+                          {
+                              "id":  "shared.performance-visibility",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "mode":  "EVENT_DRIVEN_NO_POLLING",
+                              "consumerStage":  [
+                                                    "new test workspaces",
+                                                    "test management",
+                                                    "future card runtime"
+                                                ],
+                              "budgets":  {
+                                               "independentCardTimers":  0,
+                                               "backgroundAnimationFps":  0,
+                                               "managementMaxRenderedRows":  100
+                                           }
+                          },
+                          {
+                              "id":  "shared.brain-control-center",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "mode":  "CANDIDATE_SIMULATION_ONLY",
+                              "policy":  "SystemAssessmentCore authority; encrypted event log; all actuators blocked"
+                          },
+                          {
+                              "id":  "shared.brain-knowledge-management",
+                              "version":  "0.2.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "mode":  "DRAFT_ONLY",
+                              "policy":  "TableCore search and filters; encrypted drafts never change runtime knowledge"
+                          },
+                          {
+                              "id":  "shared.sensor-catalog",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "mode":  "CATALOG_ONLY_DISABLED",
+                              "definitions":  1200,
+                              "enabled":  0,
+                              "policy":  "lazy catalog; unbound adapters; explicit gated activation only"
+                          },
+                          {
+                              "id":  "shared.device-discovery-orchestrator",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "mode":  "DISCOVERY_AND_PROPOSAL_ONLY",
+                              "policy":  "startup and manual search; allSettled domain isolation; no automatic activation"
+                          },
+                          {
+                              "id":  "shared.sensor-package-review",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "mode":  "ACTIVATION_INTENT_ONLY",
+                              "policy":  "per-sensor selection; load budget 30; encrypted non-executable intent"
+                          },
+                          {
+                              "id":  "shared.self-monitoring",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "mode":  "BROWSER_METRICS_CANDIDATE",
+                              "policy":  "visible-only gauges and charts; exact process metrics require local probe"
+                          },
+                          {
+                              "id":  "shared.safety-stop",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "startup":  "PAUSED",
+                              "policy":  "encrypted latch; immediate stop; explicit confirmed resume"
+                          },
+                          {
+                              "id":  "shared.brain-inner-visual",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "policy":  "additive pointer-free visual overlay; existing brain canvas untouched"
+                          },
+                          {
+                              "id":  "shared.viewport-edge-controls",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand main viewport",
+                                                    "future layout editor",
+                                                    "framework-toolbox"
+                                                ]
+                          },
+                          {
+                              "id":  "shared.viewport-pan-frame",
+                              "version":  "0.1.0",
+                              "status":  "ARCHITECTURE_CANDIDATE",
+                              "release":  "BLOCKED",
+                              "consumerStage":  [
+                                                    "Netzwerk-Leitstand main viewport",
+                                                    "future layout editor",
+                                                    "framework-toolbox"
+                                                ]
+                          }
+                      ]
+}

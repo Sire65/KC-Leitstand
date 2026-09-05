@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectId": "NL",
+  "projectName": "Netzwerk-Leitstand",
+  "projectIcon": "network-control-room",
+  "layout": {
+    "leftNavigation": true,
+    "greetingBar": true,
+    "workspace": true,
+    "rightSmartPanel": {
+      "enabled": true,
+      "defaultCollapsed": true
+    },
+    "statusBar": true
+  },
+  "headerObjects": [
+    "project-icon",
+    "greeting",
+    "global-search",
+    "notifications",
+    "ai-assistant",
+    "digital-clock",
+    "user"
+  ],
+  "rightPanelModes": [
+    "pinboard",
+    "properties",
+    "filters",
+    "ai-recommendations",
+    "history"
+  ],
+  "statusItems": [
+    "internet",
+    "fritzbox",
+    "probe-service",
+    "cpu",
+    "ram",
+    "last-test",
+    "version"
+  ],
+  "version": "5.4.2"
+}

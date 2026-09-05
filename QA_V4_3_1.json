@@ -1,0 +1,52 @@
+{
+  "version": "4.3.1",
+  "status": "CANDIDATE",
+  "gate": "YELLOW_ROUTER_DETECT_TARGET_TEST_PENDING",
+  "date": "2026-07-12",
+  "changes": [
+    "Router-Erkennung beendet Fortschrittsanzeige immer",
+    "12-Sekunden-Sicherheits-Timeout",
+    "Mehrfachstart gesperrt",
+    "Darstellungsfehler blockieren Abschluss nicht"
+  ],
+  "protected": [
+    "Fachregister V4.3.0",
+    "SensorRegistry",
+    "Büromodus und Hotspots",
+    "Herz und EKG",
+    "lokaler Prüfdienst",
+    "GitHub public"
+  ],
+  "checks": [
+    {
+      "id": "RD-01",
+      "result": "PASS",
+      "text": "Erfolgsabschluss setzt Balken auf 100 Prozent"
+    },
+    {
+      "id": "RD-02",
+      "result": "PASS",
+      "text": "Fehlerabschluss setzt Balken auf 100 Prozent"
+    },
+    {
+      "id": "RD-03",
+      "result": "PASS",
+      "text": "Timeout beendet Vorgang nach 12 Sekunden"
+    },
+    {
+      "id": "RD-04",
+      "result": "PASS",
+      "text": "Mehrfachstart während Lauf gesperrt"
+    },
+    {
+      "id": "REG-01",
+      "result": "PASS",
+      "text": "Prüfdienst gegenüber V4.3.0 unverändert"
+    },
+    {
+      "id": "TARGET-01",
+      "result": "PENDING",
+      "text": "Browser-Zieltest auf Nutzer-PC"
+    }
+  ]
+}

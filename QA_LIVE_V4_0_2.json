@@ -1,0 +1,13 @@
+{
+  "version": "4.0.2",
+  "gate": "GREEN",
+  "tests": {
+    "JS_SYNTAX": true,
+    "LIVE_PROGRESS": true,
+    "ANIMATED_HOURGLASS": true,
+    "ROTATING_SCAN": true,
+    "COUNTDOWN": true,
+    "SENSOR_LAMPS": true,
+    "MOBILE_LIVE": true
+  }
+}

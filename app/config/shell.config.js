@@ -1,0 +1,30 @@
+window.NETZWERK_LEITSTAND_SHELL = {
+  schemaVersion:"1.1.0",
+  projectId:"NL",
+  projectName:"Netzwerk-Leitstand",
+  projectIcon:"▦",
+  version:"5.4.2",
+  candidate:true,
+  greeting:{enabled:true,name:"Hans"},
+  header:{
+    search:true,
+    ai:true,
+    notifications:true,
+    smartPanel:true,
+    digitalClock:true,
+    showDate:true
+  },
+  rightPanel:{
+    enabled:true,
+    defaultCollapsed:true,
+    defaultMode:"pinboard",
+    tabs:["pinboard","ai","properties","tasks"]
+  },
+  responsive:{
+    tabletMaxWidth:1100,
+    phoneMaxWidth:700,
+    tabletPanelMode:"overlay",
+    phoneNavigationMode:"bottom"
+  },
+  statusItems:["internet","fritzbox","probe-service","cpu","ram","last-test","device-mode","version"]
+};

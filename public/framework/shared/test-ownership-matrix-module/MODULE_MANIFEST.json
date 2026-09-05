@@ -1,0 +1,24 @@
+﻿{
+    "id":  "shared.test-ownership-matrix",
+    "version":  "0.2.0",
+    "status":  "ARCHITECTURE_CANDIDATE",
+    "release":  "CANDIDATE",
+    "description":  "Fachliche Besitzmatrix: Tests gehoeren genau einem Bereich; globale Kopfzeile darf nur Kurzstatus spiegeln.",
+    "requires":  [
+                     "shared.test-definition-store"
+                 ],
+    "optional":  [
+                     "SettingsCore",
+                     "CapabilityCore",
+                     "SecurityCore"
+                 ],
+    "forbidden":  [
+                      "measurement start",
+                      "probe execution",
+                      "sensor mutation",
+                      "cross-area detail duplication",
+                      "app.js dependency"
+                  ],
+    "rules":  "MODULE_RULES.json",
+    "standardized":  true
+}

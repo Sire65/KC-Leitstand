@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "Netzwerk-Leitstand",
+  "version": "5.4.0",
+  "status": "CANDIDATE",
+  "checks": [
+    {"id":"BRAIN-ACT-01","result":"PASS","text":"Monitor zeigt Massnahmen bei Warnung und Alarm"},
+    {"id":"BRAIN-ACT-02","result":"PASS","text":"Monitor zeigt Wirkungskontrolle und Ergebnis"},
+    {"id":"BRAIN-ACT-03","result":"PASS","text":"Massnahmen sind intern und reversibel"},
+    {"id":"BRAIN-ACT-04","result":"PASS","text":"Herz und Messzyklus folgen der Gehirnaktivitaet"},
+    {"id":"BRAIN-ACT-05","result":"PASS","text":"Selbstschutz und Speichergrenzen werden protokolliert"},
+    {"id":"BRAIN-ACT-06","result":"PASS","text":"Keine externe Aktion ohne Benutzerfreigabe"}
+  ]
+}

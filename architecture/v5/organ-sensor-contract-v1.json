@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectVersion": "5.4.0",
+  "maxRecommendedActiveSensors": 1000,
+  "requiredFields": ["id", "label", "organ", "score", "state", "intervalSec", "loadClass"],
+  "organs": ["circulation", "respiration", "nervous", "muscles", "senses", "energy", "immunity", "memory", "motor"],
+  "loadClasses": ["low", "medium", "high", "on-demand"],
+  "states": ["ok", "notice", "alarm", "critical", "offline", "test"],
+  "externalActionPolicy": "confirmation-required"
+}

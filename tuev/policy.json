@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0.0",
+  "authority": "Framework-TUEV",
+  "projectId": "NL",
+  "certificateLevels": {
+    "CANDIDATE": {
+      "usage": "TEST_ONLY",
+      "requiredSuites": ["structure", "syntax", "registry", "regression", "public", "release", "security-baseline"]
+    },
+    "STABLE": {
+      "usage": "PRODUCTION",
+      "requiredSuites": ["structure", "syntax", "registry", "regression", "public", "release", "security-baseline", "target-pc", "probe-live", "router-live"]
+    }
+  },
+  "protectedTokens": [
+    "officeOverlay", "officeChairExit", "office-hotspot", "office-console-actions",
+    "backToOffice", "ekgCanvas", "heart", "data-diag-tab=\"internet\"",
+    "data-diag-tab=\"pc\""
+  ],
+  "protectedFiles": [
+    "app/assets/images/office/leitstand-buero-v1.png",
+    "probe/Netzwerk_Pruefdienst_V4.ps1"
+  ],
+  "ignoredHashPaths": [
+    "tuev/certificate.json", "tuev/certificate.txt", "tuev/report.json",
+    "tuev/report.html", "tuev/failures.json", "tuev/evidence/last-run.log"
+  ]
+}

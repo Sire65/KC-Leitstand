@@ -1,0 +1,19 @@
+{
+  "id": "shared.test-workspace-layout",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "mode": "PREVIEW_ONLY",
+  "description": "Versioniertes Raster-, Positions- und Kollisionsmodell fuer die neuen Testarbeitsflaechen.",
+  "requires": ["shared.test-workspace-shell", "shared.test-card-layout-spec"],
+  "forbidden": [
+    "measurement start",
+    "probe execution",
+    "sensor mutation",
+    "scheduler execution",
+    "pixel coordinate persistence",
+    "cross page drag",
+    "existing view removal"
+  ],
+  "standardized": true
+}

@@ -1,0 +1,35 @@
+name: Framework TÜV
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  candidate-tuev:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Automatischer Framework TÜV
+        run: python tools/framework-tuev.py release --level CANDIDATE
+      - name: Zertifikat verifizieren
+        run: python tools/framework-tuev.py verify
+      - name: TÜV-Berichte archivieren
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: framework-tuev-report
+          path: |
+            tuev/report.json
+            tuev/report.html
+            tuev/failures.json
+            tuev/certificate.json
+            tuev/certificate.txt

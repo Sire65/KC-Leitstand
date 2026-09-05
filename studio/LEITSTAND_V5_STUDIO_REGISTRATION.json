@@ -1,0 +1,29 @@
+{
+  "projectId": "NL",
+  "projectName": "Netzwerk-Leitstand",
+  "track": "V5_PREPARATION",
+  "goldenMaster": "4.3.28",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "leadingAllowed": false,
+  "runtimeCommitAllowed": false,
+  "requiredGates": [
+    "ARCHITECTURE_TUEV",
+    "DASHBOARD_TUEV",
+    "SENSOR_TUEV",
+    "PERFORMANCE_TUEV",
+    "BEDIENUNGS_TUEV",
+    "FRAMEWORK_TUEV",
+    "ZIP_REVERIFY"
+  ],
+  "modules": [
+    "GoldenMaster",
+    "SensorRegistry2",
+    "GaugeHealthModel",
+    "SensorProfiles",
+    "LoadScheduler",
+    "AlertSoundService",
+    "HistoryAndCauses",
+    "GitHubRuntime",
+    "OptionalLocalProbe"
+  ]
+}

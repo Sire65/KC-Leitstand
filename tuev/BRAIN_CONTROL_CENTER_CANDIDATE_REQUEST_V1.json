@@ -1,0 +1,8 @@
+{
+  "requestId": "NL-BRAIN-CONTROL-CANDIDATE-V1",
+  "status": "REQUESTED_INTERNAL_CANDIDATE_REVIEW",
+  "scope": ["problem knowledge", "runbooks", "action policy gate", "encrypted monitor log"],
+  "excluded": ["real hardware control", "automatic router restart", "automatic fan control"],
+  "evidence": ["architecture/BRAIN_CONTROL_KNOWLEDGE_ACTION_CONTRACT_V1.json", "docs/v5/PFLICHTENHEFT_BRAIN_STEUERZENTRALE_WISSEN_MASSNAHMEN_V1.md"],
+  "externalApprovalClaimed": false
+}

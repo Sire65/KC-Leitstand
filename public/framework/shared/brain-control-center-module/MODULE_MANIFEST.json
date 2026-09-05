@@ -1,0 +1,9 @@
+{
+  "id": "shared.brain-control-center",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "mode": "CANDIDATE_SIMULATION_ONLY",
+  "dependencies": ["SystemAssessmentCore", "LeitstandBrainCoordinator", "FrameworkSecureStorage", "CapabilityCore"],
+  "entry": "brain-control-center-module.js"
+}

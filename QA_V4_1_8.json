@@ -1,0 +1,26 @@
+{
+  "version": "4.1.8",
+  "status": "CANDIDATE",
+  "scope": "Interaktiver Bueromodus, Objekt-Hotspots und Paketkonsolidierung",
+  "checks": {
+    "source_based_on_v4_1_7": true,
+    "probe_service_unchanged": true,
+    "measurement_logic_unchanged": true,
+    "fullscreen_office_overlay_present": true,
+    "object_hotspots_without_visible_markers": true,
+    "chair_exit_only_leaves_office_mode": true,
+    "keyboard_escape_supported": true,
+    "responsive_percentage_hotspots": true,
+    "static_check_added": true,
+    "version_metadata_updated": true,
+    "javascript_syntax_check": true,
+    "manifest_regenerated": true
+  },
+  "notPerformed": [
+    "Real browser interaction test on target PC.",
+    "Real probe-service test.",
+    "Router/FRITZ!Box live test.",
+    "iPad/tablet touch test."
+  ],
+  "decision": "READY_FOR_TARGET_BROWSER_TEST"
+}

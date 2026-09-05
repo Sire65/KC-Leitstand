@@ -1,0 +1,15 @@
+{
+  "registrationType": "CORE_CANDIDATE",
+  "coreId": "statuscore.3d-indicator",
+  "displayName": "StatusCore 3D SystemBrain",
+  "version": "0.4.1",
+  "status": "CANDIDATE",
+  "gates": {
+    "syntax": "PASS",
+    "renderOrder": "PASS",
+    "freezeApi": "PASS",
+    "allDemoStates": "PASS",
+    "visualRuntime": "PENDING",
+    "targetIntegration": "PENDING"
+  }
+}

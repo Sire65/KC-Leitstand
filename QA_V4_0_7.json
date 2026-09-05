@@ -1,0 +1,14 @@
+{
+  "version": "4.0.7",
+  "gate": "GREEN",
+  "tests": {
+    "JS_SYNTAX": true,
+    "LIVE_TOP": true,
+    "COMPACT_LIVE": true,
+    "EKG_CANVAS": true,
+    "DIRECT_SWITCHES": true,
+    "VERTICAL_FOLD": true,
+    "HEARTBEAT_PRESENT": true,
+    "RESPONSIVE": true
+  }
+}

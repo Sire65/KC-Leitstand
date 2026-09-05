@@ -1,0 +1,14 @@
+﻿{
+    "schemaVersion":  "1.0.0",
+    "id":  "shared.workspace-pages.rules",
+    "version":  "0.2.0",
+    "scaleTarget":  "1000+ tests",
+    "overview":  "summary only",
+    "detailPages":  "single subject owner",
+    "forbidden":  [
+                      "cross-area-detail-duplication",
+                      "measurement-start",
+                      "sensor-mutation",
+                      "app-js-dependency"
+                  ]
+}

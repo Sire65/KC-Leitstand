@@ -1,0 +1,29 @@
+﻿{
+    "version":  "4.1.2",
+    "status":  "ROUTERIMPORT_SMART_WLAN_CANDIDATE",
+    "baseVersion":  "4.1.1",
+    "gate":  "YELLOW_STATIC_CHECK_PASSED_BROWSER_RUNTIME_OPEN",
+    "tests":  {
+                  "DIAGNOSTIC_TABS_TOP_PRESENT":  true,
+                  "DIAGNOSTIC_TABS_MATCH_PANELS":  true,
+                  "ROUTER_FILE_IMPORT_PRESENT":  true,
+                  "FRITZ_DIAG_IMPORT_PRESENT":  true,
+                  "SMART_IMPORT_PRESENT":  true,
+                  "WLAN_BROWSER_LIMIT_EXPLAINED":  true,
+                  "GAUGE_CONTINUOUS_REDRAW_PRESENT":  true,
+                  "STABLE_ASCII_ICON_LABELS":  true,
+                  "TABLE_HEADER_MOJIBAKE_FIXED":  true,
+                  "DIRECT_ID_REFERENCES":  true,
+                  "NAV_TARGETS_PRESENT":  true,
+                  "JS_BRACKET_BALANCE":  true,
+                  "PROBE_UNCHANGED":  true,
+                  "NODE_SYNTAX_CHECK":  false,
+                  "BROWSER_RUNTIME_TEST":  false
+              },
+    "notes":  [
+                  "Node.js was not available in this Codex runtime; JavaScript was checked by structural bracket balance and reference audits.",
+                  "Browser runtime/probe validation remains open and must be tested on the target PC.",
+                  "The local probe service was intentionally left unchanged.",
+                  "Router, SMART and WLAN values are imported or provided by local probe; the browser app does not overclaim direct hardware access."
+              ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "7590ax-dsl",
+  "name": "FRITZ!Box 7590 AX",
+  "access": "dsl",
+  "docsis": null,
+  "wifi": "Wi-Fi 6",
+  "tr064": true,
+  "defaultHost": "fritz.box",
+  "features": [
+    "DSL",
+    "WAN",
+    "Mesh",
+    "DECT"
+  ],
+  "recommended": {
+    "interval": 15,
+    "deep": 60
+  }
+}

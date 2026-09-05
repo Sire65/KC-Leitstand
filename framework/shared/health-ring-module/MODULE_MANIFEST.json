@@ -1,0 +1,37 @@
+{
+  "id": "shared.health-ring",
+  "name": "Health Ring Module",
+  "version": "0.1.0",
+  "class": "SHARED_MODULE",
+  "status": "ARCHITECTURE_CANDIDATE",
+  "release": "BLOCKED",
+  "category": "Visualisierung",
+  "runtime": "browser",
+  "externalLibraries": [],
+  "dependencies": {
+    "required": [
+      "InteractionCore"
+    ],
+    "optional": [
+      "DesignCore",
+      "EventBus",
+      "shared.transition-service"
+    ],
+    "forbidden": [
+      "NetworkMonitorCore business logic",
+      "DataCore write access",
+      "probe execution",
+      "network services"
+    ]
+  },
+  "consumers": [
+    "Netzwerk-Leitstand",
+    "Framework Studio",
+    "future programs"
+  ],
+  "limits": {
+    "maxResults": 180,
+    "rings": 6,
+    "targetFps": 60
+  }
+}

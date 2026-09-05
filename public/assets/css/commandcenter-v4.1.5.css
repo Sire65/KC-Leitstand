@@ -1,0 +1,43 @@
+/* Netzwerk-Leitstand V4.1.5 - Register sauber getrennt, kompakter Kopfbereich */
+.dashboard-controls{display:none!important}
+.dashboard-inline-controls{display:flex;align-items:center;gap:8px;margin:0 0 7px;padding:5px 6px;border:1px solid #2b5267;border-radius:7px;background:#071923}
+.dashboard-inline-controls .switch{transform:scale(.76);transform-origin:left center;width:50px;height:28px;flex:0 0 auto}
+.dashboard-inline-controls .switch span:before{width:21px;height:21px}
+.dashboard-inline-controls .switch input:checked+span:before{transform:translateX(23px)}
+.dashboard-inline-controls .btn{padding:6px 9px!important;font-size:12px!important;min-height:30px}
+.dashboard-inline-controls .inline-help{margin-left:auto;color:#8fa9b9;font-size:12px;white-space:nowrap}
+.cockpit-tabs{padding:8px!important;margin-bottom:6px!important}
+.cockpit-tabs .tab-strip{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.cockpit-tabs .diag-tab{padding:6px 10px!important;font-size:12px!important}
+.cockpit-tabs .tab-panel.register-cockpit{grid-template-columns:repeat(4,minmax(170px,1fr));gap:7px!important}
+.cockpit-instrument{min-height:136px!important;padding:8px!important}
+.dial{width:82px!important;height:82px!important;margin-top:2px!important}
+.dial:before{width:57px!important;height:57px!important}
+.dial span{font-size:12px!important;max-width:54px!important}
+.cockpit-detail{min-height:auto!important;padding:8px!important}
+.status-led-rail{display:none!important}
+.status-led{height:24px!important;padding:3px 6px!important;font-size:10px!important}
+.test-live{margin:6px 0 8px!important}
+.router-detect-panel[hidden]{display:none!important}
+.router-detect-panel{position:fixed;inset:0;z-index:140;background:#0008;display:grid;place-items:center;padding:18px}
+.router-detect-box{width:min(560px,94vw);border:1px solid #5a8298;border-radius:8px;background:linear-gradient(145deg,#102d3d,#071923);box-shadow:0 18px 40px #000;padding:12px}
+.router-detect-box header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.router-detect-box header b{letter-spacing:1px}
+.router-detect-bar{height:18px;border:1px solid #42677c;background:#06131c;border-radius:999px;overflow:hidden;margin:10px 0}
+.router-detect-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#1f7aa8,#44c3ff);box-shadow:0 0 12px #40adff;transition:width .18s linear}
+#routerDetectResult{display:grid;gap:6px;font-size:13px}
+#routerDetectResult .result-line{border:1px solid #284b5f;border-radius:6px;background:#071a25;padding:7px}
+#routerDetectResult .result-line.good{border-color:#2cdb74}
+#routerDetectResult .result-line.warn{border-color:#ffd02f}
+.chart{background:linear-gradient(180deg,#071923,#051018);border-radius:6px}
+.master-stopped .router-detect-bar i{background:#65727a;box-shadow:none}
+@media(max-width:900px){
+ .dashboard-inline-controls{display:grid;grid-template-columns:auto 1fr 1fr;gap:6px}
+ .dashboard-inline-controls .inline-help{grid-column:1/-1;margin-left:0}
+ .cockpit-tabs .tab-panel.register-cockpit{grid-template-columns:repeat(2,minmax(150px,1fr))}
+}
+@media(max-width:620px){
+ .dashboard-inline-controls{grid-template-columns:auto 1fr}
+ .dashboard-inline-controls .btn{width:100%}
+ .cockpit-tabs .tab-panel.register-cockpit{grid-template-columns:1fr}
+}
