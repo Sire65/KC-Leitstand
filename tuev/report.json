@@ -4,9 +4,9 @@
   "version": "5.4.2",
   "level": "CANDIDATE",
   "status": "PASS",
-  "timestamp": "2026-07-17T12:10:57+00:00",
+  "timestamp": "2026-09-05T16:53:03+00:00",
   "blockers": 0,
-  "warnings": 1,
+  "warnings": 0,
   "checks": [
     {
       "suite": "structure",
@@ -77,7 +77,7 @@
       "id": "HTML_REFS_app",
       "result": "PASS",
       "severity": "BLOCKER",
-      "text": "Lokale Referenzen in app\\index.html vollständig",
+      "text": "Lokale Referenzen in app/index.html vollständig",
       "evidence": ""
     },
     {
@@ -85,7 +85,7 @@
       "id": "HTML_REFS_public",
       "result": "PASS",
       "severity": "BLOCKER",
-      "text": "Lokale Referenzen in public\\index.html vollständig",
+      "text": "Lokale Referenzen in public/index.html vollständig",
       "evidence": ""
     },
     {
@@ -114,10 +114,26 @@
     },
     {
       "suite": "syntax",
-      "id": "NODE_AVAILABLE",
-      "result": "FAIL",
-      "severity": "WARNING",
-      "text": "Node.js nicht gefunden; Syntaxprüfung nicht ausgeführt",
+      "id": "NODE_app_app.js",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Node Syntax app/app.js",
+      "evidence": ""
+    },
+    {
+      "suite": "syntax",
+      "id": "NODE_app_pcap-analyzer.js",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Node Syntax app/pcap-analyzer.js",
+      "evidence": ""
+    },
+    {
+      "suite": "syntax",
+      "id": "NODE_public_app.js",
+      "result": "PASS",
+      "severity": "BLOCKER",
+      "text": "Node Syntax public/app.js",
       "evidence": ""
     },
     {
@@ -201,5 +217,5 @@
       "evidence": ""
     }
   ],
-  "treeDigest": "41207fed8efd0476e2d9e1e3a808ad2d0591236b2caa614b17df2b7e1613f33f"
+  "treeDigest": "b3617fb8c5fd48f620858de5ef5ae915356490caaf9370ec07fdd0a01b613f9b"
 }

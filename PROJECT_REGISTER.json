@@ -430,5 +430,31 @@
                                                     "framework-toolbox"
                                                 ]
                           }
-                      ]
+                      ],
+    "updateNotice":  {
+                         "id":  "app.update-notice",
+                         "version":  "1.0.0",
+                         "status":  "ACTIVE",
+                         "trigger":  "Programmstart, einmal je Browsersitzung",
+                         "versionSource":  "window.NETZWERK_LEITSTAND_SHELL.version",
+                         "runtimeFiles":  [
+                                              "app/update.js",
+                                              "public/update.js"
+                                          ],
+                         "versionDirectory":  [
+                                                  "app/releases/latest.json",
+                                                  "public/releases/latest.json"
+                                              ],
+                         "contract":  [
+                                          "Der Zeitbalken zaehlt echte Restzeit und laedt danach tatsaechlich neu.",
+                                          "Eine abgelehnte Fassung fragt zwoelf Stunden nicht wieder.",
+                                          "Eine als verbindlich gekennzeichnete Fassung kennt kein Spaeter.",
+                                          "Ein nicht erreichbares Versionsverzeichnis gilt nie als aktuell.",
+                                          "Auf einer oertlichen Installation gibt es keinen Balken, sondern den Hinweis auf das Installationspaket."
+                                      ],
+                         "checkedBy":  [
+                                           "tools/release-check.py",
+                                           "tests/update-selbsttest.mjs"
+                                       ]
+                     }
 }

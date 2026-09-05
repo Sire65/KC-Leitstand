@@ -5,6 +5,7 @@
   "description": "Netzwerk-Leitstand V5.4.2 BrainCore V2 Organism Runtime Candidate",
   "scripts": {
     "static-check": "powershell -NoProfile -ExecutionPolicy Bypass -File tests/static-check.ps1",
+    "update-selbsttest": "node tests/update-selbsttest.mjs",
     "migration-preflight": "python tools/migration-preflight.py",
     "validate-release": "python tools/release-check.py",
     "release-check": "python tools/release-check.py",

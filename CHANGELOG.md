@@ -1,3 +1,10 @@
+# V5.5.20
+- Aktualisierungshinweis beim Programmstart: Ja oder Später, mit Zeitbalken.
+- Der Balken zählt echte Restzeit und lädt danach tatsächlich neu; vorher wird der Zwischenspeicher geräumt.
+- Eine abgelehnte Fassung fragt zwölf Stunden nicht wieder, eine verbindliche kennt kein Später.
+- Örtliche Installationen (file://) bekommen den Hinweis auf das Installationspaket statt eines Balkens.
+- Die laufende Fassung kommt aus der Shell-Konfiguration; es gibt keine zweite Versionskonstante.
+
 # V5.4.0
 - Shared Transition Service V0.1.0 als Architecture Candidate registriert.
 - StatusCore 3D als erster Referenz-Consumer migriert.
