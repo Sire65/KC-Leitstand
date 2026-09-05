@@ -60,9 +60,25 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
+      - id: freischalten
+        uses: actions/configure-pages@v5
+        continue-on-error: true
         with:
           enablement: true
+      # Der Arbeitsablauf-Token darf Pages nicht von sich aus anlegen
+      # ("Resource not accessible by integration"). Das ist eine Einstellung
+      # des Repositorys und bleibt eine bewusste Handlung eines Menschen.
+      # Statt einer kryptischen Fehlermeldung steht hier, was zu tun ist.
+      - name: Hinweis, falls Pages noch nicht eingeschaltet ist
+        if: steps.freischalten.outcome == 'failure'
+        run: |
+          echo "::error::GitHub Pages ist fuer dieses Repository noch nicht eingeschaltet."
+          echo ""
+          echo "Einmalig von Hand einschalten:"
+          echo "  Settings -> Pages -> Build and deployment -> Source: GitHub Actions"
+          echo ""
+          echo "Danach veroeffentlicht dieser Ablauf bei jedem Push auf main von selbst."
+          exit 1
 
   deploy:
     name: Veröffentlichen

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "certificateId": "FT-20260905-FBCC6E7EC8F2",
+  "certificateId": "FT-20260905-F126E349199C",
   "authority": "Framework-TUEV",
   "projectId": "NL",
   "project": "Netzwerk-Leitstand",
@@ -8,11 +8,11 @@
   "level": "CANDIDATE",
   "usage": "TEST_ONLY",
   "status": "VALID",
-  "issuedAt": "2026-09-05T17:14:18+00:00",
-  "treeDigest": "fbcc6e7ec8f236679b62d9fb955c68afb044c4ee8d35bfe1f11f99de12ee4789",
+  "issuedAt": "2026-09-05T17:15:27+00:00",
+  "treeDigest": "f126e349199c468b385daebc80b2b64c9d2b2b219176644d1126ac2744ae274c",
   "coveredFiles": {
     ".github/workflows/framework-tuev.yml": "4d7c1ffe7c1031c69c0016889fdb264dc5d7dabb1a92d7a6e13b22854eabb630",
-    ".github/workflows/pages.yml": "3ddba4ab1bee7ef4bfab684e3869edaa70ef9b9ba1743a317cf17feb6c5399b3",
+    ".github/workflows/pages.yml": "a483badcb11b6bb95b6f39291a0afa8595a6bac08e9b2677845f020568e027bc",
     ".github/workflows/validate.yml": "012564cf193a54adcf183d1e0e1206184309dec2e785638ceb4838d4860fd4a6",
     ".gitignore": "876ed39bcd8b909b054fd402d950d268e190b1e7cf77a547045258cedde73097",
     ".nojekyll": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
