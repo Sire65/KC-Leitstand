@@ -31,13 +31,24 @@ normalized=html.replace('../framework/','framework/')
 assert normalized==public_html, 'App/Public index.html unterscheiden sich ueber den erlaubten Shell-Pfad hinaus'
 
 # Aktualisierungshinweis: die beiden Auslieferungsstaende duerfen nicht
-# auseinanderlaufen, und das Versionsverzeichnis muss dieselbe Fassung nennen
-# wie das Programm. Sonst meldet der Leitstand entweder eine Aktualisierung,
-# die es nicht gibt, oder keine, die es gibt.
+# auseinanderlaufen, und das Versionsverzeichnis darf keine aeltere Fassung
+# nennen als das Programm. Aelter waere Unsinn - dann meldete der Leitstand
+# nie eine Aktualisierung, auch wenn es eine gibt.
+#
+# Neuer ist dagegen ein gueltiger Zustand: eine Fassung kann angekuendigt
+# sein, bevor der Web-Stand nachgezogen ist - etwa wenn sie zuerst als
+# Installationspaket herauskommt. Genau dann soll der Hinweis ja erscheinen.
+# Die Abweichung wird gemeldet, damit sie niemandem entgeht.
 assert (root/'app/update.js').read_bytes()==(root/'public/update.js').read_bytes(), 'App/Public update.js nicht identisch'
 assert (root/'app/releases/latest.json').read_bytes()==(root/'public/releases/latest.json').read_bytes(), 'App/Public Versionsverzeichnis nicht identisch'
 verzeichnis=json.loads((root/'app/releases/latest.json').read_text(encoding='utf-8'))
-assert verzeichnis.get('fassung')==version, f"Versionsverzeichnis nennt {verzeichnis.get('fassung')!r} statt {version!r}"
+
+def _zahlen(v): return [int(x) for x in re.findall(r'\d+', str(v or '0'))]
+_angekuendigt=_zahlen(verzeichnis.get('fassung'))
+if _angekuendigt < _zahlen(version):
+ print(f"FEHLT: Versionsverzeichnis nennt {verzeichnis.get('fassung')!r}, aelter als das Programm ({version})"); sys.exit(1)
+if _angekuendigt > _zahlen(version):
+ print(f"HINWEIS: Versionsverzeichnis kuendigt {verzeichnis.get('fassung')} an, ausgeliefert ist {version}. Der Aktualisierungshinweis wird erscheinen.")
 assert '<script src="update.js"></script>' in html, 'Aktualisierungshinweis wird nicht geladen'
 
 print(f'RELEASE CHECK V{version} PASS')

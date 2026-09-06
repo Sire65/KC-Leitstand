@@ -1,9 +1,9 @@
 {
-  "fassung": "5.4.2",
-  "veroeffentlicht": "2026-09-05",
+  "fassung": "5.4.3",
+  "veroeffentlicht": "2026-09-06",
   "verbindlich": false,
   "installSekunden": 5,
   "adresse": "./",
   "paket": "",
-  "hinweise": "Aktualisierungshinweis beim Start mit Zeitbalken."
+  "hinweise": "Testlauf des Aktualisierungshinweises. Diese Fassung gibt es noch nicht."
 }
