@@ -4,7 +4,7 @@
   "version": "5.4.2",
   "level": "CANDIDATE",
   "status": "PASS",
-  "timestamp": "2026-09-06T06:17:43+00:00",
+  "timestamp": "2026-09-06T06:22:55+00:00",
   "blockers": 0,
   "warnings": 0,
   "checks": [
@@ -142,7 +142,7 @@
       "result": "PASS",
       "severity": "BLOCKER",
       "text": "Bestehender Release-Check",
-      "evidence": "HINWEIS: Versionsverzeichnis kuendigt 5.4.3 an, ausgeliefert ist 5.4.2. Der Aktualisierungshinweis wird erscheinen.\nRELEASE CHECK V5.4.2 PASS"
+      "evidence": "RELEASE CHECK V5.4.2 PASS"
     },
     {
       "suite": "release",
@@ -217,5 +217,5 @@
       "evidence": ""
     }
   ],
-  "treeDigest": "551436bb2f701d8095d713c394ffffbe4e6722e94dfdef4535e1df8260b8293d"
+  "treeDigest": "a3f2d1f8e307b3ee7d912be7d4e4823649058b99ad24606dadeb61055c92aa1b"
 }
