@@ -1,9 +1,16 @@
 {
+  "schema": "KC_UPDATE_V1",
+  "app": "KC Leitstand",
+  "version": "5.4.2",
   "fassung": "5.4.2",
-  "veroeffentlicht": "2026-09-05",
+  "channel": "candidate",
+  "publishedAt": "2026-09-18T18:05:00+02:00",
+  "mandatory": false,
   "verbindlich": false,
   "installSekunden": 5,
+  "estimatedInstallSeconds": 5,
+  "hinweise": "Aktueller Leitstand-Programmstand. Die Updateprüfung ist rein lesend; Nutz- und Betriebsdaten werden nicht verändert.",
+  "notes": "Aktueller Leitstand-Programmstand. Die Updateprüfung ist rein lesend.",
   "adresse": "./",
-  "paket": "",
-  "hinweise": "Aktualisierungshinweis beim Start mit Zeitbalken."
+  "releaseUrl": "./"
 }
