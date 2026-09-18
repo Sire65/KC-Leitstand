@@ -28,11 +28,12 @@
   'use strict';
 
   var VERZEICHNIS = 'releases/latest.json';
+  var REMOTE_VERZEICHNIS = 'https://raw.githubusercontent.com/Sire65/KC-Leitstand/main/'+(location.pathname.indexOf('/public/')>=0?'public/':'app/')+'releases/latest.json';
   var SPEICHER = 'leitstand_update_spaeter';
   var SITZUNG = 'leitstand_update_gefragt';
   var SPAETER_STUNDEN = 12;
 
-  var oertlich = location.protocol === 'file:';
+  var oertlich = location.protocol === 'file:' || /^(?:127\.0\.0\.1|localhost)$/i.test(location.hostname);
 
   function laufendeVersion() {
     var shell = window.NETZWERK_LEITSTAND_SHELL;
@@ -214,7 +215,8 @@
   function lies(m, deutsch, englisch) { return m[deutsch] !== undefined ? m[deutsch] : m[englisch]; }
 
   function verzeichnisHolen() {
-    return fetch(VERZEICHNIS + '?t=' + Date.now(), { cache: 'no-store' }).then(function (a) {
+    var quelle = oertlich ? REMOTE_VERZEICHNIS : VERZEICHNIS;
+    return fetch(quelle + '?t=' + Date.now(), { cache: 'no-store' }).then(function (a) {
       if (!a.ok) throw new Error('HTTP ' + a.status);
       return a.json();
     }).then(function (m) {

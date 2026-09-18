@@ -1,0 +1,4 @@
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';const root=path.resolve(import.meta.dirname,'..');
+for(const p of ['app/releases/latest.json','public/releases/latest.json']){const m=JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));assert.equal(m.app,'KC Leitstand');assert.equal(m.version,'5.4.2');assert.equal(m.fassung,'5.4.2');assert.equal(m.schema,'KC_UPDATE_V1');}
+for(const p of ['app/update.js','public/update.js']){const c=fs.readFileSync(path.join(root,p),'utf8');assert.match(c,/releases\/latest\.json/);assert.match(c,/raw\.githubusercontent\.com\/Sire65\/KC-Leitstand\/main/);assert.match(c,/127\\\.0\\\.0\\\.1\|localhost/);}
+console.log('KC Leitstand Updatecheck besitzt für App und Public ein gültiges Manifest.');
